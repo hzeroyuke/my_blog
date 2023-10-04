@@ -1,17 +1,17 @@
-# Welcome to MkDocs
+# Welcome to my blog
 
 For full documentation visit [mkdocs.org](https://www.mkdocs.org).
 
-## Commands
+## 我想在这里分享什么
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+* 一些技术积累.
+* ZJU 课程笔记
+* 国外著名计算机课程学习记录
+* 一些生活上的碎碎念
 
-## Project layout
+## 目前打算放上来的
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+1. C++ note
+2. ZJU-introduction to computer system
+3. UC-Berkeley CS61B
+4. ZJU-discrete mathematics
