@@ -5,7 +5,7 @@ theme:
     - navigation.tabs # 一级导航栏横放置
 nav:
   - 主页: # 主页/
-    - 主页/index.md
+    - index.md
   - 国外著名课程: 
     - 国外著名课程/computer crash course.md
     - CS61B:

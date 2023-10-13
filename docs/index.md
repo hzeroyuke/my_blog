@@ -1,6 +1,6 @@
 # Welcome to my blog
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+* welcome
 
 ## 我想在这里分享什么
 
