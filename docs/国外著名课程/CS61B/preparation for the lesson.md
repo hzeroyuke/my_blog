@@ -6,7 +6,7 @@
 
 1. Java环境 JDK 我目前使用的是JDK20
 2. git git bash是方便的shell可以执行linux命令，方便管理代码版本
-3. intellj IDEA 适宜Java 较重型的IDE
+3. intellij IDEA 适宜Java 较重型的IDE
 4. 翻墙 浏览课程网站和代码提交
 5. GitHub账号 获取初始代码和提交作业
 

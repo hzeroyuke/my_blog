@@ -1,6 +1,6 @@
 # Welcome to my blog
 
-* welcome
+我是华零，ZJU软件工程专业在读，欢迎来看我的博客呀
 
 ## 我想在这里分享什么
 
