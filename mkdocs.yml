@@ -27,8 +27,10 @@ nav:
     - CS61B:
       - 国外著名课程/CS61B/preparation for the lesson.md
       - 国外著名课程/CS61B/learning Java.md
+      - 国外著名课程/CS61B/oop.md
   - ZJU-course: 
     - ZJU-course/Discrete Mathematics.md
+    - ZJU-course/软工面试准备资料.md
 
 markdown_extensions:
   - pymdownx.highlight:
