@@ -2,14 +2,19 @@ site_name: 华零的blog
 theme:
   name: material
   features: 
-    - navigation.tabs # 一级导航栏横放置
+    - content.code.annotate
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.indexes
+    - navigation.top
   language: 'zh'
+  custom_dir: overrides
   font: 
-    text: Roboto
+    text: Noto Serif SC # Roboto
     code: Roboto Mono
   palette: 
     # Palette toggle for light mode
-    - scheme: default
+    - scheme: slate
       toggle:
         icon: material/toggle-switch
         name: Switch to dark mode
@@ -30,6 +35,7 @@ nav:
       - 国外著名课程/CS61B/oop.md
   - ZJU-course: 
     - ZJU-course/Discrete Mathematics.md
+    - ZJU-course/计概/Introduction to Computing Systems_ From Bits & Gates to C & Beyond.md
     - ZJU-course/软工面试准备资料.md
 
 markdown_extensions:
@@ -38,3 +44,9 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+
+extra_css:
+  - CSS/admonition.css

@@ -8,7 +8,7 @@ here shows how to run a java project in command line
 
 using instruction "explorer ." can open the file folder we are now.
 
-```java
+```java title='the first program'
 public class Hello{
 	public static void main(String[] args){
 		System.out.println("Hello world");
