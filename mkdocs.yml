@@ -37,6 +37,8 @@ nav:
     - ZJU-course/Discrete Mathematics.md
     - ZJU-course/计概/Introduction to Computing Systems_ From Bits & Gates to C & Beyond.md
     - ZJU-course/软工面试准备资料.md
+  - 我的碎碎念:
+    - 生活上的碎碎念/浙大的一年半载.md
 
 markdown_extensions:
   - pymdownx.highlight:
