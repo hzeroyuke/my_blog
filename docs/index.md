@@ -21,3 +21,8 @@
 2. ZJU-introduction to computer system
 3. UC-Berkeley CS61B
 4. ZJU-discrete mathematics
+
+!!! success "我和我的朋友们"
+    1. [关注咸鱼肆](https://github.com/SaltyfishShop)
+    2. [暄暄学长](https://xuan-insr.github.io/)
+    2. [fufu酱](https://notion-next-six-rouge.vercel.app/)
