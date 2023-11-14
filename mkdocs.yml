@@ -38,6 +38,11 @@ nav:
     - ZJU-course/Discrete Mathematics.md
     - ZJU-course/计概/Introduction to Computing Systems_ From Bits & Gates to C & Beyond.md
     - ZJU-course/软工面试准备资料.md
+  - 技术积累:
+    - 语言基础:
+      - 技术积累/语言基础/C++ note.md/C++ note.md
+    - 实用技能:
+      - 技术积累/实用技能/git and github.md/git and github.md
   - 我的碎碎念:
     - 生活上的碎碎念/浙大的一年半载.md
 

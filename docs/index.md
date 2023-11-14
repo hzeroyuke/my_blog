@@ -1,6 +1,6 @@
 # Welcome to my blog
 
-我是华零，ZJU软件工程专业在读，欢迎来看我的博客呀~
+我是华零(zyk)，ZJU软件工程专业在读，欢迎来看我的博客呀~
 
 ---
 >*我希望许下的愿望，一路生花*
@@ -24,5 +24,5 @@
 
 !!! success "我和我的朋友们"
     1. [关注咸鱼肆](https://github.com/SaltyfishShop)
-    2. [暄暄学长](https://xuan-insr.github.io/)
-    2. [fufu酱](https://notion-next-six-rouge.vercel.app/)
+    2. [暄暄学长!](https://xuan-insr.github.io/)
+    2. [fufu酱!](https://notion-next-six-rouge.vercel.app/)
