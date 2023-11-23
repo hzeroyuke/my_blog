@@ -25,4 +25,7 @@
 !!! success "我和我的朋友们"
     1. [关注咸鱼肆](https://github.com/SaltyfishShop)
     2. [暄暄学长!](https://xuan-insr.github.io/)
-    2. [fufu酱!](https://notion-next-six-rouge.vercel.app/)
+    3. [fufu可爱捏!](https://notion-next-six-rouge.vercel.app/)
+    4. [杰哥好帅!](https://note.jiepeng.tech/)
+    5. [sol佬教死我](https://projectdimlight.github.io/)
+    6. [pygg!](http://47.96.29.144/)
