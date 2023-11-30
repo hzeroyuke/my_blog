@@ -21,10 +21,10 @@ theme:
         name: Switch to dark mode
 
     # Palette toggle for dark mode
-    - scheme: slate
-      toggle:
-        icon: material/toggle-switch-off-outline
-        name: Switch to light mode
+    #- scheme: slate
+    #  toggle:
+    #    icon: material/toggle-switch-off-outline
+    #    name: Switch to light mode
 nav:
   - 主页: # 主页/
     - index.md
@@ -60,3 +60,10 @@ markdown_extensions:
 extra_css:
   - CSS/admonition.css
   - CSS/other.css
+
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/hzeroyuke?tab=repositories
+      name: hzeroyuke's github
