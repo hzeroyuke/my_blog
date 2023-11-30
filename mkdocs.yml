@@ -2,6 +2,7 @@ site_name: 华零的blog
 theme:
   name: material
   favicon: assets/fav.jpg
+  logo: assets/fav.jpg
   features: 
     - content.code.annotate
     - navigation.tracking
@@ -61,9 +62,11 @@ extra_css:
   - CSS/admonition.css
   - CSS/other.css
 
-
 extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/hzeroyuke?tab=repositories
       name: hzeroyuke's github
+repo_url: https://github.com/hzeroyuke?tab=repositories
+repo_name: hzeroyuke's github
+
