@@ -71,3 +71,12 @@
         <div class="flink-item-desc">pygg的博客好好看</div>
     </a>
     </div>
+    <div class="flink-list-item">
+        <div class="flink-item-icon">
+            ![Alt text](assets/friends/slx.jpg)
+        </div>
+    <a href="http://116.62.208.33/" title="xx" target="_blank">
+        <div class="flink-item-name">lxjj's notebook</div>
+        <div class="flink-item-desc">lxjj带带我</div>
+    </a>
+    </div>
