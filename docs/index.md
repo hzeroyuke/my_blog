@@ -22,10 +22,52 @@
 3. UC-Berkeley CS61B
 4. ZJU-discrete mathematics
 
+## 我和我的朋友们！
+
+
 !!! success "我和我的朋友们"
-    1. [关注咸鱼肆](https://github.com/SaltyfishShop)
-    2. [暄暄学长!](https://xuan-insr.github.io/)
-    3. [fufu可爱捏!](https://notion-next-six-rouge.vercel.app/)
-    4. [杰哥好帅!](https://note.jiepeng.tech/)
-    5. [sol佬教死我](https://projectdimlight.github.io/)
-    6. [pygg!](http://47.96.29.144/)
+    <div class="flink-list-item">
+        <div class="flink-item-icon">
+                ![Alt text](assets/friends/xuan.jpg)
+        </div>
+    <a href="https://xuan-insr.github.io/" title="xx" target="_blank">
+        <div class="flink-item-name">暄暄的博客</div>
+        <div class="flink-item-desc">暄暄教教我~</div>
+    </a>
+    </div>
+    <div class="flink-list-item">
+        <div class="flink-item-icon">
+                ![Alt text](assets/friends/fufu.jpg)
+        </div>
+    <a href="https://notion-next-six-rouge.vercel.app/" title="xx" target="_blank">
+        <div class="flink-item-name">fufu's notebook</div>
+        <div class="flink-item-desc">fufu可爱捏~</div>
+    </a>
+    </div>
+    <div class="flink-list-item">
+        <div class="flink-item-icon">
+                ![Alt text](assets/friends/jiepeng.jpg)
+        </div>
+    <a href="https://note.jiepeng.tech/" title="xx" target="_blank">
+        <div class="flink-item-name">jiepeng's notebook</div>
+        <div class="flink-item-desc">杰哥好帅</div>
+    </a>
+    </div>
+    <div class="flink-list-item">
+        <div class="flink-item-icon">
+                ![Alt text](assets/friends/Sol.jpg)
+        </div>
+    <a href="https://projectdimlight.github.io/" title="xx" target="_blank">
+        <div class="flink-item-name">sol的博客</div>
+        <div class="flink-item-desc">sol佬教死我</div>
+    </a>
+    </div>
+    <div class="flink-list-item">
+        <div class="flink-item-icon">
+                ![Alt text](assets/friends/pygg.jpg)
+        </div>
+    <a href="http://47.96.29.144/" title="xx" target="_blank">
+        <div class="flink-item-name">pygg's blog</div>
+        <div class="flink-item-desc">pygg的博客好好看</div>
+    </a>
+    </div>

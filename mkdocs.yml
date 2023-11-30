@@ -1,6 +1,7 @@
 site_name: 华零的blog
 theme:
   name: material
+  favicon: assets/fav.jpg
   features: 
     - content.code.annotate
     - navigation.tracking
@@ -58,3 +59,4 @@ markdown_extensions:
 
 extra_css:
   - CSS/admonition.css
+  - CSS/other.css
