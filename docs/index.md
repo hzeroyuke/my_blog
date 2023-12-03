@@ -80,3 +80,12 @@
         <div class="flink-item-desc">lxjj带带我</div>
     </a>
     </div>
+    <div class="flink-list-item">
+        <div class="flink-item-icon">
+            ![Alt text](assets/friends/wc.jpg)
+        </div>
+    <a href="https://thorin215-wang.com/" title="xx" target="_blank">
+        <div class="flink-item-name">wcgg's site</div>
+        <div class="flink-item-desc">wcgg好厉害</div>
+    </a>
+    </div>
