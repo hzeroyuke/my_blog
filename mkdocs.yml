@@ -29,13 +29,16 @@ theme:
 nav:
   - 主页: # 主页/
     - index.md
-  - 国外CS课程: 
+  - CS selflearning: 
     - 国外著名课程/computer crash course.md
     - CS61B:
       - 国外著名课程/CS61B/preparation for the lesson.md
       - 国外著名课程/CS61B/learning Java.md
       - 国外著名课程/CS61B/oop.md
       - 国外著名课程/CS61B/data structure/data structure.md
+    - computer systems:
+      - 国外著名课程/computer system/preparation.md
+      - 国外著名课程/computer system/CS61C great idea in computer architecture.md
   - ZJU-course: 
     - ZJU-course/Discrete Mathematics.md
     - ZJU-course/计概/Introduction to Computing Systems_ From Bits & Gates to C & Beyond.md
