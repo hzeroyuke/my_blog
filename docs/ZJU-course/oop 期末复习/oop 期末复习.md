@@ -3,8 +3,7 @@
 ## 错题
 
 !!! note "oop期末补天"
-	记录了oop期末复习的时候遇到的一系列问题，可能存在一些的错误请谨慎阅读。主干的C++知识请参照
-  技术积累中的C++note.
+	记录了oop期末复习的时候遇到的一系列问题，可能存在一些的错误请谨慎阅读。主干的C++知识请参照技术积累中的C++note.
 
 * If you are not interested in the contents of an exception object, the catch block parameter may be omitted.（T）  
   如果您对异常对象的内容不感兴趣，可以省略catch block参数。
