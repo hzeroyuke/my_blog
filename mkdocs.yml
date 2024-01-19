@@ -42,7 +42,11 @@ nav:
   - ZJU-course: 
     - ZJU-course/Discrete Mathematics.md
     - ZJU-course/计概/Introduction to Computing Systems_ From Bits & Gates to C & Beyond.md
+    - ZJU-course/计原/计原.md
+    - ZJU-course/fds/FDS.md
+    - ZJU-course/oop 期末复习/oop 期末复习.md
     - ZJU-course/软工面试准备资料.md
+    
   - 技术积累:
     - 语言基础:
       - 技术积累/语言基础/C++ note.md/C++ note.md
