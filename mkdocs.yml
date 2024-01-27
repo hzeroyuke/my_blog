@@ -39,6 +39,8 @@ nav:
     - computer systems:
       - 国外著名课程/computer system/preparation.md
       - 国外著名课程/computer system/CS61C great idea in computer architecture.md
+    - cmu15445:
+      - 国外著名课程/cmu15445/advanced C++.md
   - ZJU-course: 
     - ZJU-course/Discrete Mathematics.md
     - ZJU-course/计概/Introduction to Computing Systems_ From Bits & Gates to C & Beyond.md
