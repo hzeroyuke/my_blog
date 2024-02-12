@@ -179,3 +179,101 @@ std::shared_ptr<Resource> ptr2 { ptr1 };
 ```
 
 unique_ptr可以较为安全地转换成一个shared_ptr，反之则不然
+
+### 多线程
+
+> 参考：[C++ 多线程编程（一）：std::thread的使用 | 所念皆星河 (immortalqx.github.io)](https://immortalqx.github.io/2021/12/04/cpp-notes-3/)
+>
+> [【C++11 多线程】future与promise（八） - fengMisaka - 博客园 (cnblogs.com)](https://www.cnblogs.com/linuxAndMcu/p/14577275.html)
+
+由于不同操作系统给多线程提供的接口不同，在C++11之后，cpp给std的多线程做了一个封装，有了跨平台的适用性，要使用`std::thread`以及相关的类和函数，需要引入`#include<thread>`
+
+多线程的核心是共享数据的管理以及线程间的通信
+
+#### std::thread
+
+```cpp
+#include <cstdint>
+#include <cstdio>
+#include <iostream>
+#include <iterator>
+#include <thread>
+void func(int k){
+    std::cout<<k;
+}
+int main(){
+    for(std::uint8_t i = 0;i < 4;i++){
+        std::thread t(func,i);
+        t.detach();
+    }
+    std::getchar();
+    return 0;
+}
+```
+
+上述是一个基础的多线程程序，其包含两个重要部分
+
+* `std::thread`的创建，进程可以把自身一部分的指令序列（一般就是函数）拿出来创建一个线程，后面的参数就是要输入给这个函数的参数
+* `detach()` 线程的方法，表明了该线程不阻塞，线程的指令在后台运行，进程的程序可以顺序执行下去
+
+上述代码启动了四个线程，基础意义上我们可以认为是func()被调用了4次，但是输出的结果是 0 1 2 3的乱序，在4个并行的线程中，输出窗口是唯一的，因此线程之间会互相抢占输出窗口，而任何一个时间点输出窗口被分配给哪个线程对于我们是不可预见的
+
+**等待线程结束**
+
+C++中的thread在其被销毁之前，必须确定其结束的方式，有两种
+
+* 调用detach函数，线程放到后台执行，代码继续执行下去。调用完detach之后，该线程对象已经与所管理的线程分离
+* 调用join函数，阻塞等到线程执行完在进行下一步操作，只有活跃线程才能调用join，可以通过joinable()查看该线程是不是活跃线程
+
+如若不调用上述函数就会抛出异常
+
+**线程传参**
+
+默认会以拷贝的方式将参数传入线程中，即便在参数中使用的引用，如果需要在线程中传入引用，则需要调用`std::ref()`
+
+* 线程是可移动的，但是是不可拷贝的
+* 线程有其唯一的id，对于线程对象而言可以通过调用get_id()获取；在线程空间之中可以通过调用`this_thread::get_id()` 获取
+
+#### std::future and std::promise
+
+仅仅依靠上述概念，我们要实现进程之间通信以及协作还不够便利
+
+* std::future 表示一个可能还未实际完成的异步任务的结果，其拥有一个get方法，会阻塞主进程，直到future就绪
+* std::promise 由任务调用者负责，其本身是作为
+
+多数情况下std::future会依赖这三种方式创建
+
+* `std::async`函数，本文后面会介绍
+* `std::promise::get_future`，get_future 为 promise 类的成员函数
+* `std::packaged_task::get_future`，此时 get_future为 packaged_task 的成员函数
+
+std::future 和 std::promise 的使用例子
+
+```cpp
+void fun(int x, int y, std::promise<int>& promiseObj) {
+	promiseObj.set_value(x + y);
+}
+
+int main()
+{
+	int a = 10;
+	int b = 8;
+
+	// 声明一个promise类
+	std::promise<int> promiseObj;
+	// 将future和promise关联
+	std::future<int> futureObj = promiseObj.get_future();
+	// 模板传参的时候使用ref，否则传参失败
+	std::thread t(fun, a, b, std::ref(promiseObj));
+	t.join();
+  
+	// 获取线程的"返回值"
+	int sum = futureObj.get();
+	std::cout << "sum=" << sum << std::endl; // 输出：18
+
+	std::system("pause");
+	return 0;
+}
+```
+
+将promise作为参数或者参数的一部分传入线程，可以实现线程和主线程之间的同步，当主线程中的future对象调用get的时候，会等待线程知道promise对象被set_value
