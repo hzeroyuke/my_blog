@@ -89,3 +89,12 @@
         <div class="flink-item-desc">wcgg好厉害</div>
     </a>
     </div>
+    <div class="flink-list-item">
+        <div class="flink-item-icon">
+                ![Alt text](assets/friends/favicon.ico)
+        </div>
+    <a href="https://jzl-66666a.github.io/" title="xx" target="_blank">
+        <div class="flink-item-name">6a的博客</div>
+        <div class="flink-item-desc">gingogg~</div>
+    </a>
+    </div>
