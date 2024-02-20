@@ -1,15 +1,16 @@
-/*h1~p {
-    text-indent: 30px;
-  }*/
-  
-  img {
+
+  /*img {
     border-radius: 10px;
-    /* border-style: solid 2px #000000; */
+     border-style: solid 2px #000000; 
+  }*/
+
+  .flink-item-icon{
+    border-radius: 10px;
   }
   
-  div p[class^=""] {
+  /*div p[class^=""] {
     text-indent: 20px;
-  }
+  }*/
   
   p:has(img) {
     /* width: 80%; */
@@ -17,27 +18,18 @@
     text-align: center;
   }
   
-  a:link {
+  /*a:link {
     text-decoration: none;
   }
   
   a:visited {
     text-decoration: none;
-  }
+  }*/
   
-  a:hover {
-    text-decoration: underline;
-  }
-  
-  a:active {
-    text-decoration: underline;
-  }
-  
-  strong {
+  /*strong {
     text-shadow: 0.7px 0px;
-    /* text-shadow: 0 0 1px #ffffff; */
-  
-  }
+     text-shadow: 0 0 1px #ffffff; 
+  }*/
   
   .flink-list {
     overflow: auto;
