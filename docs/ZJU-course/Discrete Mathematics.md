@@ -1,4 +1,4 @@
-# Discrete Mathematics
+# 离散数学及应用
 
 !!! note "离散补天"
       1. 纯粹的补天笔记，基本没有什么阅读的价值，放上来凑数的bushi

@@ -1,4 +1,4 @@
-# ZJU-fundamental data structure
+# 数据结构基础
 
 !!! note "数据结构基础"
 	本篇笔记和cs61b有很多的重复之处，相对来说我会对61b做的更加详细一点
