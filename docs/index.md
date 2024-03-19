@@ -92,3 +92,13 @@
         <div class="flink-item-desc">gingogg~</div>
     </a>
     </div>
+    <div class="flink-list-item">
+        <div class="flink-item-icon">
+                ![Alt text](assets/friends/mem.jpg)
+        </div>
+    <a href="https://mem.ac/friends/" title="xx" target="_blank">
+        <div class="flink-item-name">mem.ac</div>
+        <div class="flink-item-desc">给神仙学弟跪了</div>
+    </a>
+    </div>
+    
