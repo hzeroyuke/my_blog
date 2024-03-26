@@ -39,7 +39,7 @@ nav:
     - computer systems:
       - 国外著名课程/computer system/preparation.md
       - 国外著名课程/computer system/CS61C great idea in computer architecture.md
-    - cmu15445:
+    - database system:
       - 国外著名课程/cmu15445/advanced C++.md
       - 国外著名课程/cmu15445/SQL.md
       - 国外著名课程/cmu15445/disk storage.md
