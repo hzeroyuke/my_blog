@@ -101,4 +101,13 @@
         <div class="flink-item-desc">给神仙学弟跪了</div>
     </a>
     </div>
-    
+    <div class="flink-list-item">
+        <div class="flink-item-icon">
+                ![Alt text](assets/friends/qf.jpg)
+        </div>
+    <a href="https://quietfallhe.gitee.io/" title="xx" target="_blank">
+        <div class="flink-item-name">qf的home</div>
+        <div class="flink-item-desc">qf老师厉害捏</div>
+    </a>
+    </div>
+    </div>
