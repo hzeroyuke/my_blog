@@ -44,7 +44,7 @@
         </div>
     <a href="https://note.jiepeng.tech/" title="xx" target="_blank">
         <div class="flink-item-name">jiepeng's notebook</div>
-        <div class="flink-item-desc">杰哥好帅</div>
+        <div class="flink-item-desc">帅气的杰哥！</div>
     </a>
     </div>
     <div class="flink-list-item">
@@ -62,7 +62,7 @@
         </div>
     <a href="http://47.96.29.144/" title="xx" target="_blank">
         <div class="flink-item-name">pygg's blog</div>
-        <div class="flink-item-desc">pygg的博客好好看</div>
+        <div class="flink-item-desc">pygg的博客好看捏</div>
     </a>
     </div>
     <div class="flink-list-item">
