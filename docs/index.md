@@ -110,4 +110,22 @@
         <div class="flink-item-desc">qf老师厉害捏</div>
     </a>
     </div>
+    <div class="flink-list-item">
+        <div class="flink-item-icon">
+                ![Alt text](assets/friends/lsgg.jpg)
+        </div>
+    <a href="http://track.yujiezju.run/" title="xx" target="_blank">
+        <div class="flink-item-name">lsgg的训练楼</div>
+        <div class="flink-item-desc">lsgg带我练练QAQ</div>
+    </a>
+    </div>
+    <div class="flink-list-item">
+        <div class="flink-item-icon">
+                ![Alt text](assets/friends/嘎嘎.jpg)
+        </div>
+    <a href="https://jybestow.github.io/" title="xx" target="_blank">
+        <div class="flink-item-name">HJY's blog</div>
+        <div class="flink-item-desc">嘎嘎老师</div>
+    </a>
+    </div>
     </div>
