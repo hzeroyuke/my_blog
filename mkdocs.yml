@@ -47,6 +47,8 @@ nav:
       - 国外著名课程/MIT weblab/web basic.md
       - 国外著名课程/MIT weblab/react.md
       - 国外著名课程/MIT weblab/Nodejs.md
+    - computer security:
+      - 国外著名课程/cs161/CS161 computer security.md
   - ZJU-course: 
     - ZJU-course/Discrete Mathematics.md
     - ZJU-course/计概/Introduction to Computing Systems_ From Bits & Gates to C & Beyond.md
