@@ -141,7 +141,7 @@
         <div class="flink-item-icon">
                 ![Alt text](assets/friends/lrq.jpg)
         </div>
-    <a href="cyrus28214.top" title="cy" target="_blank">
+    <a href="https://cyrus28214.top/" title="cy" target="_blank">
         <div class="flink-item-name">Cyrus's blog</div>
         <div class="flink-item-desc">是超厉害的学弟！</div>
     </a>
