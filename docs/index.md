@@ -33,7 +33,7 @@
         <div class="flink-item-icon">
                 ![Alt text](assets/friends/fufu.jpg)
         </div>
-    <a href="https://notion-next-six-rouge.vercel.app/" title="xx" target="_blank">
+    <a href="https://csfufu.life/" title="xx" target="_blank">
         <div class="flink-item-name">fufu's notebook</div>
         <div class="flink-item-desc">fufu可爱捏~</div>
     </a>
