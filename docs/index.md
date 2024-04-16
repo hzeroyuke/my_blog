@@ -137,4 +137,13 @@
         <div class="flink-item-desc">是样老师！</div>
     </a>
     </div>
+    <div class="flink-list-item">
+        <div class="flink-item-icon">
+                ![Alt text](assets/friends/lrq.jpg)
+        </div>
+    <a href="https://blog.csdn.net/ModestCoder_" title="cy" target="_blank">
+        <div class="flink-item-name">Cyrus's blog</div>
+        <div class="flink-item-desc">是超厉害的学弟！</div>
+    </a>
+    </div>
     </div>
