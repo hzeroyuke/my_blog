@@ -42,6 +42,7 @@ nav:
     - database system:
       - 国外著名课程/cmu15445/advanced C++.md
       - 国外著名课程/cmu15445/SQL.md
+      - 国外著名课程/cmu15445/DB design.md
       - 国外著名课程/cmu15445/disk storage.md
     - mit weblab:
       - 国外著名课程/MIT weblab/web basic.md
@@ -69,6 +70,8 @@ nav:
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
+  - pymdownx.arithmatex:
+      generic: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
@@ -79,6 +82,7 @@ markdown_extensions:
 extra_css:
   - CSS/admonition.css
   - CSS/other.css
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
 
 extra:
   social:
@@ -88,3 +92,8 @@ extra:
 repo_url: https://github.com/hzeroyuke?tab=repositories
 repo_name: hzeroyuke's github
 
+
+extra_javascript:
+  - javascripts/katex.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
