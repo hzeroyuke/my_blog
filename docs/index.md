@@ -22,6 +22,15 @@
 !!! success "我和我的朋友们"
     <div class="flink-list-item">
         <div class="flink-item-icon">
+                ![Alt text](assets/friends/zjgg.jpg)
+        </div>
+    <a href="https://github.com/zjuAIHz" title="xx" target="_blank">
+        <div class="flink-item-name">zjgg的GitHub</div>
+        <div class="flink-item-desc">\zjgg/\zjgg/\zjgg/</div>
+    </a>
+    </div>
+    <div class="flink-list-item">
+        <div class="flink-item-icon">
                 ![Alt text](assets/friends/xuan.jpg)
         </div>
     <a href="https://xuan-insr.github.io/" title="xx" target="_blank">
