@@ -14,18 +14,15 @@ theme:
   font: 
     text: Noto Serif SC # Roboto
     code: Roboto Mono
-  palette: 
-    # Palette toggle for light mode
-    - scheme: slate
+  palette:
+    - scheme: default
       toggle:
         icon: material/toggle-switch
         name: Switch to dark mode
-
-    # Palette toggle for dark mode
-    #- scheme: slate
-    #  toggle:
-    #    icon: material/toggle-switch-off-outline
-    #    name: Switch to light mode
+    - scheme: slate
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to light mode
 nav:
   - 主页: # 主页/
     - index.md
