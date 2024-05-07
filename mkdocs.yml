@@ -49,7 +49,10 @@ nav:
       - 国外著名课程/MIT weblab/react.md
       - 国外著名课程/MIT weblab/Nodejs.md
     - computer security:
+      - 国外著名课程/cs161/index.md
       - 国外著名课程/cs161/CS161 computer security.md
+    - computer vision:
+      - 国外著名课程/computer vision/index.md
   - ZJU-course: 
     - ZJU-course/Discrete Mathematics.md
     - ZJU-course/计概/Introduction to Computing Systems_ From Bits & Gates to C & Beyond.md
@@ -67,7 +70,10 @@ nav:
   - 我的碎碎念:
      - 生活上的碎碎念/大二上课程总结.md
 
+
 markdown_extensions:
+  - pymdownx.tasklist:
+      custom_checkbox: true
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.arithmatex:

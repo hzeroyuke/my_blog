@@ -29,6 +29,15 @@
         <div class="flink-item-desc">\zjgg/\zjgg/\zjgg/</div>
     </a>
     </div>
+     <div class="flink-list-item">
+        <div class="flink-item-icon">
+                ![Alt text](assets/friends/jxy.jpg)
+        </div>
+    <a href="https://github.com/jxy0?tab=repositories" title="xx" target="_blank">
+        <div class="flink-item-name">xygg的GitHub</div>
+        <div class="flink-item-desc">软工先辈，但是卖弱怪</div>
+    </a>
+    </div>
     <div class="flink-list-item">
         <div class="flink-item-icon">
                 ![Alt text](assets/friends/xuan.jpg)
@@ -130,7 +139,7 @@
     </div>
     <div class="flink-list-item">
         <div class="flink-item-icon">
-                ![Alt text](assets/friends/嘎嘎.jpg)
+                ![Alt text](assets/friends/gaga.jpg)
         </div>
     <a href="https://jybestow.github.io/" title="xx" target="_blank">
         <div class="flink-item-name">HJY's blog</div>
