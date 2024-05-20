@@ -314,13 +314,176 @@ SELECT rating FROM evals WHERE course = 'garbage'; SELECT * FROM passwords WHERE
 
 SQL参数化是指先对SQL语句进行查询编译和解释，在插入用户输入的参数，在此种情况下，用户输入绝不会被作为SQL语句执行，而仅仅是参数的一部分
 
+### Introduction to the Web
+
+网络上的所有资源（网络包，image，PDF等等），都被URL所定位。URL是指 Uniform Rescource Locator。旨在准确描述在Internet上查找信息的位置
+
+```
+http://www.example.com/index.html
+```
+
+一个URL可以被分为三个基本部分
+
+* **protocol 协议**也就是上述例子里的http，告诉浏览器如何检索资源，一般就是http和https（http的TLS加密版本）还有ssh和ftp等
+* **location/domain** 在上述例子中就是`www.example.com`​告诉我们去找哪个Web服务器，对于location我们还可以制定（用@）username和（用：）port
+* **path** 在上述例子中就是`index.html`​，Web服务器通过这部分来确定哪些资源（比如页面）返回给你，就是想象我们在访问服务器的文件系统
+
+在path部分，后面可以加一个‘?’然后后面加上一组可选的参数，用来给Web服务器发送信息。
+
+在最后，可以加上一个‘#’后面加上一组文本，其不会被发到服务器，用于影响于客户端浏览器上的网页，其基本上就是我们在html中使用的锚点，定位到某个网页中的特定位置，一个比较完整的URL如下
+
+```
+http://evanbot@www.cs161.org:161/whoami?k1=v1&k2=v2#anchor
+```
+
+**Introduction to http**
+
+http是超文本传输协议，客户端和服务器通信以获取资源发出请求的语言
+
+### Same-Origin Policy
+
+对于浏览器访问的网页进行隔离，我们不会希望一个网页有影响另一个网页的能力。
+
+所谓的origin是指webpage中的protocol+domain name+port(domain name中有没有www有区别)
+
+如果port没有具体的说明，默认是80对于http，443对于https
+
+虽然一般的资源都是由URL定义的，但是存在一些例外的情况
+
+### Cookies and Session Management
+
+Http是一个无状态的协议，也就是每个response和request之间相互之间是独立的。但是我们会希望其存储某种状态，比如登录的状态，网站的深色模式等等，实际上浏览器和服务器通过存储Cookies来支持这些功能。
+
+当我们做出某种设置的时候，服务器给我们发送一个Set-Cookie header，使得本地的机器存储着这个Cookies，之后的一段时间内，浏览器会自动把存储的Cookies附加到请求上发送给服务器，服务器就知道如何正确发送资源了。
+
+**Cookie Attributes**
+
+每一个cookie都是一个name-value pair，就像一个JSON那样。这是cookie本身的核心功能，但是cookie还需要一些属性，来确定它到底是从哪个服务器来的，需要加装在给哪些服务器的请求中。
+
+* Domain and Path 告诉浏览器将cookie发送到哪些URL
+* Secure 属性告诉浏览器需要用安全的https发送
+* HttpOnly 放置JavaScript访问和修改Cookie
+* expires field 告诉浏览器什么时候可以忘掉着Cookie
+
+例如一个Domain为`example.com`​, Path为`/some/path`​的Cookie，会被放置于，`http://foo.example.com/some/path/index.html`​这样的请求中，该请求拆分一下其实是，URL的domain以Cookie的结尾；URL的path以Cookie的开头
+
+* foo.example.com: URL's domain
+* example.com: cookie's domain
+* index.html: cookie's path
+* some/path/index.html: URL's path
+
+**setting domain and path**
+
+通过上述逻辑，我们可以推出如果服务器需要设置cookie的domain，其必须根据自身的URL来设置，而不能任意设置，否则恶意服务器很容易可以让我们本地的机器给正常网站发送设定的cookie。
+
+也就是说我们只能使用URL的domain的全部或者后半部分，但是有个问题是例如`www.baidu.com`​的domain，我们不可以使用`com`​作为Cookies的domain，否则上述保护就毫无意义了，像edu, com, cn等被浏览器记录为top-level domain（顶级域名）是不可以单独作为Cookies的domain
+
+设置path是无限制的
+
+**Session Management**
+
+session token cookie
+
+会话令牌是一种特殊类型cookie，用于维护登录状态，其通过Cookie发送
+
+## Network security
+
+### network intro
+
+**Local Area Network**
+
+互联网的主要目标是将数据从一个地方移动到另一个地方，我们首先需要一些可以让我们跨空间传输信息的东西，比如电线，无线电波等。
+
+接下来我们考虑局域网（LAN 也即local area network），在LAN中，所有的机器都链接到其他所有机器，可以模拟成下图所示
+
+​![image](assets/image-20240425100703-gfi0cxt.png)​
+
+但是如果要把世界上所有机器都相连，显然是不太现实的，因此在LAN和LAN之间，我们使用路由器（router），一个router可以连接两个或者多个LAN，如果我们需要向另一个LAN中的机器发送消息，需要先发送到router，由router发送到LAN
+
+足够多的LAN+router，构建出了wide area network（广域网），构建了互联网的基础
+
+**Internet layering**
+
+上述设计允许我们使用抽象层来构建Internet
+
+* 最底层是物理层，也即跨空间传输信息
+* 第二层是链路层，通过第一层来连接LAN中本地机器
+* 第三层是network层，由LAN构成
+
+这种抽象层的隔离，使得层与层之间的实现方式互不影响
+
+**Protocols and Headers**
+
+每一层都有自己的一组协议，协议包括了
+
+* 通信的结构
+* 机器在通信时的表现，例如发送和接受的流程
+* 如何处理错误，比如信息超时
+
+为了支持协议，每个message发送的时候都会携带一些headers，内部一般会有一些metadata，包括发送者和接受者身份，识别号等等，每个消息都会从高层开始加header，会拥有多个headers。
+
+​![image](assets/image-20240425102611-gndeifb.png)​
+
+接受者获得消息的时候，就会从最底层来实解码，获取到实际信息
+
+**Addressing: MAC, IP, Ports**
+
+我们使用一系列的信息，来指向一台目标机器
+
+* link layer, 使用48-bit的MAC address， 来唯一确定该LAN里的一台机器，一般会写成六对16进制的数字，例如`ca:fe:f0:0d:be:ef`​，但保留了一组特殊数据`ff:ff:ff:ff:ff:ff`​，意思是向这个MAC里的所有机器都发送信息
+* IP layer, 通过32-bit的IP address来定位全球范围的某一台机器（主机或者路由器），例如`128.32.131.10`​，这是属于IPv4的情形，但是随着互联网的迅速发展，已经已经开始转向IPv6了，使用128-bit来定位
+* 在更高层的设计中，允许每个机器有多个进程通过网络通信，更高层为每个进程分配了唯一的16位端口，也即port
+
 ‍
 
-## golang basic
+### ARP
 
-对于Go的包而言，所有导出的部分开头字符都得大写，小写的部分都是不导出的，这个格式是强制的
+Ethernet 以太网是LAN的一种具体实现，将机器以wires相连，其起初本身是一个很简单的模型，将数据包发送给所有机器，每个机器自动忽略非自身MAC地址的信息，但是这仅在软件上强制执行，很多以太网可以进去混杂模式，在这种模式下其将接受所有数据包，也称为 sniffing packets
 
-支持多值返回
+这个阶段的协议是ARP，也即address resolution protocol, 将第三层的IP address 转换成第二层的MAC addresses
+
+* Alice 先进行广播 谁的IP地址是 1.1.1.1
+* Bob 如果在LAN中，就直接回复自己的MAC地址，如果不在LAN中，就由该IP定义的路由器回复MAC地址
+* Alice会用cache 存储IP地址和MAC地址的映射
+
+**ARP spoofing**
+
+因为在第二步没有检查，如果Mallory创建一个虚假回复给Alice，那么Alice会有一个虚假的IP-MAC缓存，要给Bob发送信息的时候就会发送给Mallory
+
+此种攻击是一种race condition，其本身不会影响正确的响应，因此其本身必须比合法响应更快。
+
+针对此种攻击，存在一些方法可以跟踪IP-MAC地址
+
+### WPA
+
+**WiFi**
+
+对于链路层而言，除了以太网以外还有一个实现，就是无线WiFi，虽然实现细节不同，但是行为类似。
+
+### BGP
+
+属于IP层的协议
+
+**Subnet**
+
+IP路由依赖的是子网而不是单个IP，比如`128.32/16`​是一个IPv4 子网，所有地址以`128.32`​为前缀的地址都属于这个子网
+
+但是还存在一些保留的IP地址，有特殊含义
+
+* 如果要发送给同一个本地网络的机器，就先检查IP是否在同一子网，若在就用ARP转换IP地址，发送到该MAC地址
+* 如果是发送到非本地网络机器，需要把数据包发给网关，由网关处理该问题
+
+  * 网关会把数据包传输到general Internet, 其有很多AS组成，每个AS都由ASN唯一标记
+
+**BGP**
+
+AS之间的路由由BGP决定，AS向相邻的AS通告其负责的网络，以至于最终形成一张图，传输的信息足够满足在这个图内部通信
+
+### TCP UDP
+
+IP协议不保证数据包的完整性，并且IP唯一标识一台机器，但是并不区分机器上的进程
+
+而传输层引入了端口号 port 来解决多个进程的问题
 
 ## project踩坑记录
 
@@ -347,7 +510,7 @@ addresscode = "\x80\xfc\xff\xbf"
 print(buffercode + addresscode + shellcode)
 ```
 
-**In this project, you will need to** **`chmod`**​ **any new scripts you create.**
+**In this project, you will need to** **​`chmod`​**​ **any new scripts you create.**
 
 * shellcode 是我们需要它执行的‘恶意’代码
 * addresscode 是shellcode的地址 我们用addresscode 替代 rip 使其跳转到 shellcode
