@@ -10,10 +10,18 @@
 ## 我想在这里分享一些东西
 
 !!! note "我想要分享什么"
-    * 一些技术积累.
+    * 一些技术积累
     * ZJU 课程笔记
-    * 国外著名计算机课程学习记录
+    * 国内外著名计算机课程学习记录
     * 一些生活上的碎碎念
+
+## 这是一些有用的连接
+
+!!! note "一些有用的连接"
+    * [CS自学指南，每个人都该体验一下好的大学课程应该是怎么样的](https://csdiy.wiki/)
+    * [浙江大学本科新生指引](https://zjuers.com/welcome/)
+    * [常用的查汇编工具](https://godbolt.org/)
+    * [常用的LaTeX公式查询](https://editor.codecogs.com/)
 
 
 ## 我和我的朋友们！
@@ -87,7 +95,7 @@
         <div class="flink-item-icon">
             ![Alt text](assets/friends/slx.jpg)
         </div>
-    <a href="http://116.62.208.33/" title="xx" target="_blank">
+    <a href="https://collapsar11.github.io/" title="xx" target="_blank">
         <div class="flink-item-name">lxjj's notebook</div>
         <div class="flink-item-desc">lxjj带带我</div>
     </a>
