@@ -27,31 +27,33 @@ nav:
   - 主页: # 主页/
     - index.md
   - CS selflearning: 
-    - 国外著名课程/computer crash course.md
+    - 国内外著名课程/computer crash course.md
     - CS61B:
-      - 国外著名课程/CS61B/preparation for the lesson.md
-      - 国外著名课程/CS61B/learning Java.md
-      - 国外著名课程/CS61B/oop.md
-      - 国外著名课程/CS61B/data structure/data structure.md
+      - 国内外著名课程/CS61B/preparation for the lesson.md
+      - 国内外著名课程/CS61B/learning Java.md
+      - 国内外著名课程/CS61B/oop.md
+      - 国内外著名课程/CS61B/data structure/data structure.md
     - computer systems:
-      - 国外著名课程/computer system/preparation.md
-      - 国外著名课程/computer system/CS61C great idea in computer architecture.md
+      - 国内外著名课程/computer system/preparation.md
+      - 国内外著名课程/computer system/CS61C great idea in computer architecture.md
     - database system:
-      - 国外著名课程/cmu15445/advanced C++.md
-      - 国外著名课程/cmu15445/SQL.md
-      - 国外著名课程/cmu15445/DB design.md
-      - 国外著名课程/cmu15445/disk storage.md
-      - 国外著名课程/cmu15445/MiniSQL 概述.md
+      - 国内外著名课程/cmu15445/advanced C++.md
+      - 国内外著名课程/cmu15445/SQL.md
+      - 国内外著名课程/cmu15445/DB design.md
+      - 国内外著名课程/cmu15445/disk storage.md
+      - 国内外著名课程/cmu15445/Concurrency and recovery.md
+      - 国内外著名课程/cmu15445/MiniSQL 概述.md
     - mit weblab:
-      - 国外著名课程/MIT weblab/web basic.md
-      - 国外著名课程/MIT weblab/react.md
-      - 国外著名课程/MIT weblab/Nodejs.md
+      - 国内外著名课程/MIT weblab/web basic.md
+      - 国内外著名课程/MIT weblab/react.md
+      - 国内外著名课程/MIT weblab/Nodejs.md
     - computer security:
-      - 国外著名课程/cs161/index.md
-      - 国外著名课程/cs161/CS161 computer security.md
+      - 国内外著名课程/cs161/index.md
+      - 国内外著名课程/cs161/CS161 computer security.md
     - computer vision:
-      - 国外著名课程/computer vision/index.md
-      - 国外著名课程/computer vision/UMich EECS 498-007 Deep Learning for Computer Vision.md
+      - 国内外著名课程/computer vision/index.md
+      - 国内外著名课程/computer vision/UMich EECS 498-007 Deep Learning for Computer Vision.md
+    - 国内外著名课程/CS110L/CS110L.md
   - ZJU-course: 
     - ZJU-course/Discrete Mathematics.md
     - ZJU-course/计概/Introduction to Computing Systems_ From Bits & Gates to C & Beyond.md
