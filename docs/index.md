@@ -48,6 +48,15 @@
     </div>
     <div class="flink-list-item">
         <div class="flink-item-icon">
+                ![Alt text](assets/friends/wyr.jpg)
+        </div>
+    <a href="https://tsuki0512.github.io/" title="cy" target="_blank">
+        <div class="flink-item-name">wyr's note</div>
+        <div class="flink-item-desc">yrjj带我打桌游:)</div>
+    </a>
+    </div>
+    <div class="flink-list-item">
+        <div class="flink-item-icon">
                 ![Alt text](assets/friends/xuan.jpg)
         </div>
     <a href="https://xuan-insr.github.io/" title="xx" target="_blank">

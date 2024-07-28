@@ -53,6 +53,8 @@ nav:
     - computer vision:
       - 国内外著名课程/computer vision/index.md
       - 国内外著名课程/computer vision/UMich EECS 498-007 Deep Learning for Computer Vision.md
+    - operation system:
+      - 国内外著名课程/rcore/rCore 清华操作系统实验.md
     - 国内外著名课程/CS110L/CS110L.md
   - ZJU-course: 
     - ZJU-course/Discrete Mathematics.md
