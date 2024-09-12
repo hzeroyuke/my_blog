@@ -919,3 +919,27 @@ impl MemorySet {
 ### 实验
 
 由系统调用传入系统栈的地址，是应用程序的虚拟地址，我们需要将其转换成物理地址之后再系统栈中进行访问
+
+```rust
+/// write buf of length `len`  to a file with `fd`
+pub fn sys_write(fd: usize, buf: *const u8, len: usize) -> isize {
+    match fd {
+        FD_STDOUT => {
+            let buffers = translated_byte_buffer(current_user_token(), buf, len);
+            for buffer in buffers {
+                print!("{}", core::str::from_utf8(buffer).unwrap());
+            }
+            len as isize
+        }
+        _ => {
+            panic!("Unsupported fd in sys_write!");
+        }
+    }
+}
+```
+
+例如这一段代码中，buf这个指针是从应用程序中传入的，因此要先经历地址的translate，才能在内核地址空间中正常使用，translate的三个参数
+
+* 第一个，选择当前的用户地址空间，也即选择了特定的能够正确翻译的页表
+* 第二个就是需要翻译的指针
+* len，是指这个地址所表示的变量的长度
