@@ -55,12 +55,16 @@ nav:
       - 国内外著名课程/computer vision/UMich EECS 498-007 Deep Learning for Computer Vision.md
     - operation system:
       - 国内外著名课程/rcore/rCore 清华操作系统实验.md
-    - artificial intelligence:
+    - 国内外著名课程/CS110L/CS110L.md
+  - Artificial Intelligence:
+    - 早期AI学习:
       - 国内外著名课程/AI/线性回归/线性回归.md
       - 国内外著名课程/AI/基础的多层神经网络/基础的多层神经网络.md
       - 国内外著名课程/AI/卷积神经网络CNN/CNN.md
       - 国内外著名课程/AI/Self-attention And Transformer/Self-attention And Transformer.md
-    - 国内外著名课程/CS110L/CS110L.md
+      - 国内外著名课程/AI/Auto-Encoder/Auto-Encoder.md
+      - 国内外著名课程/AI/BERT/BERT.md
+      - 国内外著名课程/AI/GAN/GAN.md
   - ZJU-course: 
     - ZJU-course/Discrete Mathematics.md
     - ZJU-course/计概/Introduction to Computing Systems_ From Bits & Gates to C & Beyond.md
