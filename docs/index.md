@@ -84,6 +84,15 @@
     </div>
     <div class="flink-list-item">
         <div class="flink-item-icon">
+                ![Alt text](assets/friends/cjw.jpg)
+        </div>
+    <a href="https://muzibing.github.io/" title="xx" target="_blank">
+        <div class="flink-item-name">MuZibing's website</div>
+        <div class="flink-item-desc">阿伟的笔记本</div>
+    </a>
+    </div>
+    <div class="flink-list-item">
+        <div class="flink-item-icon">
                 ![Alt text](assets/friends/Sol.jpg)
         </div>
     <a href="https://projectdimlight.github.io/" title="xx" target="_blank">
