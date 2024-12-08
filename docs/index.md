@@ -22,12 +22,22 @@
     * [浙江大学本科新生指引](https://zjuers.com/welcome/)
     * [常用的查汇编工具](https://godbolt.org/)
     * [常用的LaTeX公式查询](https://editor.codecogs.com/)
+    * [QuickRef](https://quickref.me/)
 
 
 ## 我和我的朋友们！
 
 
 !!! success "我和我的朋友们"
+    <div class="flink-list-item">
+        <div class="flink-item-icon">
+                ![Alt text](assets/friends/wyr.jpg)
+        </div>
+    <a href="https://tsuki0512.github.io/" title="cy" target="_blank">
+        <div class="flink-item-name">语若's note</div>
+        <div class="flink-item-desc">那是我最想留住的幸运</div>
+    </a>
+    </div>
     <div class="flink-list-item">
         <div class="flink-item-icon">
                 ![Alt text](assets/friends/zjgg.jpg)
@@ -44,15 +54,6 @@
     <a href="https://github.com/jxy0?tab=repositories" title="xx" target="_blank">
         <div class="flink-item-name">xygg的GitHub</div>
         <div class="flink-item-desc">软工先辈，但是卖弱怪</div>
-    </a>
-    </div>
-    <div class="flink-list-item">
-        <div class="flink-item-icon">
-                ![Alt text](assets/friends/wyr.jpg)
-        </div>
-    <a href="https://tsuki0512.github.io/" title="cy" target="_blank">
-        <div class="flink-item-name">wyr's note</div>
-        <div class="flink-item-desc">yrjj带我打桌游:)</div>
     </a>
     </div>
     <div class="flink-list-item">
@@ -191,3 +192,5 @@
     </a>
     </div>
     </div>
+
+
