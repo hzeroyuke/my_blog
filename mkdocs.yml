@@ -75,6 +75,17 @@ nav:
     - ZJU-course/信息安全原理/信息安全原理.md
     - ZJU-course/数据库系统期末/数据库系统期末复习.md
     - ZJU-course/ADS/ADS.md
+    - 操作系统:
+      - ZJU-course/OS/index.md
+      - ZJU-course/OS/概述.md
+      - ZJU-course/OS/进程管理.md
+      - ZJU-course/OS/同步和死锁.md
+      - ZJU-course/OS/内存管理.md
+      - ZJU-course/OS/IO + 磁盘.md
+      - ZJU-course/OS/文件系统.md
+    - ZJU-course/软件质量保证与测试/PPT 索引.md
+    - ZJU-course/物联网/物联网.md
+    - ZJU-course/软工管/软工管.md
     - ZJU-course/软工面试准备资料.md
     - 通识课程:
       - ZJU-course/通识课程/中国书法史/中国书法史.md
