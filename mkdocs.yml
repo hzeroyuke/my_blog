@@ -83,6 +83,15 @@ nav:
       - ZJU-course/OS/内存管理.md
       - ZJU-course/OS/IO + 磁盘.md
       - ZJU-course/OS/文件系统.md
+    - 计算机网络:
+      - ZJU-course/计网/index.md
+      - ZJU-course/计网/概述.md
+      - ZJU-course/计网/物理层.md
+      - ZJU-course/计网/数据链路层.md
+      - ZJU-course/计网/介质访问子层.md
+      - ZJU-course/计网/网络层.md
+      - ZJU-course/计网/传输层.md
+      - ZJU-course/计网/应用层.md
     - ZJU-course/软件质量保证与测试/PPT 索引.md
     - ZJU-course/物联网/物联网.md
     - ZJU-course/软工管/软工管.md
