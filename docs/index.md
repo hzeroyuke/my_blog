@@ -67,15 +67,6 @@
     </div>
     <div class="flink-list-item">
         <div class="flink-item-icon">
-                ![Alt text](assets/friends/fufu.jpg)
-        </div>
-    <a href="https://csfufu.life/" title="xx" target="_blank">
-        <div class="flink-item-name">fufu's notebook</div>
-        <div class="flink-item-desc">fufu可爱捏~</div>
-    </a>
-    </div>
-    <div class="flink-list-item">
-        <div class="flink-item-icon">
                 ![Alt text](assets/friends/jiepeng.jpg)
         </div>
     <a href="https://note.jiepeng.tech/" title="xx" target="_blank">
@@ -108,15 +99,6 @@
     <a href="http://47.96.29.144/" title="xx" target="_blank">
         <div class="flink-item-name">pygg's blog</div>
         <div class="flink-item-desc">pygg的博客好看捏</div>
-    </a>
-    </div>
-    <div class="flink-list-item">
-        <div class="flink-item-icon">
-            ![Alt text](assets/friends/slx.jpg)
-        </div>
-    <a href="https://collapsar11.github.io/" title="xx" target="_blank">
-        <div class="flink-item-name">lxjj's notebook</div>
-        <div class="flink-item-desc">lxjj带带我</div>
     </a>
     </div>
     <div class="flink-list-item">
