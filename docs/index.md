@@ -173,6 +173,15 @@
         <div class="flink-item-desc">是超厉害的学弟！</div>
     </a>
     </div>
+    <div class="flink-list-item">
+        <div class="flink-item-icon">
+                ![Alt text](assets/friends/mjh.jpg)
+        </div>
+    <a href="https://ottohere-mourn.github.io/" title="cy" target="_blank">
+        <div class="flink-item-name">莱茵生命浙大分部</div>
+        <div class="flink-item-desc">传奇朵朵网红毛毛的博客</div>
+    </a>
+    </div>
     </div>
 
 
