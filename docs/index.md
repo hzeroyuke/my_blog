@@ -1,19 +1,16 @@
 # Welcome to my blog
 
-我是华零(zyk)，ZJU软件工程专业在读，欢迎来看我的博客呀~
+我是华零(zyk)，ZJU软件工程专业在读，同时也在simplex ai做intern，欢迎来看我的博客呀~
 
 ---
 >*我希望许下的愿望，一路生花*
 
 ---
 
-## 我想在这里分享一些东西
+## 近期的工作
 
-!!! note "我想要分享什么"
-    * 一些技术积累
-    * ZJU 课程笔记
-    * 国内外著名计算机课程学习记录
-    * 一些生活上的碎碎念
+- TempFlow-GRPO: When Timing Matters for GRPO in Flow Models [arxiv](https://arxiv.org/abs/2508.04324) [github page](https://tempflowgrpo.github.io/)
+
 
 ## 这是一些有用的连接
 
