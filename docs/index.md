@@ -9,7 +9,7 @@
 
 ## 近期的工作
 
-- TempFlow-GRPO: When Timing Matters for GRPO in Flow Models [arxiv](https://arxiv.org/abs/2508.04324) [github page](https://tempflowgrpo.github.io/)
+- TempFlow-GRPO: When Timing Matters for GRPO in Flow Models [arxiv](https://arxiv.org/abs/2508.04324)|[github page](https://tempflowgrpo.github.io/)
 
 
 ## 这是一些有用的连接
