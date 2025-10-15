@@ -29,9 +29,216 @@ docker cp es01:/usr/share/elasticsearch/config/certs/http_ca.crt ./http_ca.crt
 
 因为ES原生支持的中文分词比较糟糕，要做正确的中文索引，需要加载一个IK分词器
 
+我们从github上下载好zip文件之后，导入到docker中
 
+``` bash
+docker cp elasticsearch-analysis-ik-8.10.4.zip d38f84229931:/usr/share/elasticsearch/
+```
 
 代码如下
+
+```python
+import pandas as pd
+from elasticsearch import Elasticsearch
+from elasticsearch.helpers import streaming_bulk
+import sys
+import os
+import re
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+try:
+    es = Elasticsearch(
+        ["https://localhost:9200"],
+        basic_auth=("elastic", "SMsFXe6WOqTh0-jvXY*v"),
+        verify_certs=False,
+        request_timeout=30
+    )
+    print("成功连接到 Elasticsearch\n")
+    
+except Exception as e:
+    print(f"连接失败: {e}", file=sys.stderr)
+    sys.exit(1)
+
+INDEX_NAME = "restaurants"
+
+INDEX_MAPPING = {
+    "properties": {
+        "商家名称": {
+            "type": "text",
+            "analyzer": "ik_max_word",
+            "search_analyzer": "ik_smart"
+        },
+        "地址": {
+            "type": "text",
+            "analyzer": "ik_max_word",
+            "search_analyzer": "ik_smart"
+        },
+        "所在省份": {"type": "keyword"},
+        "所在城市": {"type": "keyword"},
+        "所在区域": {"type": "keyword"},
+        "纬度": {"type": "float"},
+        "经度": {"type": "float"},
+        "分类": {"type": "keyword"},
+        "总评分": {"type": "float"},
+        "月售": {"type": "integer"},
+        "月售原始": {"type": "keyword"},
+        "最低起送价": {"type": "float"},
+        "配送费": {"type": "float"},
+        "预计配送时间": {"type": "integer"},
+        "营业时间": {"type": "text"},
+        "品牌": {"type": "keyword"},
+        "评价总数": {"type": "integer"},
+        "味道评分": {"type": "float"},
+        "包装评分": {"type": "float"},
+        "配送评分": {"type": "float"},
+        "配送满意度": {"type": "keyword"},
+        "被推荐原因": {
+            "type": "text",
+            "analyzer": "ik_max_word",      # 索引时使用细粒度分词
+            "search_analyzer": "ik_smart"    # 搜索时使用粗粒度分词
+        }
+    }
+}
+
+if es.indices.exists(index=INDEX_NAME):
+    print(f"索引 '{INDEX_NAME}' 已存在，删除重建...")
+    es.indices.delete(index=INDEX_NAME)
+
+print(f"创建索引 '{INDEX_NAME}'...\n")
+es.indices.create(index=INDEX_NAME, mappings=INDEX_MAPPING)
+
+XLS_FILE_PATH = '餐饮外卖商家样本数据.xls'
+
+def extract_number_from_monthly_sales(value):
+    """从月售字段提取数字"""
+    if pd.isna(value):
+        return 0
+    value_str = str(value)
+    numbers = re.findall(r'\d+', value_str)
+    if not numbers:
+        return 0
+    return int(numbers[0])
+
+def clean_percentage(value):
+    """清理百分比字段"""
+    if pd.isna(value):
+        return "0%"
+    return str(value)
+
+try:
+    print(f"正在从 '{XLS_FILE_PATH}' 读取数据...")
+    df = pd.read_excel(XLS_FILE_PATH, sheet_name='试用数据')
+    
+    # 数据清洗
+    text_fields = ['商家名称', '地址', '营业时间', '被推荐原因', '分类', '品牌']
+    for field in text_fields:
+        if field in df.columns:
+            df[field] = df[field].astype(str).replace('nan', '').replace('', '无')
+    
+    keyword_fields = ['所在省份', '所在城市', '所在区域']
+    for field in keyword_fields:
+        if field in df.columns:
+            df[field] = df[field].astype(str).replace('nan', '')
+    
+    if '月售' in df.columns:
+        df['月售原始'] = df['月售'].astype(str)
+        df['月售'] = df['月售'].apply(extract_number_from_monthly_sales)
+    
+    numeric_fields = {
+        '总评分': 0.0,
+        '纬度': 0.0,
+        '经度': 0.0,
+        '最低起送价': 0.0,
+        '配送费（元）': 0.0,
+        '预计配送时间': 0,
+        '评价总数': 0,
+        '味道评分': 0.0,
+        '包装评分': 0.0,
+        '配送（骑手）评分': 0.0
+    }
+    
+    for field, default_value in numeric_fields.items():
+        if field in df.columns:
+            df[field] = pd.to_numeric(df[field], errors='coerce').fillna(default_value)
+    
+    df = df.rename(columns={
+        '配送费（元）': '配送费',
+        '配送（骑手）评分': '配送评分'
+    })
+    
+    if '配送满意度' in df.columns:
+        df['配送满意度'] = df['配送满意度'].apply(clean_percentage)
+    
+    mapping_fields = list(INDEX_MAPPING['properties'].keys())
+    available_fields = [f for f in mapping_fields if f in df.columns]
+    df = df[available_fields]
+    
+    print(f"数据读取完成: {df.shape[0]} 条记录\n")
+    
+except FileNotFoundError:
+    print(f"错误：文件 '{XLS_FILE_PATH}' 未找到。", file=sys.stderr)
+    sys.exit(1)
+except Exception as e:
+    print(f"读取 Excel 文件时发生错误: {e}", file=sys.stderr)
+    sys.exit(1)
+
+def generate_data(dataframe, index_name):
+    for idx, row in dataframe.iterrows():
+        doc = row.to_dict()
+        yield {
+            "_index": index_name,
+            "_source": doc,
+        }
+
+print("开始批量导入数据到 Elasticsearch...")
+try:
+    success_count = 0
+    for ok, result in streaming_bulk(es, generate_data(df, INDEX_NAME), raise_on_error=False):
+        if ok:
+            success_count += 1
+    
+    print(f"数据导入完成: 成功导入 {success_count} 条数据\n")
+    
+except Exception as e:
+    print(f"数据导入错误: {e}", file=sys.stderr)
+    sys.exit(1)
+
+
+print("刷新索引，使数据可搜索...")
+es.indices.refresh(index=INDEX_NAME)
+print("索引刷新完成\n")
+
+print("="*60)
+print("查询被推荐原因包含'热情'的商家")
+print("="*60)
+
+keyword = "热情"
+
+query = {
+    "query": {
+        "match": {
+            "被推荐原因": keyword
+        }
+    },
+    "_source": ["商家名称", "被推荐原因"],
+    "size": 100  # 获取所有匹配结果
+}
+
+response = es.search(index=INDEX_NAME, body=query)
+
+print(f"\n共找到 {response['hits']['total']['value']} 家商家的被推荐原因包含'{keyword}'\n")
+
+if response['hits']['total']['value'] > 0:
+    for i, hit in enumerate(response['hits']['hits'], 1):
+        print(f"{i}. {hit['_source']['商家名称']}")
+        print(f"   被推荐原因: {hit['_source']['被推荐原因']}\n")
+else:
+    print(f"未找到被推荐原因包含'{keyword}'的商家。")
+
+print("="*60)
+```
+
 
 结果屏幕如下
 

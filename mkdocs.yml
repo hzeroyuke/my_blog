@@ -69,6 +69,7 @@ nav:
     - 国内外著名课程/AI/CS336_LLM/CS336 LLM.md
     - 国内外著名课程/AI/Diffusion_and_flow/diffusion_and_flow.md
     - 国内外著名课程/AI/Diffusion_and_flow/Rectified Flow.md
+    - 国内外著名课程/AI/prompt_optimize/Automatic Prompt Optimize.md
   - ZJU-course: 
     - ZJU-course/Discrete Mathematics.md
     - ZJU-course/计概/Introduction to Computing Systems_ From Bits & Gates to C & Beyond.md
@@ -111,6 +112,7 @@ nav:
     - 实用技能:
       - 技术积累/实用技能/git and github.md/git and github.md
       - 技术积累/实用技能/docker/docker.md
+      - 技术积累/实用技能/Tmux.md
 
   - Reading:
     - daily reading:
@@ -120,6 +122,7 @@ nav:
       - reading/dailyreading/2025-9.md
     - interests: 
       - reading/interesting/胡渊鸣访谈.md
+      - reading/interesting/RL 中的熵机制.md
 
 
 markdown_extensions:
