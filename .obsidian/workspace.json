@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/国内外著名课程/AI/Diffusion_and_flow/Rectified Flow.md",
+                "file": "docs/index.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Rectified Flow"
+              "title": "index"
             }
           },
           {
@@ -27,26 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "readme.md",
+                "file": "docs/reading/interesting/生成理解统一模型.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "readme"
-            }
-          },
-          {
-            "id": "5e8ab93e935a21d0",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/国内外著名课程/AI/prompt_optimize/Automatic Prompt Optimize.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Automatic Prompt Optimize"
+              "title": "生成理解统一模型"
             }
           },
           {
@@ -55,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/国内外著名课程/cmu15445/Concurrency and recovery.md",
+                "file": "docs/国内外著名课程/AI/ML_System/Verl.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Concurrency and recovery"
+              "title": "Verl"
             }
           },
           {
@@ -91,8 +77,7 @@
               "title": "Tmux"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -240,30 +225,36 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "5e8ab93e935a21d0",
+  "active": "18ddb4a98620b4e4",
   "lastOpenFiles": [
-    "docs/国内外著名课程/AI/prompt_optimize/Pasted image 20251015192317.png",
-    "docs/国内外著名课程/AI/prompt_optimize/Pasted image 20251015191601.png",
-    "docs/国内外著名课程/AI/prompt_optimize/Pasted image 20251015185748.png",
-    "docs/国内外著名课程/AI/prompt_optimize/Pasted image 20251015183614.png",
-    "docs/国内外著名课程/AI/prompt_optimize/Pasted image 20251015182629.png",
-    "docs/国内外著名课程/AI/prompt_optimize/Pasted image 20251015182200.png",
-    "docs/技术积累/实用技能/docker/docker.md",
-    "docs/技术积累/实用技能/Tmux.md",
-    "docs/reading/interesting/生成理解统一模型.md",
-    "docs/国内外著名课程/cmu15445/Concurrency and recovery.md",
-    "docs/国内外著名课程/AI/prompt_optimize/Automatic Prompt Optimize.md",
-    "docs/国内外著名课程/AI/prompt_optimize/Pasted image 20251015162545.png",
-    "docs/国内外著名课程/computer crash course.md",
-    "docs/reading/interesting/Pasted image 20251014213741.png",
+    "docs/assets/friends/rwy.webp",
+    "docs/assets/friends/avatar.DLVU-ubs_Iv32r.webp",
+    "docs/assets/friends/avatar.DLVU-ubs_Iv32r.webp.crdownload",
     "docs/reading/dailyreading/2025-10.md",
+    "docs/国内外著名课程/AI/Diffusion_and_flow/Rectified Flow.md",
+    "docs/国内外著名课程/AI/ML_System/Verl.md",
+    "docs/reading/interesting/生成理解统一模型.md",
+    "docs/reading/dailyreading/2025-9.md",
+    "readme.md",
+    "docs/国内外著名课程/AI/prompt_optimize/Pasted image 20251015162545.png",
+    "docs/技术积累/实用技能/Tmux.md",
+    "docs/国内外著名课程/AI/ML_System/Pasted image 20251017122303.png",
+    "docs/国内外著名课程/AI/ML_System/Pasted image 20251017121913.png",
+    "docs/国内外著名课程/AI/ML_System/Pasted image 20251017121640.png",
+    "docs/国内外著名课程/AI/ML_System/Pasted image 20251017121316.png",
+    "docs/国内外著名课程/AI/ML_System/Pasted image 20251017120938.png",
+    "docs/reading/dailyreading/2025-8.md",
     "docs/国内外著名课程/AI/未命名.md",
-    "docs/国内外著名课程/AI/prompt_optimize",
-    "docs/reading/interesting/Pasted image 20251014154940.png",
-    "docs/reading/interesting/Pasted image 20251014154052.png",
     "docs/reading/interesting/RL 中的熵机制.md",
+    "docs/国内外著名课程/AI/ML_System/Pasted image 20251016213455.png",
+    "docs/国内外著名课程/AI/ML_System/Pasted image 20251016213105.png",
+    "docs/国内外著名课程/AI/ML_System/Pasted image 20251016212732.png",
+    "docs/国内外著名课程/AI/prompt_optimize/Automatic Prompt Optimize.md",
+    "docs/国内外著名课程/cmu15445/Concurrency and recovery.md",
+    "docs/技术积累/实用技能/docker/docker.md",
+    "docs/国内外著名课程/computer crash course.md",
+    "docs/国内外著名课程/AI/prompt_optimize",
     "docs/国内外著名课程/AI/ML_System/Large scale book.md",
-    "docs/国内外著名课程/AI/ML_System/Pasted image 20251014153331.png",
     "docs/reading/interesting/Verl.md",
     "docs/reading/interesting/胡渊鸣访谈.md",
     "docs/ZJU-course/大数据技术/作业2 Elastic Search.md",
@@ -273,13 +264,8 @@
     "docs/国内外著名课程/AI/Self-attention And Transformer/Self-attention And Transformer.md",
     "docs/ZJU-course/推免面试",
     "docs/国内外著名课程/AI/GAN/GAN.md",
-    "docs/国内外著名课程/AI/Diffusion_and_flow/Rectified Flow.md",
     "docs/国内外著名课程/AI/Diffusion_and_flow/diffusion_and_flow.md",
     "docs/国内外著名课程/AI/ML_System/Deep Learning System.md",
-    "readme.md",
-    "Pasted.md",
-    "docs/index.md",
-    "docs/reading/dailyreading/2025-9.md",
     "docs/国内外著名课程/AI/ML_System",
     "docs/ZJU-course/大数据技术"
   ]

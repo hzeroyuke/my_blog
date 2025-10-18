@@ -44,6 +44,15 @@
         <div class="flink-item-desc">\zjgg/\zjgg/\zjgg/</div>
     </a>
     </div>
+    <div class="flink-list-item">
+        <div class="flink-item-icon">
+                ![Alt text](assets/friends/rwy.webp)
+        </div>
+    <a href="https://blog.codeqiran.com/" title="xx" target="_blank">
+        <div class="flink-item-name">Qiran's Space</div>
+        <div class="flink-item-desc">厉害帅气的wygg</div>
+    </a>
+    </div>
      <div class="flink-list-item">
         <div class="flink-item-icon">
                 ![Alt text](assets/friends/jxy.jpg)
