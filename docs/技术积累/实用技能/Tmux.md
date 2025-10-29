@@ -11,3 +11,16 @@ Tmux的前缀键是Ctrl+b
 -  左右移动 Prefix + -> 
 -  滚动模式 Prefix + \[ 退出 q
 -  退出会话 Prefix + d
+
+
+"""
+huggingface-cli download Qwen/Qwen-Image \
+  --local-dir /path/Qwen-Image \
+  --local-dir-use-symlinks False
+
+huggingface-cli download black-forest-labs/FLUX.1-dev \
+  --local-dir /path/Flux_1_dev \
+  --local-dir-use-symlinks False
+
+/share/project/xiyan/huggingface/black-forest-labs/Flux.1-dev
+"""

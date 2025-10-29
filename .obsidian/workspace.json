@@ -8,73 +8,17 @@
         "type": "tabs",
         "children": [
           {
-            "id": "18ddb4a98620b4e4",
+            "id": "5dc661d2223b5394",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/index.md",
+                "file": "docs/技术积累/实用技能/python/Static Analysis Tools.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "index"
-            }
-          },
-          {
-            "id": "823778802ee80ccb",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/reading/interesting/生成理解统一模型.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "生成理解统一模型"
-            }
-          },
-          {
-            "id": "9665314c79a71da6",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/国内外著名课程/AI/ML_System/Verl.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Verl"
-            }
-          },
-          {
-            "id": "9f851413cdddfebf",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/reading/interesting/生成理解统一模型.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "生成理解统一模型"
-            }
-          },
-          {
-            "id": "8db74a403afe9a96",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/技术积累/实用技能/Tmux.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Tmux"
+              "title": "Static Analysis Tools"
             }
           }
         ]
@@ -225,47 +169,50 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "18ddb4a98620b4e4",
+  "active": "5dc661d2223b5394",
   "lastOpenFiles": [
-    "docs/assets/friends/rwy.webp",
-    "docs/assets/friends/avatar.DLVU-ubs_Iv32r.webp",
-    "docs/assets/friends/avatar.DLVU-ubs_Iv32r.webp.crdownload",
-    "docs/reading/dailyreading/2025-10.md",
-    "docs/国内外著名课程/AI/Diffusion_and_flow/Rectified Flow.md",
-    "docs/国内外著名课程/AI/ML_System/Verl.md",
-    "docs/reading/interesting/生成理解统一模型.md",
-    "docs/reading/dailyreading/2025-9.md",
-    "readme.md",
-    "docs/国内外著名课程/AI/prompt_optimize/Pasted image 20251015162545.png",
-    "docs/技术积累/实用技能/Tmux.md",
-    "docs/国内外著名课程/AI/ML_System/Pasted image 20251017122303.png",
-    "docs/国内外著名课程/AI/ML_System/Pasted image 20251017121913.png",
-    "docs/国内外著名课程/AI/ML_System/Pasted image 20251017121640.png",
-    "docs/国内外著名课程/AI/ML_System/Pasted image 20251017121316.png",
-    "docs/国内外著名课程/AI/ML_System/Pasted image 20251017120938.png",
-    "docs/reading/dailyreading/2025-8.md",
-    "docs/国内外著名课程/AI/未命名.md",
-    "docs/reading/interesting/RL 中的熵机制.md",
-    "docs/国内外著名课程/AI/ML_System/Pasted image 20251016213455.png",
-    "docs/国内外著名课程/AI/ML_System/Pasted image 20251016213105.png",
-    "docs/国内外著名课程/AI/ML_System/Pasted image 20251016212732.png",
-    "docs/国内外著名课程/AI/prompt_optimize/Automatic Prompt Optimize.md",
-    "docs/国内外著名课程/cmu15445/Concurrency and recovery.md",
-    "docs/技术积累/实用技能/docker/docker.md",
-    "docs/国内外著名课程/computer crash course.md",
-    "docs/国内外著名课程/AI/prompt_optimize",
-    "docs/国内外著名课程/AI/ML_System/Large scale book.md",
-    "docs/reading/interesting/Verl.md",
-    "docs/reading/interesting/胡渊鸣访谈.md",
-    "docs/ZJU-course/大数据技术/作业2 Elastic Search.md",
-    "docs/ZJU-course/推免面试/计算机学院硕士推免面试.md",
-    "docs/ZJU-course/大数据技术/大数据分析与应用.md",
-    "docs/ZJU-course/大数据技术/作业1 Spark.md",
-    "docs/国内外著名课程/AI/Self-attention And Transformer/Self-attention And Transformer.md",
-    "docs/ZJU-course/推免面试",
-    "docs/国内外著名课程/AI/GAN/GAN.md",
-    "docs/国内外著名课程/AI/Diffusion_and_flow/diffusion_and_flow.md",
+    "docs/生活上的碎碎念/浙大的一年半载.md",
+    "docs/生活上的碎碎念/大二上课程总结.md",
+    "docs/技术积累/实用技能/python/Static Analysis Tools.md",
     "docs/国内外著名课程/AI/ML_System/Deep Learning System.md",
+    "docs/技术积累/实用技能/python",
+    "docs/国内外著名课程/AI/BERT/BERT.md",
+    "docs/国内外著名课程/AI/DeepResearch/Benchmark.md",
+    "docs/国内外著名课程/AI/Tools/Claude Code.md",
+    "docs/国内外著名课程/AI/Diffusion_and_flow/diffusion_and_flow.md",
+    "docs/国内外著名课程/AI/prompt_optimize/Automatic Prompt Optimize.md",
+    "docs/国内外著名课程/AI/ML_System/Large scale book.md",
+    "docs/国内外著名课程/AI/ML_System/Verl_GRPO.md",
+    "docs/国内外著名课程/AI/ML_System/vLLM Tool Calling 机制详解.md",
+    "docs/国内外著名课程/AI/Diffusion_and_flow/TempFlowGRPO on QwenImage.md",
+    "docs/技术积累/实用技能/Tmux.md",
+    "docs/国内外著名课程/AI/Tools",
+    "docs/国内外著名课程/AI/Diffusion_and_flow/Rectified Flow.md",
+    "docs/国内外著名课程/AI/ML_System/Pasted image 20251020194241.png",
+    "docs/国内外著名课程/AI/ML_System/Verl.md",
+    "Pasted.md",
+    "readme.md",
+    "docs/index.md",
+    "docs/国内外著名课程/AI/DeepResearch",
+    "docs/国内外著名课程/AI/ML_System/Pasted image 20251020222706.png",
+    "docs/国内外著名课程/AI/ML_System/Pasted image 20251020222121.png",
+    "docs/国内外著名课程/AI/ML_System/Pasted image 20251020221229.png",
+    "docs/国内外著名课程/AI/ML_System/Pasted image 20251020221202.png",
+    "docs/国内外著名课程/AI/ML_System/Pasted image 20251020214647.png",
+    "docs/国内外著名课程/AI/ML_System/Pasted image 20251020214125.png",
+    "docs/国内外著名课程/AI/ML_System/Pasted image 20251020212805.png",
+    "docs/国内外著名课程/AI/ML_System/Pasted image 20251020200419.png",
+    "docs/国内外著名课程/AI/ML_System/Pasted image 20251020195854.png",
+    "docs/国内外著名课程/AI/CS236/CS236 Deep Generative Models.md",
+    "docs/reading/interesting/生成理解统一模型.md",
+    "docs/reading/interesting/MemGen.md",
+    "docs/reading/dailyreading/2025-8.md",
+    "docs/reading/dailyreading/2025-6.md",
+    "docs/reading/dailyreading/2025-7.md",
+    "docs/reading/dailyreading/2025-9.md",
+    "docs/assets/friends/avatar.DLVU-ubs_Iv32r.webp.crdownload",
+    "docs/国内外著名课程/AI/prompt_optimize",
+    "docs/ZJU-course/推免面试",
     "docs/国内外著名课程/AI/ML_System",
     "docs/ZJU-course/大数据技术"
   ]

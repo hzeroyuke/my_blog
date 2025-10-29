@@ -65,3 +65,15 @@ register的定义，这会给修饰的函数添加一系列的属性
 ![](Pasted%20image%2020251017122303.png)
 
 这个函数是核心模板，应对了每个worker里面实际执行的内容，之前的一些模块在这里组合成一个真正的function
+
+
+## Rollout的一致性问题
+
+![](Pasted%20image%2020251019234244.png)
+
+关于Tokenizer的一些特性，在带有和环境交互的RL的过程中，是需要有一些注意事项的，那就是对于一个tokenizer，其encoder再decoder的结果是一致的，但是decoder再encoder的结果是不一定一致的
+
+实际上由多个token_id可以被解码成同一个文本，但是一个文本只被编码成一个token_id
+
+如上图，这个流程如果把轨迹直接encoder，其结果是可能不一致的，因为其先把response解码的结果用作toolcall，后续在编码回去，可能导致错误
+
