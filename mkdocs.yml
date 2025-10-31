@@ -67,10 +67,10 @@ nav:
       - 国内外著名课程/AI/GAN/GAN.md
     - 国内外著名课程/AI/CS236/CS236 Deep Generative Models.md
     - 国内外著名课程/AI/CS336_LLM/CS336 LLM.md
-    - 国内外著名课程/AI/Diffusion_and_flow/diffusion_and_flow.md
+    - 国内外著名课程/AI/Diffusion_and_flow/Diffusion and flow matching.md
     - 国内外著名课程/AI/Diffusion_and_flow/Rectified Flow.md
     - 国内外著名课程/AI/prompt_optimize/Automatic Prompt Optimize.md
-    - 国内外著名课程/AI/ML_Sytem/Large scale book.md
+    - 国内外著名课程/AI/ML_System/Large scale book.md
   - ZJU-course: 
     - ZJU-course/Discrete Mathematics.md
     - ZJU-course/计概/Introduction to Computing Systems_ From Bits & Gates to C & Beyond.md
@@ -124,6 +124,7 @@ nav:
     - interests: 
       - reading/interesting/胡渊鸣访谈.md
       - reading/interesting/RL 中的熵机制.md
+      - reading/interesting/Unified view of SFT & RL.md
 
 
 markdown_extensions:
