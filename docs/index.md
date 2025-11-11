@@ -1,6 +1,6 @@
 # Welcome to my blog
 
-我是华零(zyk)，ZJU软件工程专业在读，同时也在simplex ai做intern，欢迎来看我的博客呀~
+我是华零(zyk)，ZJU软件工程专业在读，欢迎来看我的博客呀~
 
 ---
 >*我希望许下的愿望，一路生花*
@@ -39,8 +39,8 @@
         <div class="flink-item-icon">
                 ![Alt text](assets/friends/zjgg.jpg)
         </div>
-    <a href="https://github.com/zjuAIHz" title="xx" target="_blank">
-        <div class="flink-item-name">zjgg的GitHub</div>
+    <a href="https://hu-zijing.github.io/" title="xx" target="_blank">
+        <div class="flink-item-name">zjgg's person page</div>
         <div class="flink-item-desc">\zjgg/\zjgg/\zjgg/</div>
     </a>
     </div>

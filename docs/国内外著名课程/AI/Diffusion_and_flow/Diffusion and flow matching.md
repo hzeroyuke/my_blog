@@ -27,7 +27,7 @@ Flow model 和 Diffusion model 分别在模拟ODE和SDE过程
 
 我们从ODE过程开始，ODE的解是一个轨迹，其从时间 t 映射到空间$R^d$ ，任何一个样本都是这个空间中的一个点，不论是图像，视频或者是蛋白质结构
 
-ODE的解是一个轨迹，下面这个式子中的X是一个function如下，t从[0,1]的范围中取，知道t你能够推出其在这个空间中的位置，这就是所谓的解是一个轨迹
+ODE的解是一个轨迹，下面这个式子中的X是一个function如下，t从[0, 1]的范围中取，知道t你能够推出其在这个空间中的位置，这就是所谓的解是一个轨迹
 
 $$
 X:[0,1]\rightarrow R^d,\ \ \ t\rightarrow X_t
@@ -158,6 +158,59 @@ $$
 Score是表示分布的移动的导数，而Flow中的u是具体的点运动的导数
 
 ## 4. Training the Generative Model
+
+
+### 4.2 CFG
+
+CFG 是指分类无关知道Classifier-Free Guidance，是为了让Text2Image这类得模型，在生成的指令遵循性和生成的多样性+质量上达到一个平衡
+
+![](asset/Pasted%20image%2020251031155127.png)
+
+其方式是讲最终预测的噪声转换成上述形式
+
+```python
+# 同时前向传播两次
+noise_pred = self.transformer(
+  hidden_states=torch.cat([latents, latents], dim=0),  # 复制一份latents
+  timestep=torch.cat([timestep, timestep], dim=0) / 1000,
+  guidance=guidance,
+  encoder_hidden_states_mask=torch.cat([prompt_embeds_mask, negative_prompt_embeds_mask], dim=0),
+  encoder_hidden_states=torch.cat([prompt_embeds, negative_prompt_embeds], dim=0),  # 第一份用正向提示，第二份用负向提示
+  img_shapes=img_shapes*2,
+  txt_seq_lens=txt_seq_lens+negative_txt_seq_lens,
+)[0]
+```
+
+我们在前向的时候，会复制一份latents，然后用不同的prompt_embed来做预测，完成之后把预测的结果拆开，然后用CFG公式拼起来
+
+```python
+noise_pred, neg_noise_pred = noise_pred.chunk(2, dim=0)
+comb_pred = neg_noise_pred + true_cfg_scale * (noise_pred - neg_noise_pred)
+```
+
+宏观上流程可以如下
+
+```python
+  # 输入：
+  正向提示: "a beautiful cat sitting on grass"
+  负向提示: ""
+
+  # 步骤 1：前向传播
+  noise_pred = Transformer([正向prompt编码])      # → 预测噪声 A
+  neg_noise_pred = Transformer([负向prompt编码])  # → 预测噪声 B
+
+  # 步骤 2：计算引导方向
+  direction = noise_pred - neg_noise_pred  # "朝着猫的方向" vs "朝着模糊图的反方向"
+
+  # 步骤 3：放大引导（假设 scale=4.0）
+  comb_pred = neg_noise_pred + 4.0 * direction  # 强化"猫"的特征
+
+  # 步骤 4：范数归一化（True CFG）
+  comb_pred = comb_pred * (||noise_pred|| / ||comb_pred||)  # 控制幅度
+
+  # 步骤 5：去噪
+  latents = SDE_step(latents, comb_pred, timestep)  # 向更"猫"的方向去噪
+```
 
 ### 4.3 A Guide to the Diffusion Model Literature
 

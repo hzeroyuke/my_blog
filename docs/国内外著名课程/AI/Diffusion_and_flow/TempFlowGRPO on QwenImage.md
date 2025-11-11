@@ -599,31 +599,31 @@ for inner_epoch in range(config.train.num_inner_epochs):
 
 ### 训练脚本层面
 
-| 特性 | 常规版本 | Per-step 版本 |
-|-----|---------|--------------|
-| **exploration_k** | 通过 num_image_per_prompt 控制 | 固定为 6 |
-| **采样函数** | `pipeline_with_logprob` | `pipeline_with_logprob_perstep` |
-| **sde_step** | `sde_step_with_logprob` | `sde_step_with_logprob_perstep` |
-| **输出类型** | "pt" (tensor) | "pil" (PIL Image) |
-| **next_latents** | latents[:, 1:] (切片) | sde_latents (独立采样) |
-| **rewards 结构** | 单个 future | 列表 (per-step futures) |
-| **rewards 形状** | (batch,) → repeat → (batch, steps) | (batch, steps) 原生 |
-| **loss 权重** | advantages * ratio | 1.73 * std_dev_t * advantages * ratio |
-| **数据打乱** | 无 | 每个 inner_epoch 打乱 |
-| **训练步数** | num_train_timesteps (窗口大小) | num_train_timesteps (timestep_fraction) |
+| 特性                | 常规版本                               | Per-step 版本                             |
+| ----------------- | ---------------------------------- | --------------------------------------- |
+| **exploration_k** | 通过 num_image_per_prompt 控制         | 固定为 6                                   |
+| **采样函数**          | `pipeline_with_logprob`            | `pipeline_with_logprob_perstep`         |
+| **sde_step**      | `sde_step_with_logprob`            | `sde_step_with_logprob_perstep`         |
+| **输出类型**          | "pt" (tensor)                      | "pil" (PIL Image)                       |
+| **next_latents**  | latents[:, 1:] (切片)                | sde_latents (独立采样)                      |
+| **rewards 结构**    | 单个 future                          | 列表 (per-step futures)                   |
+| **rewards 形状**    | (batch,) → repeat → (batch, steps) | (batch, steps) 原生                       |
+| **loss 权重**       | advantages * ratio                 | 1.73 * std_dev_t * advantages * ratio   |
+| **数据打乱**          | 无                                  | 每个 inner_epoch 打乱                       |
+| **训练步数**          | num_train_timesteps (窗口大小)         | num_train_timesteps (timestep_fraction) |
 
 ### CFG 处理差异
 
-| 模型 | CFG 实现方式 |
-|-----|------------|
-| **Flux** | Transformer 内置支持，单次前向传播 |
+| 模型            | CFG 实现方式                        |
+| ------------- | ------------------------------- |
+| **Flux**      | Transformer 内置支持，单次前向传播         |
 | **QwenImage** | 手动实现：拼接 → 前向 → chunk → 混合 → 归一化 |
 
 ### VAE 解码差异
 
-| 模型 | 解码流程 |
-|-----|---------|
-| **Flux** | scaling + shift → decode |
+| 模型            | 解码流程                                             |
+| ------------- | ------------------------------------------------ |
+| **Flux**      | scaling + shift → decode                         |
 | **QwenImage** | unpack → normalize (mean/std) → decode → [:,:,0] |
 
 ### 性能考虑

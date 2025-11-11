@@ -1,4 +1,3 @@
-# CS336 LLM
 
 ## 1. Overview and tokenizer
 
@@ -174,4 +173,308 @@ Moe已经是现在最先进模型的共同选择
 
 ## 5. GPU
 
+### 5.1 GPU Basic
+
 在视频开头提供了很多有用资源
+
+  ![](asset/Pasted%20image%2020251110145447.png)
+
+在21世纪初开始，计算机芯片包括CPUorGPU的单线程性能开始达到饱和，人们开始从absolute speed scaling转向parallel scaling
+
+![](asset/Pasted%20image%2020251110145958.png)
+
+CPU和GPU的结构对比，CPU中最重要的是Control Unit来应对大量的分支逻辑，而GPU中最重要的是计算单元，来处理海量的计算逻辑。CPU是为了尽快完成某个任务，而GPU不关心某个的任务的速度，而是关注一个批次任务的完成时间
+
+**Computer in GPU**
+
+GPU内部结构最重要的是SM（Streaming Multi-processor）而SM中有包含多个SP（Streaming processor），它们的区别在于，SM存在控制单元，类似CPU，可以进行一些逻辑上的并行，其可以单独掌控一个批次任务；而SP不存在控制单元，它们只能处理一样的逻辑，做数据并行
+
+- SM是控制的最小单元
+- SP是计算的最小单元
+
+![](asset/Pasted%20image%2020251110150502.png)
+
+**Memory in GPU**
+
+SM能离Memory越近，其计算速度会越快
+
+![](asset/Pasted%20image%2020251110150806.png)
+
+- L1 Cache 和 Shared Memory 就在SM上
+- L2 Cache 在SM边上
+- Global Memory相当于是在外部，Dram，常说的H100的80GB内存，就是指Global Memory
+
+**Execution Model of GPU**
+
+从粗粒度到细粒度，GPU的执行模型有三个部分，Blocks, Warps, Threads
+
+- Blocks: 一个Block会被分配给一个SM进行处理
+- Warp：一批被打包好的Threads，最终丢给SP执行
+- Threads: Threads是一批指令，最终丢给SP中的计算单元执行
+
+![](asset/Pasted%20image%2020251110151618.png)
+
+**Memory Model of GPU**
+
+我们有很多不同的Memory可供写入，但是跨Block的Data需要写入Global Memory
+
+如果我们的编写的程序中，Thread只需要访问shared memory，那么其会变得非常快，如果其不得不访问大量的分散数据，就会变得很慢
+
+![](asset/Pasted%20image%2020251110151914.png)
+
+
+### 5.2 Making ML workloads fast on GPU
+
+**Control divergence**
+
+Thread内部必须执行一样的指令，因此条件语句会迫使其无法并行
+
+![](asset/Pasted%20image%2020251110152932.png)
+
+**Low precision computation**
+
+在GPU中使用低精度，会大大地加速整个过程，不论是在执行运算，还是在内存通信角度都是如此
+
+**Operator fusion**
+
+![](asset/Pasted%20image%2020251110153358.png)
+
+当我们把内容从Memory读到计算单元地时候，最好一次性把所有操作干完，再写回去，而不是一遍一遍地读取更新
+
+**recomputation**
+
+激活值从计算，在Large scale playbook中也提过，计算量换内存
+
+**tiling**
+
+![](asset/Pasted%20image%2020251110154152.png)
+
+我们最好地遍历矩阵地方案是按列遍历，每个thread处理一行，但是在矩阵乘法中，不可避免地我们对某个矩阵要按行遍历，导致M0,0被两个线程处理，导致了两倍地读取行为
+
+更好地方案是，根据我们地共享内存地大小，把矩阵分块，读取，局部地计算完，在返回
+
+![](asset/Pasted%20image%2020251110154428.png)
+
+但是实际上地情况我们的不仅要考虑shared memory地大小，还要考虑我们地矩阵无法被很好的均分，比如257x257的矩阵，就比较难划分地均匀
+
+GPU中地处理器一般最适合处理128倍数地数据
+
+### 5.3 Flash Attention
+
+计算层面地二次开销，而非内存层面的二次开销
+
+FlashAttention 1 只是对KQV矩阵做了简单的tiling，分块到SRAM中，进行统一的计算，减少内存读写
+
+![](asset/Pasted%20image%2020251110155538.png)
+
+Flash attention Softmax
+
+标准的Softmax的算法无法应用tiling，因为其需要全局操作，Flash Attention中应用online softmax，进行了一些改动，使其可以做到先局部计算，再得到最终结果
+
+![](asset/Pasted%20image%2020251110160020.png)
+
+
+## 6. Kernels & Triton
+
+为什么我们需要定义Block，是因为block内部有高效的SRAM，我们希望能够定义一个内存高效的计算模型
+
+理想情况下，我们希望我们的Block的数量能够被SM的数量整除，这样子计算的效率会更高
+
+### 6.1 Benchmarking and Profiling
+
+衡量一个GPU执行代码的时间，要注意两点，一个是去除编译和代码转移的时间，因此先执行一次做一个warmup，另一个保持CPU和GPU同步，这个是torch里面有实现的
+
+Pytorch提供的profiler库，是一个很好的性能分析工具，可以把你的函数的具体行为和开销给展现出来
+
+示例代码如下
+
+```python
+import torch
+from torch.profiler import ProfilerActivity
+from typing import Callable
+
+
+def profile(description: str, run: Callable, num_warmups: int = 1, with_stack: bool = False):
+    # Warmup
+    for _ in range(num_warmups):
+        run()
+    if torch.cuda.is_available():
+        torch.cuda.synchronize()  # Wait for CUDA threads to finish (important!)
+    # Run the code with the profiler
+    with torch.profiler.profile(
+            activities=[ProfilerActivity.CPU, ProfilerActivity.CUDA],
+            # Output stack trace for visualization
+            with_stack=with_stack,
+            # Needed to export stack trace for visualization
+            experimental_config=torch._C._profiler._ExperimentalConfig(verbose=True)) as prof:
+        run()
+        if torch.cuda.is_available():
+            torch.cuda.synchronize()  # Wait for CUDA threads to finish (important!)
+    # Print out table
+    table = prof.key_averages().table(sort_by="cuda_time_total",
+                                      max_name_column_width=80,
+                                      row_limit=10)
+    #text(f"## {description}")
+    #text(table, verbatim=True)
+    # Write stack trace visualization
+    if with_stack:
+        text_path = f"var/stacks_{description}.txt"
+        svg_path = f"var/stacks_{description}.svg"
+        prof.export_stacks(text_path, "self_cuda_time_total")
+    return table
+
+
+cdist_function = lambda x, y: torch.cdist(x, y)
+
+cdist_profile = profile(
+    description="cdist",
+    run=lambda: cdist_function(
+        torch.randn(1000, 128, device="cuda"),
+        torch.randn(1000, 128, device="cuda")),
+    num_warmups=2,
+    with_stack=True
+)
+
+print(cdist_profile)
+```
+
+
+上述内容测试了一个torch.cdist函数，该函数用于计算两个向量之间的欧式距离
+
+profile的输出如下
+
+| Name                                                                             | Self CPU % | Self CPU | CPU total % | CPU total | CPU time avg | Self CUDA | Self CUDA % | CUDA total | CUDA time avg | # of Calls |
+| -------------------------------------------------------------------------------- | ---------- | -------- | ----------- | --------- | ------------ | --------- | ----------- | ---------- | ------------- | ---------- |
+| aten::cdist                                                                      | 1.07%      | 32.720us | 17.57%      | 537.666us | 537.666us    | 0.000us   | 0.00%       | 41.313us   | 41.313us      | 1          |
+| aten::_euclidean_dist                                                            | 1.66%      | 50.863us | 15.26%      | 467.031us | 467.031us    | 0.000us   | 0.00%       | 41.313us   | 41.313us      | 1          |
+| aten::matmul                                                                     | 0.17%      | 5.202us  | 3.34%       | 102.330us | 102.330us    | 0.000us   | 0.00%       | 19.680us   | 19.680us      | 1          |
+| aten::mm                                                                         | 2.43%      | 74.400us | 3.17%       | 97.128us  | 97.128us     | 19.680us  | 41.64%      | 19.680us   | 19.680us      | 1          |
+| ampere_sgemm_32x128_tn                                                           | 0.00%      | 0.000us  | 0.00%       | 0.000us   | 0.000us      | 19.680us  | 41.64%      | 19.680us   | 19.680us      | 1          |
+| aten::randn                                                                      | 1.05%      | 32.037us | 82.03%      | 2.510ms   | 1.255ms      | 0.000us   | 0.00%       | 5.952us    | 2.976us       | 2          |
+| aten::normal_                                                                    | 1.45%      | 44.262us | 3.32%       | 101.587us | 50.793us     | 5.952us   | 12.59%      | 5.952us    | 2.976us       | 2          |
+| void at::native::(anonymous namespace)::distribution_elementwise_grid_stride_... | 0.00%      | 0.000us  | 0.00%       | 0.000us   | 0.000us      | 5.952us   | 12.59%      | 5.952us    | 2.976us       | 2          |
+| aten::cat                                                                        | 1.12%      | 34.355us | 1.63%       | 49.846us  | 24.923us     | 5.089us   | 10.77%      | 5.089us    | 2.544us       | 2          |
+| void at::native::(anonymous namespace)::CatArrayBatchedCopy_aligned16_contig<... | 0.00%      | 0.000us  | 0.00%       | 0.000us   | 0.000us      | 5.089us   | 10.77%      | 5.089us    | 2.544us       | 2          |
+
+**Summary**  
+- Self CPU time total: 3.060ms  
+- Self CUDA time total: 47.265us
+
+上述内容更适合做一些静态的内容分析，而对于动态的，复杂的项目，单纯的profile其实并不能直接解决掉监控的问题
+
+我们可以通过nvtx打印查看点，然后再更强大的profiler里进行查看
+
+### 6.2 Kernel
+
+以一个手写的torch的GELU为例子
+
+```python
+def manual_gelu(x: torch.Tensor):
+	return 0.5*x*(1+torch.tanh(0.79788456*(x+0.44715*x*x*x)))
+```
+
+上述是通过一个数学的trick来实现一个近似的gelu的，而官方的gelu
+
+```python
+def pytorch_gelu(x: torch.Tensor):
+	return torch.nn.functional.gelu(x, approximate="tanh")
+```
+
+对比发现双方虽然数值结果相同，但是耗时差距巨大
+
+通过profile我们可以发现，两个操作，manual的版本启动了多个cuda kernel，包括加法，乘法，tanh，但是gelu版本只启动了一个kernel，gelu kernel完成了所有操作
+
+因此我们尝试手写cuda内核
+
+```cpp
+#include <math.h>
+#include <torch/extension.h>
+#include <c10/cuda/CUDAException.h>
+
+// Helper function to compute ceil(a / b)
+inline unsigned int cdiv(unsigned int a, unsigned int b) {
+    return (a + b - 1) / b;
+}
+
+// The CUDA kernel that applies the GeLU activation function
+__global__ void gelu_kernel(float* in, float* out, int num_elements) {
+    // Calculate the global index for the current thread
+    int i = blockIdx.x * blockDim.x + threadIdx.x;
+    
+    // Check bounds to prevent accessing memory outside the tensor
+    if (i < num_elements) {
+        // GeLU approximation: 0.5 * x * (1 + tanh(sqrt(2/pi) * (x + 0.044715 * x^3)))
+        // 0.79788456 is sqrt(2/pi)
+        out[i] = 0.5 * in[i] * (1.0 + tanh(0.79788456f * (in[i] + 0.044715f * in[i] * in[i] * in[i])));
+    }
+}
+
+// The C++ wrapper function to launch the CUDA kernel
+torch::Tensor gelu(torch::Tensor x) {
+    TORCH_CHECK(x.device().is_cuda(), "Input must be a CUDA tensor.");
+    TORCH_CHECK(x.is_contiguous(), "Input must be contiguous.");
+    
+    // Allocate the output tensor on the same device
+    torch::Tensor y = torch::empty_like(x);
+    
+    // Determine launch configuration
+    int num_elements = x.numel();
+    int block_size = 1024;  // Standard threads per block
+    int num_blocks = cdiv(num_elements, block_size);
+    
+    // Launch the kernel
+    gelu_kernel<<<num_blocks, block_size>>>(
+        x.data_ptr<float>(), 
+        y.data_ptr<float>(), 
+        num_elements
+    );
+    
+    // Check for potential CUDA errors after kernel launch
+    C10_CUDA_KERNEL_LAUNCH_CHECK();
+    
+    return y;
+}
+```
+
+对于一系列的简单cuda kernel，其往往会招致多次的内存读写，将其融合成一个大的复杂算子，效率就会高很多，这也就是所谓的算子融合的概念
+
+cuda kernel的代码一般包含两部分的内容，一部分是实际的cuda kernel计算的代码，另一部分是对这个kernel的包装C++ wrapper，配置block size然后定义block内数据的数量
+
+### 6.3 Triton Kernel
+
+Triton是OpenAI开发的一种方式，编写cuda非常的复杂并且难以调试，能否用一个更加high level的基于python的形式编写内核，这既是Triton为我们带来的
+
+其使得我们不用关心线程这个层次，而是更关心SM这个层次，线程块的层面
+
+面对Triton代码，我们考虑的不是单个线程，而是线程块，以至于Triton代码中都是vector的操作，因为我总是再操作一块数据
+
+### 6.4 torch compile
+
+除了手动编写cuda内核以及用Triton来编写内核以外，有一种很简便的方案来做算子融合，那就是torch.compile
+
+之前的一系列手写内核的方案，无非就是把一系列的内核操作组合起来形成一个新的内容，那么我们自然会想有没有更自动化的方案去做这些东西
+
+```python
+compiled_gelu = torch.compile(manual_gelu)
+```
+
+torch.compile会做很多操作，不只是算子融合，也有一些其他的优化tricks，比如优化矩阵乘法
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
