@@ -17,6 +17,8 @@
 - AutoRegressive
 - Diffusion
 
+## 1. ReFlow 理论
+
 接下来我们来看Diffusion为代表的一系列生成模型，其核心思想就是将一个分布（一般是高斯）转换成另一个分布（真实数据代表的分布，比如图片，蛋白质分子等等）
 
 ![image](Pasted%20image%2020251002003320.png)
@@ -60,3 +62,71 @@
 ![image](Pasted%20image%2020251002004835.png)
 
 这张图直观的给我们展示了Recified Flow的威力，未经历过二阶段训练的模型，一开始会给我们去噪出一个图像的平均值，这个平均值往往就是一个交叉点，需要多步才能实现准确的生成，而经过Rectified的模型，从初始状态就知道自己该往哪个方向走，因此迅速就能够生成想要的方向，当然多步也会做的更好
+
+
+## 2. ReFlow 代码
+
+![](asset/Pasted%20image%2020251118204022.png)
+
+这是我在Minst数据集上的训练结果，因为数据集比较简单，所以在2步以上的去噪中就显得区别不大，但是很明显的，ReFlow的模型可以在第一步去噪中就得到很好的结果
+
+具体的代码如下，基本的训练和flow model没有什么区别，仅仅是数据上使用了flow model生成的数据
+
+```python
+@torch.no_grad()
+def generate_paired_data(model, num_pairs, device="cuda"):
+    """
+    使用预训练的flow matching模型生成配对数据 (x0, x1, label)
+    x0: 初始噪声
+    x1: 生成的图像（对应真实数据分布）
+
+    Rectified Flow的核心思想：
+    - 使用预训练模型从噪声生成样本，得到轨迹的起点和终点
+    - 重新训练模型学习这些起点和终点之间更直的路径
+    """
+    model.eval()
+
+    x0_list = []
+    x1_list = []
+    label_list = []
+
+    # 分批生成，避免内存溢出
+    num_batches = (num_pairs + batch_size - 1) // batch_size
+
+    print(f"开始生成 {num_pairs} 对配对数据...")
+
+    for i in range(num_batches):
+        current_batch_size = min(batch_size, num_pairs - i * batch_size)
+
+        # 随机采样噪声作为起点 x0
+        x0 = torch.randn(current_batch_size, channels, image_size, image_size, device=device)
+
+        # 随机采样标签
+        labels = torch.randint(0, num_classes, (current_batch_size,), device=device)
+
+        # 使用ODE求解器从x0生成x1
+        def ode_func(t: torch.Tensor, x: torch.Tensor):
+            t_expanded = t.expand(x.size(0))
+            vt = model(x, t_expanded, labels)
+            return vt
+
+        t_eval = torch.tensor([0.0, 1.0], device=device)
+        trajectory = odeint(ode_func, x0, t_eval, rtol=1e-5, atol=1e-5, method='dopri5')
+        x1 = trajectory[-1]  # 取最终时刻的状态
+
+        x0_list.append(x0.cpu())
+        x1_list.append(x1.cpu())
+        label_list.append(labels.cpu())
+
+        if (i + 1) % 10 == 0:
+            print(f"已生成 {(i + 1) * batch_size} / {num_pairs} 对数据")
+
+    # 拼接所有批次
+    x0_all = torch.cat(x0_list, dim=0)[:num_pairs]
+    x1_all = torch.cat(x1_list, dim=0)[:num_pairs]
+    labels_all = torch.cat(label_list, dim=0)[:num_pairs]
+
+    print(f"配对数据生成完成！形状: x0={x0_all.shape}, x1={x1_all.shape}, labels={labels_all.shape}")
+
+    return x0_all, x1_all, labels_all
+```

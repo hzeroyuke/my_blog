@@ -828,7 +828,7 @@ vec.emplace_back()//其效果与push_back一样，但是实现方式不同
 
 using insert
 
-```undefined
+```cpp
 // method1
 vector<int> vec1;
 int arr[] = { 1,2,3,4,5 };
