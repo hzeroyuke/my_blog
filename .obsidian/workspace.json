@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/国内外著名课程/AI/CS336_LLM/CS336 LLM.md",
+                "file": "docs/reading/dailyreading/2025-11.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "CS336 LLM"
+              "title": "2025-11"
             }
           }
         ]
@@ -171,12 +171,22 @@
   },
   "active": "5dc661d2223b5394",
   "lastOpenFiles": [
-    "docs/实验/DeepSeek Ocr的压缩任务.md",
+    "docs/国内外著名课程/AI/ML_System/MiniTorch.md",
+    "docs/国内外著名课程/AI/ML_System/asset/Pasted image 20251126162514.png",
+    "docs/国内外著名课程/AI/ML_System/Cuda.md",
+    "docs/国内外著名课程/AI/ML_System/Large scale book.md",
+    "docs/生活上的碎碎念/大二上课程总结.md",
+    "docs/生活上的碎碎念/浙大的一年半载.md",
+    "docs/国内外著名课程/AI/efficient_AI/TinyML.md",
+    "docs/国内外著名课程/AI/ML_System/vLLM Tool Calling 机制详解.md",
+    "docs/国内外著名课程/AI/efficient_AI",
+    "docs/国内外著名课程/AI/ML_System/Verl_GRPO.md",
+    "docs/国内外著名课程/AI/ML_System/Verl.md",
+    "docs/国内外著名课程/AI/ML_System/Triton.md",
     "docs/国内外著名课程/AI/CS336_LLM/CS336 LLM.md",
+    "docs/实验/DeepSeek Ocr的压缩任务.md",
     "docs/实验",
     "docs/国内外著名课程/AI/ML_System/RLite.md",
-    "docs/国内外著名课程/AI/ML_System/Cuda.md",
-    "docs/国内外著名课程/AI/ML_System/Triton.md",
     "docs/国内外著名课程/AI/ML_System/asset/Pasted image 20251119153616.png",
     "docs/国内外著名课程/AI/ML_System/asset",
     "docs/reading/dailyreading/2025-11.md",
@@ -196,26 +206,15 @@
     "docs/国内外著名课程/AI/CS336_LLM/asset/Pasted image 20251113144939.png",
     "docs/国内外著名课程/AI/CS336_LLM/asset/Pasted image 20251113144522.png",
     "docs/国内外著名课程/AI/CS336_LLM/asset/Pasted image 20251112144108.png",
-    "docs/国内外著名课程/AI/ML_System/Large scale book.md",
     "docs/国内外著名课程/AI/RL",
     "docs/reading/dailyreading/2025-10.md",
     "docs/国内外著名课程/AI/Diffusion_and_flow/Diffusion and flow matching.md",
     "docs/国内外著名课程/AI/prompt_optimize/Automatic Prompt Optimize.md",
     "docs/国内外著名课程/AI/CS336_LLM/asset/Pasted image 20251110160020.png",
-    "docs/国内外著名课程/AI/CS336_LLM/asset/Pasted image 20251110155538.png",
     "docs/国内外著名课程/AI/CS336_LLM/asset",
     "docs/区块链作业2.md",
     "docs/asset",
     "docs/demo.md",
-    "docs/国内外著名课程/AI/ML_System/Smol-Training-Playbook.md",
-    "docs/技术积累/实用技能/python/Static Analysis Tools.md",
-    "docs/ZJU-course/大三下课程经验.md",
-    "docs/一些心里话.md",
-    "docs/reading/interesting/Unified view of SFT & RL.md",
-    "docs/国内外著名课程/AI/Diffusion_and_flow/TempFlowGRPO on QwenImage.md",
-    "docs/国内外著名课程/AI/Diffusion_and_flow/asset",
-    "docs/国内外著名课程/AI/Tools/Claude Code.md",
-    "docs/国内外著名课程/AI/Diffusion_and_flow/ass",
-    "docs/国内外著名课程/AI/Diffusion_and_flow/diffusion_and_flow.md"
+    "docs/国内外著名课程/AI/Diffusion_and_flow/asset"
   ]
 }

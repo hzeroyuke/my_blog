@@ -236,5 +236,5 @@ training_args = TrainingArguments(
 )
 ```
 
-### 4. data paraellism
+### 4. Data Paraellism
 

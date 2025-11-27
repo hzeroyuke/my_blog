@@ -71,6 +71,7 @@ nav:
     - 国内外著名课程/AI/Diffusion_and_flow/Rectified Flow.md
     - 国内外著名课程/AI/prompt_optimize/Automatic Prompt Optimize.md
     - 国内外著名课程/AI/ML_System/Large scale book.md
+    - 国内外著名课程/AI/ML_System/MiniTorch.md
   - ZJU-course: 
     - ZJU-course/Discrete Mathematics.md
     - ZJU-course/计概/Introduction to Computing Systems_ From Bits & Gates to C & Beyond.md
@@ -111,6 +112,7 @@ nav:
       - 技术积累/语言基础/Rust 入门/Rust 入门.md
       - 技术积累/语言基础/python 入门/python 入门.md
       - 技术积累/语言基础/Go 入门/Go 入门.md
+      - 国内外著名课程/AI/ML_System/Triton.md
     - 实用技能:
       - 技术积累/实用技能/git and github.md/git and github.md
       - 技术积累/实用技能/docker/docker.md
