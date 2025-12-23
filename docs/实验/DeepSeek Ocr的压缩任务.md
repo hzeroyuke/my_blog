@@ -1,0 +1,1 @@
+- 我们是否有必要把deepseek ocr重训一遍，增加一个vae adapter，让他的语义更加规整

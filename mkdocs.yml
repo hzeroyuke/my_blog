@@ -1,0 +1,175 @@
+site_name: 华零的blog
+theme:
+  name: material
+  favicon: assets/fav.jpg
+  logo: assets/fav.jpg
+  features: 
+    - content.code.annotate
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.indexes
+    - navigation.top
+  language: 'zh'
+  custom_dir: overrides
+  font: 
+    text: Noto Serif SC # Roboto
+    code: Roboto Mono
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to light mode
+nav:
+  - 主页: # 主页/
+    - index.md
+  - CS selflearning: 
+    - 国内外著名课程/computer crash course.md
+    - CS61B:
+      - 国内外著名课程/CS61B/preparation for the lesson.md
+      - 国内外著名课程/CS61B/learning Java.md
+      - 国内外著名课程/CS61B/oop.md
+      - 国内外著名课程/CS61B/data structure/data structure.md
+    - computer systems:
+      - 国内外著名课程/computer system/preparation.md
+      - 国内外著名课程/computer system/CS61C great idea in computer architecture.md
+    - database system:
+      - 国内外著名课程/cmu15445/advanced C++.md
+      - 国内外著名课程/cmu15445/SQL.md
+      - 国内外著名课程/cmu15445/DB design.md
+      - 国内外著名课程/cmu15445/disk storage.md
+      - 国内外著名课程/cmu15445/Concurrency and recovery.md
+      - 国内外著名课程/cmu15445/MiniSQL 概述.md
+    - mit weblab:
+      - 国内外著名课程/MIT weblab/web basic.md
+      - 国内外著名课程/MIT weblab/react.md
+      - 国内外著名课程/MIT weblab/Nodejs.md
+    - computer security:
+      - 国内外著名课程/cs161/index.md
+      - 国内外著名课程/cs161/CS161 computer security.md
+    - computer vision:
+      - 国内外著名课程/computer vision/index.md
+      - 国内外著名课程/computer vision/UMich EECS 498-007 Deep Learning for Computer Vision.md
+    - operation system:
+      - 国内外著名课程/rcore/rCore 清华操作系统实验.md
+    - 国内外著名课程/CS110L/CS110L.md
+    - 国内外著名课程/math/Linear Algebra basic.md
+  - Artificial Intelligence:
+    - 早期AI学习:
+      - 国内外著名课程/AI/线性回归/线性回归.md
+      - 国内外著名课程/AI/基础的多层神经网络/基础的多层神经网络.md
+      - 国内外著名课程/AI/卷积神经网络CNN/CNN.md
+      - 国内外著名课程/AI/Self-attention And Transformer/Self-attention And Transformer.md
+      - 国内外著名课程/AI/Auto-Encoder/Auto-Encoder.md
+      - 国内外著名课程/AI/BERT/BERT.md
+      - 国内外著名课程/AI/GAN/GAN.md
+    - tinyml:
+      - 国内外著名课程/AI/efficient_AI/TinyML.md
+      - 国内外著名课程/AI/efficient_AI/Transformer & LLM.md
+    - 国内外著名课程/AI/CS236/CS236 Deep Generative Models.md
+    - 国内外著名课程/AI/CS336_LLM/CS336 LLM.md
+    - 国内外著名课程/AI/Diffusion_and_flow/Diffusion and flow matching.md
+    - 国内外著名课程/AI/Diffusion_and_flow/Rectified Flow.md
+    - 国内外著名课程/AI/prompt_optimize/Automatic Prompt Optimize.md
+    - 国内外著名课程/AI/ML_System/Large scale book.md
+    - 国内外著名课程/AI/ML_System/MiniTorch.md
+    - 国内外著名课程/AI/RL/RL Basic.md
+  - ZJU-course: 
+    - ZJU-course/Discrete Mathematics.md
+    - ZJU-course/计概/Introduction to Computing Systems_ From Bits & Gates to C & Beyond.md
+    - ZJU-course/计原/计原.md
+    - ZJU-course/fds/FDS.md
+    - ZJU-course/oop 期末复习/oop 期末复习.md
+    - ZJU-course/信息安全原理/信息安全原理.md
+    - ZJU-course/数据库系统期末/数据库系统期末复习.md
+    - ZJU-course/ADS/ADS.md
+    - 操作系统:
+      - ZJU-course/OS/index.md
+      - ZJU-course/OS/概述.md
+      - ZJU-course/OS/进程管理.md
+      - ZJU-course/OS/同步和死锁.md
+      - ZJU-course/OS/内存管理.md
+      - ZJU-course/OS/IO + 磁盘.md
+      - ZJU-course/OS/文件系统.md
+    - 计算机网络:
+      - ZJU-course/计网/index.md
+      - ZJU-course/计网/概述.md
+      - ZJU-course/计网/物理层.md
+      - ZJU-course/计网/数据链路层.md
+      - ZJU-course/计网/介质访问子层.md
+      - ZJU-course/计网/网络层.md
+      - ZJU-course/计网/传输层.md
+      - ZJU-course/计网/应用层.md
+    - ZJU-course/软件质量保证与测试/PPT 索引.md
+    - ZJU-course/物联网/物联网.md
+    - ZJU-course/软工管/软工管.md
+    - ZJU-course/软工面试准备资料.md
+    - ZJU-course/大三下课程经验.md
+    - 通识课程:
+      - ZJU-course/通识课程/中国书法史/中国书法史.md
+    
+  - Technology:
+    - 语言基础:
+      - 技术积累/语言基础/C++ note.md/C++ note.md
+      - 技术积累/语言基础/Rust 入门/Rust 入门.md
+      - 技术积累/语言基础/python 入门/python 入门.md
+      - 技术积累/语言基础/Go 入门/Go 入门.md
+      - 国内外著名课程/AI/ML_System/Triton.md
+    - 实用技能:
+      - 技术积累/实用技能/git and github.md/git and github.md
+      - 技术积累/实用技能/docker/docker.md
+      - 技术积累/实用技能/Tmux.md
+      - 技术积累/实用技能/python/Python Package Management.md
+
+  - Reading:
+    - daily reading:
+      - reading/dailyreading/2025-6.md
+      - reading/dailyreading/2025-7.md
+      - reading/dailyreading/2025-8.md
+      - reading/dailyreading/2025-9.md
+      - reading/dailyreading/2025-11.md
+    - interests: 
+      - reading/interesting/胡渊鸣访谈.md
+      - reading/interesting/RL 中的熵机制.md
+      - reading/interesting/Unified view of SFT & RL.md
+      - reading/interesting/生成理解统一模型.md
+      - reading/interesting/Efficient Attention.md
+      - reading/interesting/Inferix.md
+      - reading/interesting/MiniRL.md
+
+
+markdown_extensions:
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.highlight:
+      linenums: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+
+extra_css:
+  - CSS/admonition.css
+  - CSS/other.css
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/hzeroyuke?tab=repositories
+      name: hzeroyuke's github
+repo_url: https://github.com/hzeroyuke?tab=repositories
+repo_name: hzeroyuke's github
+
+
+extra_javascript:
+  - javascripts/katex.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js

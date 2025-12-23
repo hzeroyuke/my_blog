@@ -1,0 +1,296 @@
+{
+  "main": {
+    "id": "dd70d29e82aedb2b",
+    "type": "split",
+    "children": [
+      {
+        "id": "27238edf16075201",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5436fb87b4dac250",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/reading/interesting/Mini-Sglang.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Mini-Sglang"
+            }
+          },
+          {
+            "id": "153b3c20f0fd54ab",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/技术积累/实用技能/python/Python Package Management.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Python Package Management"
+            }
+          },
+          {
+            "id": "894992c94f68d325",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/技术积累/实用技能/Mac 实用小技巧.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Mac 实用小技巧"
+            }
+          },
+          {
+            "id": "bcc7f9f46460e088",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/zip/weekly target.md",
+                "mode": "source",
+                "source": false
+              },
+              "pinned": true,
+              "icon": "lucide-file",
+              "title": "weekly target"
+            }
+          },
+          {
+            "id": "d5e8966e5d31948a",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/zip/zeyu talk.md",
+                "mode": "source",
+                "source": false
+              },
+              "pinned": true,
+              "icon": "lucide-file",
+              "title": "zeyu talk"
+            }
+          },
+          {
+            "id": "0f097975befbbc3c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/reading/dailyreading/2025-12.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2025-12"
+            }
+          }
+        ],
+        "currentTab": 5
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "6cdef6656c7b8619",
+    "type": "split",
+    "children": [
+      {
+        "id": "0d16d7c8cba35642",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "63b7b394df0ad54b",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "3847515060390ec8",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "a205264f83ab773f",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "ad13d5b07512eaf1",
+    "type": "split",
+    "children": [
+      {
+        "id": "537283b2eaffada9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0a75882e13ef5711",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "docs/国内外著名课程/AI/prompt_optimize/Automatic Prompt Optimize.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Automatic Prompt Optimize 的反向链接列表"
+            }
+          },
+          {
+            "id": "8a26f03d20afc441",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "docs/国内外著名课程/AI/卷积神经网络CNN/CNN.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "CNN 的出链列表"
+            }
+          },
+          {
+            "id": "e90ee4071716390e",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "9b9cf5b90df7f7fe",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "docs/国内外著名课程/AI/卷积神经网络CNN/CNN.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "CNN 的大纲"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "bases:创建新数据库": false
+    }
+  },
+  "active": "0f097975befbbc3c",
+  "lastOpenFiles": [
+    "docs/zip/zeyu talk.md",
+    "docs/技术积累/实用技能/python/Python Package Management.md",
+    "docs/技术积累/实用技能/Huggingface.md",
+    "docs/reading/interesting/MiniRL.md",
+    "docs/reading/interesting/Mini-Sglang.md",
+    "docs/reading/interesting/nano-vllm.md",
+    "docs/reading/interesting/RL 中的熵机制.md",
+    "docs/reading/interesting/Diffusion LLM.md",
+    "docs/reading/interesting/Semantic latent.md",
+    "docs/reading/dailyreading/2025-12.md",
+    "docs/reading/dailyreading/asset/Pasted image 20251222215147.png",
+    "docs/reading/dailyreading/2025-7.md",
+    "docs/reading/dailyreading/asset/Pasted image 20251222205545.png",
+    "docs/zip/talk insights.md",
+    "docs/zip/weekly target.md",
+    "docs/reading/interesting/Efficient Attention.md",
+    "docs/技术积累/实用技能/Mac 实用小技巧.md",
+    "docs/reading/interesting/生成理解统一模型.md",
+    "docs/reading/dailyreading/asset/Pasted image 20251216194253.png",
+    "docs/reading/dailyreading/asset/Pasted image 20251216192043.png",
+    "docs/reading/dailyreading/asset/Pasted image 20251216192030.png",
+    "docs/reading/dailyreading/asset/Pasted image 20251216191413.png",
+    "docs/reading/dailyreading/asset/Pasted image 20251216171650.png",
+    "docs/reading/dailyreading/asset/Pasted image 20251216164724.png",
+    "docs/国内外著名课程/computer crash course.md",
+    "docs/国内外著名课程/AI/efficient_AI/Transformer & LLM.md",
+    "docs/国内外著名课程/AI/efficient_AI/TinyML.md",
+    "docs/国内外著名课程/AI/efficient_AI/Neural Architecture Search.md",
+    "docs/reading/interesting/asset/Pasted image 20251215212145.png",
+    "docs/国内外著名课程/AI/efficient_AI/asset/Pasted image 20251215192218.png",
+    "docs/ZJU-course/大数据技术/作业1 Spark.md",
+    "docs/国内外著名课程/AI/efficient_AI/asset",
+    "docs/zip",
+    "docs/reading/dailyreading/2025-11.md",
+    "docs/国内外著名课程/AI/Diffusion_and_flow/Consistency model.md",
+    "docs/国内外著名课程/AI/Diffusion_and_flow/Diffusion and flow matching.md",
+    "docs/国内外著名课程/AI/RL/LLM RL Theory.md",
+    "docs/index.md",
+    "docs/国内外著名课程/AI/Evaluation",
+    "docs/国内外著名课程/math",
+    "docs/国内外著名课程/新建文件夹",
+    "docs/reading/interesting/asset",
+    "docs/国内外著名课程/AI/efficient_AI",
+    "docs/实验",
+    "docs/国内外著名课程/AI/ML_System/asset",
+    "docs/ZJU-course/区块链与数字货币/asset"
+  ]
+}

@@ -1,0 +1,1 @@
+这是Huggingface的关于Evaluation的技术博客，链接在[这里](https://huggingface.co/spaces/OpenEvals/evaluation-guidebook#what-is-model-evaluation-about) 
