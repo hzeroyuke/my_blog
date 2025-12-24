@@ -44,9 +44,173 @@ SageAttention也是基于FlashAttention之上的
 
 这部分的主要工作是Sparge Attention等一系列的工作，并且他们都是建立在Saged Attention之上的
 
-### 2.1 PSA
+### 2.1 Pyramid Sparse Attention
 
-PSA 这篇是稀疏注意力的一个进阶版本，Pyramid Sparse Attention，金字塔形的稀疏注意力机制
+[PSA](https://arxiv.org/abs/2512.04025) 这篇是稀疏注意力的一个进阶版本，Pyramid Sparse Attention，金字塔形的稀疏注意力机制
+
+![](asset/Pasted%20image%2020251224152252.png)
+
+我们来仔细分析一下它的实现，也过一下实现一个Sparse Attention机制的流程。一开始也和我们自定义任何一个Attention一样继承一个Module，然后实现forward
+
+```python
+class PyramidSparseAttention(nn.Module):
+    def __init__(self, config: AttentionConfig = None, inference_num=50, layer_num=42, model_type="wan"):
+        super().__init__()
+        # If config not provided, use default config
+        if config is None:
+            config = AttentionConfig()
+        self.config = config
+        ...
+
+    def forward(self, q, k, v, layer_idx):
+        ...
+```
+
+我们来看它的核心部分，也就是forward过程，首先经过的rearrange的判断，这个过程可以将语义相近的token的排序在一起，提高局部性
+
+```python
+if self.use_rearrange:
+	if self.config.rearrange_method == 'Gilbert':
+		q_r, k_r, v_r = self.gilbert_rearranger.rearrange(q, k, v)
+		q_sorted_indices = None
+	elif self.config.rearrange_method == 'SemanticAware':
+		q_r, k_r, v_r, q_sorted_indices = self.semantic_aware_rearranger_list[layer_idx].semantic_aware_permutation(q, k, v)
+	elif self.config.rearrange_method == 'STA':
+		q_r, k_r, v_r = self.STARearranger.rearrange(q, k, v)
+		q_sorted_indices = None
+	elif self.config.rearrange_method == 'Hybrid':
+		q_r, k_r, v_r, q_sorted_indices = self.hybrid_rearranger_list[layer_idx].rearrange(q, k, v)
+	else:
+		raise ValueError(f"Unknown rearrange_method: {self.config.rearrange_method}")
+else:
+	q_r = q
+	k_r = k
+	v_r = v
+	q_sorted_indices = None
+
+```
+
+经过rerange之后我们就进入核心部分，也就是Attention层的计算，这里的`adaptive_block_sparse_attn`是整个流程的核心
+
+```python
+if is_warmup:
+	out_r = torch.nn.functional.scaled_dot_product_attention(q_r, k_r, v_r)
+	sparsity = 0.0
+	per_head_density = [1.0] * q_r.shape[1] if compute_stats else []
+	sim_mask = None
+else:
+	out_r, sparsity, per_head_density, sim_mask = adaptive_block_sparse_attn(
+		q_r, k_r, v_r, self.config, self.sparse_attention_fn, compute_stats=compute_stats
+	)
+	# Update sparsity statistics only if computing stats
+	if compute_stats:
+		self.sparsity_acc += sparsity
+```
+
+我们来看这个function的实现，这个function有三个主要的Step
+
+- Pooling
+- Mask
+- Attention Compute
+
+```python
+# Disable gradient tracking for pooling and mask operations
+with torch.no_grad():
+	# STEP 1
+	pooling, sim_mask = efficient_attn_with_pooling(q, k, v, config, num_keep_m=block_size_m//4, num_keep_n=block_size_n//4)
+	# Support both attn_impl and mask_mode methods
+	# STEP2
+	if config.attn_impl == "old_mask_type":
+		mask = transfer_attn_to_mask(pooling, config.mask_ratios, config.text_length, mode=config.mask_mode, blocksize=config.block_n, compute_tile=config.tile_n)
+	elif config.attn_impl == "new_mask_type":
+		# Use mask_mode parameter, supports topk and thresholdbound
+		mode_map = {
+			'topk': 'topk_newtype',
+			'thresholdbound': 'thresholdbound_newtype'
+		}
+		mode = mode_map.get(config.mask_mode, 'topk_newtype')
+		mask = transfer_attn_to_mask(pooling, config.mask_ratios, config.text_length, mode=mode, blocksize=config.block_n, compute_tile=config.tile_n)
+	else:
+		raise ValueError(f"Unknown attn_impl: {config.attn_impl}")
+use_sim_mask = getattr(config, "use_sim_mask", True)
+if use_sim_mask and sim_mask is not None:
+	if sim_mask.dtype != mask.dtype:
+		sim_mask = sim_mask.to(mask.dtype)
+	fixed_mask = torch.min(sim_mask, mask)
+else:
+	fixed_mask = mask
+# STEP3
+out = sparse_attention_fn(q.contiguous(), k.contiguous(), v.contiguous(), fixed_mask, None)
+```
+
+那么首先我们来看Pooling，这个核心就干了以下内容，将QK矩阵划分Block，从每个Block中随机采样几个Token，以这几个Token为代表计算Attention Score，最后返回的是以Block为维度的Attention Matrix
+
+```bash
+  原始Q, K: [B, H, 1024, 64]
+             ↓
+  [Pad to block_size的倍数]
+             ↓
+  Q_padded: [B, H, 1024, 64]  (假设已对齐)
+  K_padded: [B, H, 1024, 64]
+             ↓
+  [随机采样：每块128个token采32个]
+             ↓
+  sampled_Q: [B, H, 256, 64]  (8块 × 32采样)
+  sampled_K: [B, H, 256, 64]
+             ↓
+  [Triton kernel计算注意力并块内pooling]
+             ↓
+  pooling: [B, H, 8, 8]  # 8×8的块级重要性矩阵!
+           ↓
+  [配合sim_mask生成稀疏mask]
+```
+
+在Pooling中还使用了另一个机制，生成了一个sim_mask这个东西是衡量了K矩阵block内部的相似度，block内部的相似度衡量了这个block应该被压缩的程度，如果这里面的token都很相似的话，就能被很好的压缩，这也与前面提到的rerange的过程相互呼应
+
+其次我们来看Mask的过程，Mask过程利用上述Pooling的结果，将稀疏计算需要的信息传递给下一步真正的Attention计算，计算Mask有两种方式，TopK和ThresholdBound
+
+```python
+def transfer_attn_to_mask(
+    attn: torch.Tensor,
+    mask_ratios: Optional[Dict[int, Tuple[float, float]]] = None,
+    text_length: int = 226,
+    mode: str = "topk",
+    min_full_attn_ratio: float = 0.06,
+    blocksize=32,
+    compute_tile=32
+) -> torch.Tensor:
+    """
+    Convert attention weights to multi-level pooling mask matrix.
+
+    Args:
+        attn (torch.Tensor): Attention weight matrix, shape [batch, head, seq, seq]
+        mask_ratios (dict): Mask value to percentage range mapping, format {mask_value: (start_ratio, end_ratio)}
+                           Default is {1: (0.0, 0.05), 2: (0.05, 0.15), 4: (0.15, 0.55), 8: (0.55, 1.0)}
+                           Other positions have mask=0 (skip)
+        text_length (int): Text sequence length, used to calculate special token positions
+        mode (str): Mask generation mode, 'topk' or 'thresholdbound'
+                   - 'topk': Generate mask based on sorted position range
+                   - 'thresholdbound': Generate mask based on cumulative energy percentage
+                   - 'topk_newtype': topk new format mask
+                   - 'thresholdbound_newtype': thresholdbound new format mask
+        min_full_attn_ratio (float): Minimum interval ratio when mask_value=1, default 0.05 (5%)
+                                     Ensures full attention interval occupies at least this ratio
+
+    Returns:
+        torch.Tensor: Multi-level mask matrix, same shape as input
+        - 0: skip (no attention computation)
+        - 1: full attention (default top 5%)
+        - 2: 2x pooling (default 5%-15%)
+        - 4: 4x pooling (default 15%-55%)
+        - 8: 8x pooling (default 55%-100%)
+    """
+```
+
+该Function最后返回给我们一个Mask矩阵，这个函数的实现非常的长，目前还在迭代中，因此采用了多种方案
+
+
+最后我们来看Attention计算，这里是一个Triton算子了，之前在Pooling中其实也用到了Triton算子，它里面也有一个计算Attention形成block size的Attention Score的过程
+
 
 
 ### 2.2. Recitified Sparse Attention

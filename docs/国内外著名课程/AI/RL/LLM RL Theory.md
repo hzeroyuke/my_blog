@@ -10,8 +10,51 @@
 RL现阶段有两个重要的命题
 
 - 训练和推理的一致性：尤其是对于Moe模型，因为现在更新模型的时候总是拆分minibatch，所以都有一定的off-policy
-- 探索性和优化的平衡：如果简单地对奖励进行优化，会导致其探索性快速下降，模型陷入局部最优，不再提升性能
+- 探索性和优化的平衡：如果简单地对奖励进行优化，会导致其探索性快速下降，模型陷入局部最优，不再提升性能，表现为模型的熵下降，以及模型的Pass@1的性能提升的同时，Pass@k的性能不再提升
 
 很多的论文都围绕这个部分来展开
+
+## 1. Basic RL algorithm
+
+**PPO**
+
+![](asset/Pasted%20image%2020251224134542.png)
+
+importance ratio + Advantage 优化，当Advantage  大于 0 的时候，该优化目标会迫使importance ratio变大
+
+PPO的advantage计算是通过reward model和value model共同完成的，Reward model计算即时奖励，Value model预估外来的奖励，随后通过GAE来计算token level advantage
+
+![](asset/Pasted%20image%2020251224140831.png)
+
+随后依次更新Value model和policy model的梯度
+
+**GRPO**
+
+![](asset/Pasted%20image%2020251224141119.png)
+
+GRPO通过一个group里的优势计算，来绕过value model的设计，使得训练成本大幅度下降，通过计算该条回答的reward相比于这个group的平均reward的优势，来衡量advantage
+
+![](asset/Pasted%20image%2020251224141304.png)
+
+**DAPO**
+
+DAPO的方案对于GRPO的范式做了一系列的优化，增加了很多Tricks
+
+- Clip Higher 原本的clip的上界过低，导致RL只会优化高概率高advantage的token，以至于其会迅速陷入局部最优，通过调高Clip的界限，可以有效帮助一些低概率高Advantage的token进行优化，有效提高模型的上限
+- Dynamic Sampling 在训练中增加筛选，去掉全对和全错的样本
+- Token-level Policy Gradient Loss 让一个mini-batch内部 repsonse token 的advantage权重相同
+- Overlong Reward Shaping 增加response length的惩罚项数
+
+**GSPO**
+
+将token level的advantage和importance ratio改为sequence level，importance ratio改为
+
+![](asset/Pasted%20image%2020251224142207.png)
+
+目标函数改为
+
+![](asset/Pasted%20image%2020251224142238.png)
+
+
 
 
