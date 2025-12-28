@@ -58,14 +58,52 @@ CM的训练有两种方式，一种是从头开始训练，一种是蒸馏现有
 
 ### 1.2 Simplifying Continuous-Time Consistency Model
 
+早起的CM仿照了EDM中的模型参数结构，其参数的构成较为复杂
+
+文章提出TrigFlow，提出了一种的新的参数化方案，利用三角函数，该形式是Flow Matching的一种特例
+
+> 这里的证明还需要看一下
+
+
+![](asset/Pasted%20image%2020251225142734.png)
 
 
 ### 1.3. Stabilizing Continuous-Time Consistency Model
 
 
 
+## 2. rCM
 
-## code
+尝试Scale up sCM，面临的挑战
+
+- JVP Computation Infra
+- Evaluation Benchmark
+
+文章提出了一个基于FlashAttention 2的JVP Kernel，能够使得sCM模型在10B+的参数上训练，并且在此过程中发现了之前sCM的缺陷，并且提出了rCM的架构来解决这个问题
+
+### 2.1. Infra
+
+> 看Kernel的实现
+
+- Flash Attention
+- FSDP
+- Context Parallelism
+
+### 2.2. Algorithm
+
+![](asset/Pasted%20image%2020251225150116.png)
+
+sCM蒸馏总是在一些典型提示上做得很好，但是在一些复杂提示上，指令遵循下降，并且无法通过简单的scale up来解决，可以发现这里是存在一个误差累积的问题，构成误差累积的因素有很多，比如CM的目标是在one step去拟合教师模型的ODE流，但是此时如果产生一点偏差，在后续步骤中该偏差会被放大
+
+针对于此种现象，本文提出了一种叫做rCM的方式，做Score-Regularized sCM
+
+![](asset/Pasted%20image%2020251225150455.png)
+
+
+
+
+
+## Code
 
 一致性模型的Loss计算
 

@@ -142,7 +142,8 @@ nav:
       - reading/interesting/Efficient Attention.md
       - reading/interesting/Inferix.md
       - reading/interesting/MiniRL.md
-
+      - reading/interesting/Semantic latent.md
+      - reading/interesting/nano-vllm.md
 
 markdown_extensions:
   - pymdownx.tasklist:

@@ -77,3 +77,9 @@ git merge BRANCH_NAME
 ```
 
 These two commands will delete the branch and merge it into master.
+
+将自己本地的分支推送到远程的
+
+```bash
+git push origin main:master
+```

@@ -1,0 +1,5 @@
+
+MTP 全称是 Multi-token prediction ，因为当前LLM的test-time scaling的推动，inference的压力变得越来越大，单靠硬件和系统加速存在上限，因此人们开始尝试在算法和架构层面提升推理的速度，最直观的想法就是MTP，让模型一次输出多个tokens
+
+目前对于MTP的解决有一些方案比如Diffusion LLM和Speculative Decoding
+
