@@ -18,6 +18,7 @@ sglang generate --model-path /mnt/nas_nfs/home/yuke/model/Wan2.1-T2V-1.3B-Diffus
     --save-output
 ```
 
+
 ## 2. uv
 
 uv 是一个非常新的python包管理工具，工具链很现代化，并且速度快的惊人，相对于conda而言

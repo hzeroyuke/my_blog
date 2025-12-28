@@ -157,7 +157,11 @@ markdown_extensions:
   - pymdownx.superfences
   - admonition
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
 
 extra_css:
   - CSS/admonition.css
@@ -177,3 +181,4 @@ extra_javascript:
   - javascripts/katex.js
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.min.js

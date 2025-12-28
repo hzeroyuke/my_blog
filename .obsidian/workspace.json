@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/reading/interesting/MiniRL.md",
+                "file": "docs/技术积累/实用技能/python/Python Package Management.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "MiniRL"
+              "title": "Python Package Management"
             }
           },
           {
@@ -217,6 +217,17 @@
   },
   "active": "894992c94f68d325",
   "lastOpenFiles": [
+    "docs/国内外著名课程/AI/ML_System/Large scale book.md",
+    "docs/国内外著名课程/AI/ML_System/asset/Pasted image 20251228200118.png",
+    "docs/国内外著名课程/AI/ML_System/asset/Pasted image 20251228195045.png",
+    "docs/国内外著名课程/AI/ML_System/asset/Pasted image 20251228194859.png",
+    "docs/国内外著名课程/AI/ML_System/asset/Pasted image 20251228193705.png",
+    "docs/国内外著名课程/AI/ML_System/asset/Pasted image 20251228193415.png",
+    "docs/国内外著名课程/AI/ML_System/asset/Pasted image 20251228193333.png",
+    "docs/国内外著名课程/AI/ML_System/asset/Pasted image 20251228192112.png",
+    "docs/国内外著名课程/AI/ML_System/asset/Pasted image 20251228192052.png",
+    "docs/国内外著名课程/AI/ML_System/asset/Pasted image 20251228191422.png",
+    "docs/reading/interesting/MiniRL.md",
     "docs/reading/dailyreading/2025-12.md",
     "docs/国内外著名课程/AI/Diffusion_and_flow/Diffusion Distillation.md",
     "docs/国内外著名课程/AI/Diffusion_and_flow/Consistency model.md",
@@ -229,9 +240,6 @@
     "docs/技术积累/实用技能/profiler/GPU Profiler.md",
     "docs/zip/zeyu talk.md",
     "docs/技术积累/实用技能/profiler",
-    "docs/国内外著名课程/AI/Diffusion_and_flow/asset/Pasted image 20251225150455.png",
-    "docs/国内外著名课程/AI/Diffusion_and_flow/asset/Pasted image 20251225150116.png",
-    "docs/国内外著名课程/AI/Diffusion_and_flow/asset/Pasted image 20251225142734.png",
     "docs/技术积累/实用技能/Mac 实用小技巧.md",
     "docs/reading/interesting/Mini-Sglang.md",
     "docs/技术积累/实用技能/git and github.md/git and github.md",
@@ -242,18 +250,11 @@
     "docs/技术积累/实用技能/Huggingface.md",
     "docs/国内外著名课程/AI/Diffusion_and_flow/Dit.md",
     "docs/reading/interesting/Efficient Attention.md",
-    "docs/reading/interesting/asset/Pasted image 20251224152252.png",
     "docs/国内外著名课程/AI/ML_System/FlashAttention.md",
     "docs/国内外著名课程/AI/RL/LLM RL Theory.md",
-    "docs/国内外著名课程/AI/RL/asset/Pasted image 20251224142238.png",
-    "docs/国内外著名课程/AI/RL/asset/Pasted image 20251224142207.png",
-    "docs/国内外著名课程/AI/RL/asset/Pasted image 20251224141304.png",
-    "docs/国内外著名课程/AI/RL/asset/Pasted image 20251224141119.png",
-    "docs/国内外著名课程/AI/RL/asset/Pasted image 20251224140831.png",
     "docs/技术积累/实用技能/asset",
     "docs/国内外著名课程/AI/RL/asset",
     "docs/国内外著名课程/AI/RL/RL Basic.md",
-    "docs/reading/interesting/MiniRL.md",
     "docs/reading/interesting/RL 中的熵机制.md",
     "docs/国内外著名课程/AI/efficient_AI/asset",
     "docs/zip",

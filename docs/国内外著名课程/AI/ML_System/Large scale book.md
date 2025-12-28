@@ -131,9 +131,136 @@ Zero的设计理念在于把所有复制的数据都分片，只有在必要的�
 
 在Zero1中，优化器状态被分为N份，每个GPU上都只维护1/N份优化器状态，更新的时候只优化对应的FP32权重，而在部分更新完成之后，通过一个all-gather操作，将各个GPU上的参数都更新到最新状态
 
+![](asset/Pasted%20image%2020251228191422.png)
+
+zero1的过程如上，在梯度规约的时候，不再做All Reduce，而是做Reduce Scatter，只在每个GPU上计算属于自己的那份累积梯度，而在最后权重更新的时候，每个GPU只更新自己需要更新的权重，然后把自己更新好的权重同步给其他GPU
+
+并且经过计算，整个Zero1过程的通信和传统DP完全一致，可以算得上是Free lunch
+
+![](asset/Pasted%20image%2020251228192052.png)
+
+
 **Zero2**
 
+这是Zero2的示意图，Zero2进行的是梯度分片，本身在更新的时候，我们在每个副本上就只需要该优化器状态分片对应的梯度分片
+
+![](asset/Pasted%20image%2020251228192112.png)
+
+Zero2的通信压力和DP也是等价的
+
 **Zero3**
+
+DeepSpeed 中的Zero3和Pytorch中的FSDP是等价的，它将对于梯度和优化器状态的操作复刻到了参数上，我们在需要参数的时候就收集它，因为我们会将一层参数拆分到不同地方，因此进行Zero3的时候需要经常gather
+
+![](asset/Pasted%20image%2020251228193333.png)
+
+很显然的，Zero3相比于Zero12，增加了相当一笔通信开销，这个开销和模型的层数正相关
+
+![](asset/Pasted%20image%2020251228193415.png)
+
+
+## 4. Tensor Parallelism
+
+Zero123 + DP 效果非常理想，但是其无法对于Activation进行分片，因为激活值的计算是和数据相关的，因此不存在重复，也没有消除冗余的空间可言
+
+![](asset/Pasted%20image%2020251228193705.png)
+
+在开启Zero3的情况下，我们仍然会因为激活值的原因，达到单个硬件的内存上限
+
+> Zero123本质上还是数据并行，虽然对于每一层进行了分片，但是计算的时候还是会聚集到同一个GPU重组进行计算，此时算出来的，还是完整的一层的激活值
+
+这个时候就是要提出我们的TP了，张量并行，张量并行的原理来自于矩阵乘法的性质，因为LLM计算中大部分操作均为矩阵乘法，对于矩阵，我们的操作主要是对于矩阵列和行进行独立的操作，因此如果对于行和列进行分割，就可以顺利完成矩阵乘法
+
+![](asset/Pasted%20image%2020251228194859.png)
+
+比如列分割 column-wise
+
+![](asset/Pasted%20image%2020251228195045.png)
+
+
+> [!code]- ColumnParallelLinear 实现详情
+> ```python
+> class ColumnParallelLinear(torch.nn.Module):
+>     """Column Parallel Linear layer
+>     Y = XW + b, where weight matrix W is parallelized along its second dimension. W = [W_1, ..., W_p]
+>     This module returns the results of Y_i = XW_i + b_i in the forward method, Y_i is parallelized in the second dimension.
+>     Arguments:
+>         in_features: first dimension of weight matrix W.
+>         out_features: second dimension of weight matrix W.
+>         bias: If true, add bias
+>         init_method: method to initialize weights
+>         gather_output: If true, gather the output from all the partitions. This is used for the last linear layer
+>     """
+> 
+>     def __init__(
+>         self,
+>         in_features: int,
+>         out_features: int,
+>         bias: bool = False,
+>         gather_output: bool = False,
+>         async_all_reduce: bool = False,
+>     ) -> None:
+>         super(ColumnParallelLinear, self).__init__()
+> 
+>         self.tp_world_size = pgm.process_group_manager.tp_world_size
+>         self.tp_rank = pgm.process_group_manager.tp_rank 
+> 
+>         self.in_features = in_features
+>         self.out_features = out_features
+>         assert out_features % self.tp_world_size == 0, "Hidden dimension must be divisible by the tensor parallel world size"
+>         self.output_size_per_partition = out_features // self.tp_world_size
+>         self.gather_output = gather_output
+>         self.async_all_reduce = async_all_reduce
+>         # Allocate space for the weight and bias
+>         # Note: torch.nn.functional.linear performs XW^T + b so we exchange the order of dimensions
+>         self.weight = nn.Parameter(torch.Tensor(self.output_size_per_partition, self.in_features)) # W_i
+>         if bias:
+>             self.bias = nn.Parameter(torch.Tensor(self.output_size_per_partition))
+>             with torch.no_grad():
+>                 self.bias.zero_()
+>         else:
+>             self.register_parameter("bias", None)
+> 
+>         self.reset_parameters()
+> 
+>     def reset_parameters(self):
+>         # Initialize weight tensor with the default initialization method used for nn.Linear in PyTorch
+>         master_weight = torch.empty(
+>             self.out_features, 
+>             self.in_features, 
+>             dtype=self.weight.dtype,
+>             device=self.weight.device,
+>             requires_grad=False
+>         )
+>         
+>         # Calculate bound based on master weight's input dimension
+>         k = 1 / master_weight.size(1)
+>         bound = math.sqrt(k)
+>         torch.nn.init.uniform_(master_weight, -bound, bound)
+>         
+>         # Split the model into size of self.output_size_per_partition
+>         weight_list = torch.split(master_weight, self.output_size_per_partition, dim=0)
+>         self.weight.data = weight_list[self.tp_rank].contiguous()
+>     
+>     def forward(self, x: torch.Tensor) -> torch.Tensor:  
+>         if self.async_all_reduce:
+>             output = linear_with_async_all_reduce(x, self.weight, self.bias) 
+>         else:
+>             output = linear_with_all_reduce(x, self.weight, self.bias) 
+>         if self.gather_output:
+>             output = GatherFromModelParallelRegion.apply(output)
+>         return output
+> ```
+
+
+以下还有行级的张量并行的示意图
+
+![](asset/Pasted%20image%2020251228200118.png)
+
+### 4.1. Transformer 中的 TP
+
+
+
 
 ## Appendix: code practice
 
