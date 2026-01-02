@@ -1,3 +1,4 @@
+## 1. HPT
 
 HPT（Hybrid Post-Training）的原论文
 
@@ -29,6 +30,14 @@ HPT（Hybrid Post-Training）的原论文
 
 
 ### 从Loss的视角到梯度的视角
+
+## 2. Unified View of PostTraining
+
+https://www.notion.so/From-Recipes-to-Regimes-A-Target-Operator-Diagnostics-Framework-for-LLM-Post-Training-2da6113bc4c58008b5a2c7af3e5815b2
+
+跳脱出SFT和RL，进入完整的PostTraining的视角，人们发现SFT和RL之间的区别，相比于RL内部的Trick反而更小，显然整个PostTraining系统需要一套更宏观的解读
+
+
 
 
 

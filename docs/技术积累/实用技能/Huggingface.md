@@ -2,4 +2,6 @@ Huggingface类似于Github，是一个云托管的服务，但是其中大多是
 
 ```
 huggingface-cli download gdhe17/Self-Forcing checkpoints/self_forcing_dmd.pt --local-dir /mnt/nas_nfs/home/yuke/model/self_forcing/ --local-dir-use-symlinks False
+
+huggingface-cli download lmms-lab/LLaVA-Video-7B-Qwen2 --local-dir /mnt/nas_nfs/home/yuke/model/LLaVA-Video-7B-Qwen2
 ```

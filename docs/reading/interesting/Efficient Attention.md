@@ -15,27 +15,47 @@
 - SageAttention2 INT4/INT8 + FP8 inference
 - SageAttention3 FP4 inference FP8 Training
 
-SageAttention，已经集成在Diffusers，TensorRT等库中，很多视频生成产品都用了
-
-在应用的时候直接替换FlashAttention，一行就可以实现加速
+SageAttention，已经集成在Diffusers，TensorRT等库中，很多视频生成产品都用了，可以在应用的时候直接替换FlashAttention，一行就可以实现加速，实现即插即用
 
 SageAttention也是基于FlashAttention之上的
 
-![](asset/Pasted%20image%2020251201201334.png)
+![](asset/Pasted%20image%2020251229160116.png)
+
+### 1.1. SageAttention 1
+
+量化是深度学习中很早期就有的工作，但是早期的量化集中在于FFN上面，对于Attention的量化研究很少，随着序列长度的增加，Attention的ON2的计算bound越发明显，在这个阶段，FlashAttention3已经实现FP8的量化，但是该种量化指标只能实现在N卡的Hopper的架构中
+
+并且实验中发现，对于Attention直接进行量化效果非常糟糕，不论是对于生成还是LLM，主要面临两个问题
+
+- K矩阵的离群值，这个和传统量化中遇到的现象很像，在channel维度上，存在一些channel上的数值远远大于其他channel，导致传统量化算法失效
+- PV计算的时候，也就是softmax的结果和V的计算的时候，P的输出分布非常稀疏且不均匀，导致的结果也是单纯的量化失效
+
+![](asset/Pasted%20image%2020251229161255.png)
+
+本文提出的SageAttention，将Attention中的矩阵量化为INT8，INT8的加速对于不同硬件的支持更好，在3090，4090等硬件上也能有效加速，并且实现了即插即用，无需微调，并且应对上述的几个挑战，SageAttention也提出了应对方案
+
+- Smooth K，来平滑K矩阵
+- 对于PV计算，保持这两个矩阵为FP16，并且使用low-precision FP16 accumulator
+
+在Smooth K的过程中，将K矩阵都减去K矩阵的均值，在Channel维度上做归一化，在保证Softmax是无损的情况下，平滑K矩阵
 
 在低比特量化的时候，由于两个单位的上下界不同，因此一般在低比特量化中需要做一些缩放，量化完成的矩阵还会带一个小标量，就是一个缩放因子，可以看下图中的 $s_q$ 
 
-![](asset/Pasted%20image%2020251201201733.png)
+![](asset/Pasted%20image%2020251229165252.png)
 
-也是建立在FlashAttention的基础上，对于分块好的矩阵先进行量化，在 $QK^T$ 这个计算中使用INT8 在最后和 V 矩阵的相乘中使用FP16
+也是建立在FlashAttention的基础上，对于分块好的矩阵先进行量化，在 $QK^T$ 这个计算中使用INT8 在最后和 V 矩阵的相乘中使用FP16（实验发现这一块如果进行量化，效果会差很多，因此就使用FP16），但是这部分也做了一些优化，引入了FP16累加器，因为传统的矩阵乘法在累加器这一块用的仍然是32位，但是同时P矩阵是Softmax的结果，它的归一化是一，因此在累加中很少会溢出FP16的结果，因此FP32的累加是不太必要的，因此这里用上了FP16的累加器，可以做到性能没有什么变化但是速度变快了
 
 但是量化本身发生在token维度上，一个序列的token的attention值其实差异波动是很大的，在这种情况下，量化的效果会比较糟糕，因为他是基于同一个缩放因子去进行缩放的
 
 在这里引入了一个新的方案叫做Smooth K，其用于平均化序列中的异常值，其实就是减去每列的均值，并且这个操作不影响softmax
 
-![](asset/Pasted%20image%2020251201202440.png)
+![](asset/Pasted%20image%2020251229170600.png)
 
-在SageAttention1中其实没有动最后和V矩阵相乘这一块，但是在SageAttention2中也量化这一部分，随之也引入了SmoothQ
+### 1.2. SageAttention 2
+
+SageAttention2 中引入了Per thread的量化，相对于之前的Per Tensor or Per Block的范式，粒度更细，粒度更细的结果就是量化的范围内离群值的更少，效果就更好
+
+在SageAttention1中其实没有动Q矩阵，因为Q矩阵的离群值相对比较少，但是在引入了INT4的量化的时候，即便是Q矩阵也面临了很高的精度损失的风险。对于Q矩阵的量化相对更加麻烦一点
 
 ![](asset/Pasted%20image%2020251201202812.png)
 ## 2. 稀疏注意力
