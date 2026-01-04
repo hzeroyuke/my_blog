@@ -263,3 +263,36 @@ Linear Attention的主流做法是，$softmax(QK^T)V$ 这个计算转换成，$Q
 
 但是Linear attention的效果之所以还是无法逼近Full Attention，是因为LinearAttention计算出来的矩阵的低秩性
 
+### 3.1. SLA
+
+这是SageAttention和SpargeAttention的系列工作之一，在这些基础上加上了Linear Attention，达到更高的性能。论文分析发现，Attention计算的权重中，天然可以分为两个部分
+
+- 高权重且high-rank
+- low rank权重
+
+自然的，我们考虑将Sparse Accelerate给high-rank权重加速，用low-rank方案（Linear方案）给low-rank权重加速，于是就有了对应的工作过，Sparse-Linear Attention，主要是针对的Dit，也就是视频生成这个领域，不仅支持Forward也支持Backward，这是一个trainable的方案
+
+在流程中SLA将Attention权重分为了三个部分，分别采用N2的full attention和N1的Linear Attention以及丢弃的操作。
+
+**Baseline**
+
+SLA基于Block Sparse Attention(按照Block计算Attention Score并且进行drop)以及Linear Attention（先计算KV，再归一化）
+
+![](asset/Pasted%20image%2020260104211915.png)
+
+**Motivation**
+
+SLA的推进基于两个发现
+
+- Softmax矩阵的稀疏性
+- Full Attention矩阵的low rank性质
+
+![](asset/Pasted%20image%2020260104212458.png)
+
+![](asset/Pasted%20image%2020260104212509.png)
+
+**SLA Method**
+
+![](asset/Pasted%20image%2020260104212554.png)
+
+

@@ -84,3 +84,12 @@ graph LR
 
 ```
 
+
+## 4. FlashInfer
+
+FlashInfer和FlashAttention一样，都是Transformer模型优化的注意力Kernel，其中FlashInfer是vllm默认选择的内核，在对比中发现，在启动CUDAGraph的生产环境中，FlashInfer比FlashAttention更快
+
+![](asset/Pasted%20image%2020260104184333.png)
+
+CUDAGraph是用于录制整个计算图，然后在GPU上一次性计算完成的特性，在没有CUDAGraph的时候，每个Kernel都要各自调用，系统在GPU和CPU之间来回切换，在有了CUDAGraph之后，就可以一次性将所有的Kernel发送到GPU进行执行。而FlashInfer对于CUDAGraph有更友好的设计和优化
+

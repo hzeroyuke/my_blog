@@ -45,12 +45,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/zip/Physical Judge.md",
+                "file": "docs/reading/interesting/nano-vllm.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Physical Judge"
+              "title": "nano-vllm"
             }
           },
           {
@@ -68,49 +68,21 @@
             }
           },
           {
-            "id": "3a6cfbd0a82329f1",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/reading/interesting/Unified view of SFT & RL.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Unified view of SFT & RL"
-            }
-          },
-          {
-            "id": "7747d760b1107218",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/reading/interesting/Test-Time Training.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Test-Time Training"
-            }
-          },
-          {
-            "id": "c10d13804e698e74",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/国内外著名课程/AI/RL/LLM RL Theory.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "LLM RL Theory"
-            }
-          },
-          {
             "id": "c7cfff581bc1f764",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/技术积累/实用技能/Mac 实用小技巧.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Mac 实用小技巧"
+            }
+          },
+          {
+            "id": "180d5b49b1c13371",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -124,7 +96,7 @@
             }
           }
         ],
-        "currentTab": 7
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -272,36 +244,38 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "c7cfff581bc1f764",
+  "active": "180d5b49b1c13371",
   "lastOpenFiles": [
-    "docs/国内外著名课程/AI/RL/LLM RL Theory.md",
-    "docs/reading/interesting/Test-Time Training.md",
-    "docs/reading/interesting/Unified view of SFT & RL.md",
-    "docs/zip/Physical Judge.md",
-    "docs/reading/interesting/生成理解统一模型.md",
+    "docs/reading/interesting/asset/Pasted image 20260104212554.png",
+    "docs/reading/interesting/asset/Pasted image 20260104212509.png",
+    "docs/reading/interesting/asset/Pasted image 20260104212458.png",
+    "docs/reading/interesting/asset/Pasted image 20260104211915.png",
     "docs/reading/dailyreading/2026-1.md",
     "docs/reading/interesting/Efficient Attention.md",
-    "docs/reading/interesting/asset/Pasted image 20260102130848.png",
-    "docs/reading/interesting/asset/Pasted image 20260102130517.png",
-    "docs/reading/interesting/asset/Pasted image 20260102130247.png",
+    "docs/国内外著名课程/AI/RL/LLM RL Theory.md",
+    "docs/国内外著名课程/AI/RL/asset/Pasted image 20260104201607.png",
+    "docs/国内外著名课程/AI/RL/asset/Pasted image 20260104201452.png",
+    "docs/国内外著名课程/AI/RL/asset/Pasted image 20260104201005.png",
+    "docs/reading/dailyreading/asset/Pasted image 20260104190459.png",
+    "docs/reading/interesting/nano-vllm.md",
+    "docs/reading/interesting/asset/Pasted image 20260104184333.png",
+    "docs/reading/dailyreading/asset/Pasted image 20260104183643.png",
+    "docs/zip/Physical Judge.md",
+    "docs/技术积累/实用技能/Huggingface.md",
+    "docs/技术积累/实用技能/Mac 实用小技巧.md",
+    "docs/reading/interesting/MTP.md",
+    "docs/reading/dailyreading/asset/867cc7bd6b4de1c08fdf03f03ecb0935.png",
+    "docs/reading/interesting/Test-Time Training.md",
+    "docs/reading/interesting/Unified view of SFT & RL.md",
+    "docs/reading/interesting/生成理解统一模型.md",
     "docs/zip/zeyu talk.md",
     "docs/zip/weekly target.md",
     "docs/国内外著名课程/AI/Diffusion_and_flow/Diffusion Distillation.md",
-    "docs/技术积累/实用技能/Huggingface.md",
-    "docs/reading/interesting/MTP.md",
-    "docs/reading/interesting/nano-vllm.md",
     "docs/reading/dailyreading/2025-12.md",
     "docs/reading/interesting/Mini-Sglang.md",
     "docs/reading/interesting/MiniRL.md",
     "docs/reading/interesting/Semantic latent.md",
-    "docs/zip/asset/Pasted image 20251230220651.png",
-    "docs/zip/asset/Pasted image 20251230202855.png",
-    "docs/zip/asset/Pasted image 20251230201511.png",
-    "docs/zip/asset/Pasted image 20251230200200.png",
     "docs/技术积累/实用技能/python/Python Package Management.md",
-    "docs/国内外著名课程/AI/Diffusion_and_flow/asset/Pasted image 20251230152529.png",
-    "docs/国内外著名课程/AI/Diffusion_and_flow/asset/Pasted image 20251230152503.png",
-    "docs/国内外著名课程/AI/Diffusion_and_flow/asset/Pasted image 20251230150327.png",
     "docs/国内外著名课程/AI/Diffusion_and_flow/Dit.md",
     "docs/国内外著名课程/AI/Diffusion_and_flow/MeanFlow.md",
     "docs/reading/interesting/RL 中的熵机制.md",
@@ -309,8 +283,6 @@
     "docs/国内外著名课程/AI/ML_System/MiniTorch.md",
     "docs/reading/dailyreading/2025-11.md",
     "docs/国内外著名课程/AI/ML_System/FlashAttention.md",
-    "docs/国内外著名课程/AI/ML_System/Deep Learning System.md",
-    "docs/国内外著名课程/AI/CS336_LLM/CS336 LLM.md",
     "docs/技术积累/实用技能/profiler",
     "docs/技术积累/实用技能/asset",
     "docs/国内外著名课程/AI/RL/asset",
