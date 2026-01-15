@@ -30,3 +30,17 @@ uv 是一个非常新的python包管理工具，工具链很现代化，并且�
 - `uv add <package_name>`
 
 这里有一个[视频链接](https://www.youtube.com/watch?v=AMdG7IjgSPM&t=6s) 来介绍uv
+
+当我们使用uv的venv之后，在激活虚拟环境之后有一系列的选择
+
+- pip install 用pip原生的解析器
+- uv pip install 用uv的解析器，速度更快
+- uv add 使用uv解析器材的同时，还可以维护uv的pyproject.toml
+
+uv 常用的镜像源
+
+```bash
+export UV_DEFAULT_INDEX="https://pypi.tuna.tsinghua.edu.cn/simple"
+```
+
+

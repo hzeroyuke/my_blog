@@ -1,0 +1,12 @@
+这里主要讲述torch, cuda, cuda toolkit之间的依赖关系，以及如何用conda来管理这些东西
+
+conda 能够管理的是用户级别的cuda包，不包括系统级别的，系统级别的cuda是nvidia-smi展现出来的cuda版本，conda能够管理的包括
+
+- cuda-toolkit cuda的编译工具
+- cuDNN 为代表的一系列cuda库
+
+当我们平时下载torch的时候，其会自动为我们下载与其相匹配的cuda依赖和编译器，torch和我们当前的conda环境里的cuDNN等库相互匹配
+
+conda和pip和互相使用，在conda启动环境之后，建议先用conda把核心环境torch等相关内容装好，再考虑用pip安装纯python的包
+
+比如最典型的flash-attn的场景，这个包在默认安装条件下经常出问题

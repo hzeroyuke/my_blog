@@ -58,6 +58,21 @@ SageAttention2 中引入了Per thread的量化，相对于之前的Per Tensor or
 在SageAttention1中其实没有动Q矩阵，因为Q矩阵的离群值相对比较少，但是在引入了INT4的量化的时候，即便是Q矩阵也面临了很高的精度损失的风险。对于Q矩阵的量化相对更加麻烦一点
 
 ![](asset/Pasted%20image%2020251201202812.png)
+
+### why outliers in LLM
+
+本质上来说，量化的行为是将浮点数映射到低维空间
+
+$$Q[x]=scale*Clamp( \left \lfloor \frac{x}{scale} \right \rceil,min,max)$$
+其中的$\left \lfloor · \right \rceil$ 是舍入符号，对于k位量化，我们会设定
+
+- $min=-2^{k-1}$
+- $max = 2^{k-1}$
+- $scale = \frac{|x|_{max}}{2^{k-1}}$ 
+
+这个行为将所有的数字归一化道min～max这个范围内，但是LLM中存在一系列的离群值，这些离群值导致直接用max数值进行量化会损失很大的精度，但是这些离群值又对LLM的性能有很大的贡献
+
+
 ## 2. 稀疏注意力
 
 ![](asset/Pasted%20image%2020251201222231.png)

@@ -1,0 +1,5 @@
+
+Attention Sink现象是在量化，位置编码，以及对于Attention内容的改进中都很重要的现象
+
+StreamLLM，如果不考虑KV的情况，Attention Sink指向的是一些特殊的token并且在位置编码为0的情况下，可以占据巨大的注意力内容
+

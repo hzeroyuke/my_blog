@@ -5,3 +5,16 @@ huggingface-cli download gdhe17/Self-Forcing checkpoints/self_forcing_dmd.pt --l
 
 huggingface-cli download lmms-lab/LLaVA-Video-7B-Qwen2 --local-dir /mnt/nas_nfs/home/yuke/model/LLaVA-Video-7B-Qwen2
 ```
+
+
+
+huggingface-cli 是老版本的cli了，现在用hf来替代这个cli
+
+```bash
+
+hf auth login
+
+export HF_ENDPOINT=https://hf-mirror.com
+
+hf download ...
+```

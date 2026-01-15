@@ -40,63 +40,79 @@
             }
           },
           {
-            "id": "bb438dbf1824b4e4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/reading/interesting/nano-vllm.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "nano-vllm"
-            }
-          },
-          {
-            "id": "632b12fead33f01c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/技术积累/实用技能/Huggingface.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Huggingface"
-            }
-          },
-          {
-            "id": "c7cfff581bc1f764",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/技术积累/实用技能/Mac 实用小技巧.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Mac 实用小技巧"
-            }
-          },
-          {
             "id": "180d5b49b1c13371",
             "type": "leaf",
+            "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/reading/interesting/Efficient Attention.md",
+                "file": "docs/reading/dailyreading/2026-1.md",
+                "mode": "source",
+                "source": false
+              },
+              "pinned": true,
+              "icon": "lucide-file",
+              "title": "2026-1"
+            }
+          },
+          {
+            "id": "d1c001d60b7b7c82",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/zip/Physical Judge Plan.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Efficient Attention"
+              "title": "Physical Judge Plan"
+            }
+          },
+          {
+            "id": "f19ac5168a931767",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/技术积累/实用技能/cuda toolkit.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "cuda toolkit"
+            }
+          },
+          {
+            "id": "d8e3346ba5160e37",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/reading/interesting/Semantic latent.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Semantic latent"
+            }
+          },
+          {
+            "id": "aaaa5104d7950b65",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/zip/Physical Judge Survey.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Physical Judge Survey"
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -128,7 +144,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "flash",
+                "query": "vlipp",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -149,7 +165,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -169,7 +186,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/国内外著名课程/AI/prompt_optimize/Automatic Prompt Optimize.md",
+                "file": "docs/reading/dailyreading/2026-1.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -179,7 +196,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Automatic Prompt Optimize 的反向链接列表"
+              "title": "2026-1 的反向链接列表"
             }
           },
           {
@@ -230,7 +247,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
+    "width": 200,
     "collapsed": true
   },
   "left-ribbon": {
@@ -246,51 +263,51 @@
   },
   "active": "180d5b49b1c13371",
   "lastOpenFiles": [
-    "docs/reading/interesting/asset/Pasted image 20260104212554.png",
-    "docs/reading/interesting/asset/Pasted image 20260104212509.png",
-    "docs/reading/interesting/asset/Pasted image 20260104212458.png",
-    "docs/reading/interesting/asset/Pasted image 20260104211915.png",
+    "docs/reading/dailyreading/asset/Pasted image 20260115145929.png",
+    "docs/reading/dailyreading/asset/Pasted image 20260115144306.png",
+    "docs/zip/Physical Judge Plan.md",
+    "docs/zip/Physical Judge Survey.md",
     "docs/reading/dailyreading/2026-1.md",
-    "docs/reading/interesting/Efficient Attention.md",
-    "docs/国内外著名课程/AI/RL/LLM RL Theory.md",
-    "docs/国内外著名课程/AI/RL/asset/Pasted image 20260104201607.png",
-    "docs/国内外著名课程/AI/RL/asset/Pasted image 20260104201452.png",
-    "docs/国内外著名课程/AI/RL/asset/Pasted image 20260104201005.png",
-    "docs/reading/dailyreading/asset/Pasted image 20260104190459.png",
-    "docs/reading/interesting/nano-vllm.md",
-    "docs/reading/interesting/asset/Pasted image 20260104184333.png",
-    "docs/reading/dailyreading/asset/Pasted image 20260104183643.png",
-    "docs/zip/Physical Judge.md",
-    "docs/技术积累/实用技能/Huggingface.md",
-    "docs/技术积累/实用技能/Mac 实用小技巧.md",
-    "docs/reading/interesting/MTP.md",
-    "docs/reading/dailyreading/asset/867cc7bd6b4de1c08fdf03f03ecb0935.png",
-    "docs/reading/interesting/Test-Time Training.md",
-    "docs/reading/interesting/Unified view of SFT & RL.md",
-    "docs/reading/interesting/生成理解统一模型.md",
-    "docs/zip/zeyu talk.md",
-    "docs/zip/weekly target.md",
-    "docs/国内外著名课程/AI/Diffusion_and_flow/Diffusion Distillation.md",
-    "docs/reading/dailyreading/2025-12.md",
-    "docs/reading/interesting/Mini-Sglang.md",
-    "docs/reading/interesting/MiniRL.md",
+    "docs/reading/dailyreading/asset/Pasted image 20260114162950.png",
+    "docs/reading/dailyreading/asset/Pasted image 20260114162356.png",
     "docs/reading/interesting/Semantic latent.md",
+    "docs/reading/dailyreading/asset/Pasted image 20260114142654.png",
+    "docs/reading/dailyreading/asset/Pasted image 20260114141932.png",
+    "docs/reading/dailyreading/asset/Pasted image 20260114141740.png",
+    "docs/reading/dailyreading/asset/Pasted image 20260114135641.png",
+    "docs/zip/asset/Pasted image 20260113201029.png",
+    "docs/技术积累/实用技能/cuda toolkit.md",
+    "docs/zip/asset/Pasted image 20260113193848.png",
+    "docs/zip/asset/Pasted image 20260113193828.png",
     "docs/技术积累/实用技能/python/Python Package Management.md",
-    "docs/国内外著名课程/AI/Diffusion_and_flow/Dit.md",
-    "docs/国内外著名课程/AI/Diffusion_and_flow/MeanFlow.md",
-    "docs/reading/interesting/RL 中的熵机制.md",
+    "docs/reading/interesting/Attention Sink.md",
+    "docs/reading/interesting/Unified view of SFT & RL.md",
+    "docs/reading/interesting/Efficient Attention.md",
+    "docs/国内外著名课程/AI/Diffusion_and_flow/Block Diffusion.md",
+    "docs/技术积累/实用技能/Tmux.md",
+    "docs/reading/interesting/Inferix.md",
+    "physcial_judge_plan.zip",
+    "output.zip",
+    "output/Physical Judge Plan.md",
+    "output/attachment",
+    "output",
+    "docs/zip/weekly target.md",
+    "docs/zip/zeyu talk.md",
+    "docs/reading/interesting/nano-vllm.md",
+    "docs/技术积累/实用技能/Huggingface.md",
+    "docs/zip/talk insights.md",
+    "physical judge.zip",
+    "output/Physical Judge Survey.md",
+    "physcial_judge.zip",
+    "docs/reading/interesting/MTP.md",
+    "docs/zip/efficient todo.md",
+    "docs/reading/dailyreading/2025-12.md",
+    "docs/技术积累/实用技能/Mac 实用小技巧.md",
+    "docs/技术积累/实用技能/profiler/GPU Profiler.md",
+    "docs/技术积累/实用技能/profiler/profiling tools.md",
     "docs/zip/asset",
-    "docs/国内外著名课程/AI/ML_System/MiniTorch.md",
-    "docs/reading/dailyreading/2025-11.md",
-    "docs/国内外著名课程/AI/ML_System/FlashAttention.md",
     "docs/技术积累/实用技能/profiler",
     "docs/技术积累/实用技能/asset",
-    "docs/国内外著名课程/AI/RL/asset",
-    "docs/国内外著名课程/AI/efficient_AI/asset",
-    "docs/zip",
-    "docs/国内外著名课程/AI/Evaluation",
-    "docs/国内外著名课程/math",
-    "docs/国内外著名课程/新建文件夹",
-    "docs/reading/interesting/asset"
+    "docs/国内外著名课程/AI/RL/asset"
   ]
 }

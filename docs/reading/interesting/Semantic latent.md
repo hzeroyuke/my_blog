@@ -5,6 +5,12 @@
 
 包括JEPA，Siglip，DINO v2等工作，代表的经典vision encoder工作，以及其性能分析
 
+- https://arxiv.org/pdf/2512.19693
+
+这篇论文分析了语义编码器和像素编码器的频谱差异，一个关注高频细节一个关注低频细节
+
+
+
 ## 2. Semantic Latent Space
 
 ### 2.1. RAE
@@ -42,3 +48,5 @@
 
 ### 2.2. VTP
 
+
+### 2.

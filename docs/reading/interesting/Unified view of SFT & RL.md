@@ -37,6 +37,14 @@ https://www.notion.so/From-Recipes-to-Regimes-A-Target-Operator-Diagnostics-Fram
 
 跳脱出SFT和RL，进入完整的PostTraining的视角，人们发现SFT和RL之间的区别，相比于RL内部的Trick反而更小，显然整个PostTraining系统需要一套更宏观的解读
 
+## 3. Entropy-Adaptive SFT
+
+SFT的技巧对于RL有指导作用，反过来也是一样的，SFT总是迫使模型去服从输入数据的分布，这一定程度上和模型原始的能力会相互冲突，因此我们可以采用RL中的技巧，用Entropy based的方案，对于特定的一些token进行门控
+
+![](asset/Pasted%20image%2020260112202845.png)
+
+
+
 
 
 

@@ -11,3 +11,5 @@ Tmux的前缀键是Ctrl+b
 -  左右移动 Prefix + -> 
 -  滚动模式 Prefix + \[ 退出 q
 -  退出会话 Prefix + d
+
+
