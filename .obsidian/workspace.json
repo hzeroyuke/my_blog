@@ -56,35 +56,35 @@
             }
           },
           {
-            "id": "d1c001d60b7b7c82",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/zip/Physical Judge Plan.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Physical Judge Plan"
-            }
-          },
-          {
             "id": "f19ac5168a931767",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/技术积累/实用技能/cuda toolkit.md",
+                "file": "docs/zip/world eval.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "cuda toolkit"
+              "title": "world eval"
             }
           },
           {
-            "id": "d8e3346ba5160e37",
+            "id": "94d09d6120399da7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/国内外著名课程/AI/Diffusion_and_flow/Block Diffusion.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Block Diffusion"
+            }
+          },
+          {
+            "id": "a57fe4ad02c2ddcf",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -98,21 +98,63 @@
             }
           },
           {
-            "id": "aaaa5104d7950b65",
+            "id": "df6d828d67c1e42e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/zip/Physical Judge Survey.md",
+                "file": "docs/国内外著名课程/AI/ML_System/Large scale book.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Physical Judge Survey"
+              "title": "Large scale book"
+            }
+          },
+          {
+            "id": "bf4cdeccc1c57b1c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/zip/Physical Judge Plan.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Physical Judge Plan"
+            }
+          },
+          {
+            "id": "5ea93f3aff10b75b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/reading/interesting/Semantic latent.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Semantic latent"
+            }
+          },
+          {
+            "id": "d9c45a2af0baccd1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/国内外著名课程/AI/RL/Diffusion RL Theory.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Diffusion RL Theory"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 9
       }
     ],
     "direction": "vertical"
@@ -144,7 +186,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "vlipp",
+                "query": "频率",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -165,12 +207,11 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 307.5
+    "width": 333.5
   },
   "right": {
     "id": "ad13d5b07512eaf1",
@@ -186,7 +227,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/reading/dailyreading/2026-1.md",
+                "file": "docs/zip/world eval.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -196,7 +237,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "2026-1 的反向链接列表"
+              "title": "world eval 的反向链接列表"
             }
           },
           {
@@ -261,50 +302,50 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "180d5b49b1c13371",
+  "active": "d9c45a2af0baccd1",
   "lastOpenFiles": [
-    "docs/reading/dailyreading/asset/Pasted image 20260115145929.png",
-    "docs/reading/dailyreading/asset/Pasted image 20260115144306.png",
-    "docs/zip/Physical Judge Plan.md",
-    "docs/zip/Physical Judge Survey.md",
+    "docs/国内外著名课程/AI/RL/asset/Pasted image 20260126212831.png",
+    "docs/国内外著名课程/AI/RL/asset/Pasted image 20260126200145.png",
     "docs/reading/dailyreading/2026-1.md",
-    "docs/reading/dailyreading/asset/Pasted image 20260114162950.png",
-    "docs/reading/dailyreading/asset/Pasted image 20260114162356.png",
+    "docs/国内外著名课程/AI/RL/Diffusion RL Theory.md",
+    "docs/reading/dailyreading/asset/Pasted image 20260126194024.png",
+    "docs/reading/dailyreading/asset/Pasted image 20260126193555.png",
     "docs/reading/interesting/Semantic latent.md",
-    "docs/reading/dailyreading/asset/Pasted image 20260114142654.png",
-    "docs/reading/dailyreading/asset/Pasted image 20260114141932.png",
-    "docs/reading/dailyreading/asset/Pasted image 20260114141740.png",
-    "docs/reading/dailyreading/asset/Pasted image 20260114135641.png",
-    "docs/zip/asset/Pasted image 20260113201029.png",
-    "docs/技术积累/实用技能/cuda toolkit.md",
-    "docs/zip/asset/Pasted image 20260113193848.png",
-    "docs/zip/asset/Pasted image 20260113193828.png",
-    "docs/技术积累/实用技能/python/Python Package Management.md",
-    "docs/reading/interesting/Attention Sink.md",
-    "docs/reading/interesting/Unified view of SFT & RL.md",
-    "docs/reading/interesting/Efficient Attention.md",
+    "docs/zip/Physical Judge Plan.md",
+    "docs/国内外著名课程/AI/ML_System/Large scale book.md",
+    "docs/国内外著名课程/AI/ML_System/asset/Pasted image 20260123164752.png",
+    "docs/国内外著名课程/AI/ML_System/asset/Pasted image 20260123163707.png",
+    "docs/国内外著名课程/AI/ML_System/asset/Pasted image 20260123163507.png",
+    "docs/国内外著名课程/AI/ML_System/Triton.md",
+    "docs/国内外著名课程/AI/ML_System/asset/Pasted image 20260123160501.png",
+    "docs/reading/interesting/nano-vllm.md",
+    "docs/reading/interesting/asset/Pasted image 20260123155549.png",
+    "docs/国内外著名课程/AI/ML_System/FlashAttention.md",
+    "docs/国内外著名课程/AI/ML_System/asset/Pasted image 20260123154958.png",
+    "docs/reading/interesting/Mini-Sglang.md",
+    "docs/reading/interesting/asset/Pasted image 20260123154425.png",
     "docs/国内外著名课程/AI/Diffusion_and_flow/Block Diffusion.md",
-    "docs/技术积累/实用技能/Tmux.md",
-    "docs/reading/interesting/Inferix.md",
+    "docs/reading/dailyreading/2025-12.md",
+    "docs/技术积累/实用技能/python/Python Package Management.md",
+    "docs/zip/zeyu talk.md",
+    "docs/zip/world eval.md",
+    "docs/zip/Physical Judge Survey.md",
+    "docs/国内外著名课程/AI/Tools/Claude Code.md",
+    "docs/技术积累/实用技能/cuda toolkit.md",
+    "docs/reading/interesting/Attention Sink.md",
+    "docs/国内外著名课程/AI/Diffusion_and_flow/Diffusion Distillation.md",
+    "docs/国内外著名课程/AI/Diffusion_and_flow/Diffusion and flow matching.md",
+    "docs/国内外著名课程/AI/Diffusion_and_flow/Consistency model.md",
+    "docs/reading/interesting/MTP.md",
+    "docs/reading/interesting/MiniRL.md",
+    "docs/国内外著名课程/AI/prompt_optimize/Automatic Prompt Optimize.md",
+    "docs/reading/interesting/Unified view of SFT & RL.md",
     "physcial_judge_plan.zip",
     "output.zip",
-    "output/Physical Judge Plan.md",
     "output/attachment",
     "output",
-    "docs/zip/weekly target.md",
-    "docs/zip/zeyu talk.md",
-    "docs/reading/interesting/nano-vllm.md",
-    "docs/技术积累/实用技能/Huggingface.md",
-    "docs/zip/talk insights.md",
     "physical judge.zip",
-    "output/Physical Judge Survey.md",
     "physcial_judge.zip",
-    "docs/reading/interesting/MTP.md",
-    "docs/zip/efficient todo.md",
-    "docs/reading/dailyreading/2025-12.md",
-    "docs/技术积累/实用技能/Mac 实用小技巧.md",
-    "docs/技术积累/实用技能/profiler/GPU Profiler.md",
-    "docs/技术积累/实用技能/profiler/profiling tools.md",
     "docs/zip/asset",
     "docs/技术积累/实用技能/profiler",
     "docs/技术积累/实用技能/asset",

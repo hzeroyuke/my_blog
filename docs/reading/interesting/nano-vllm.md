@@ -56,6 +56,8 @@ graph TD
 
 为这个请求（在 nano-vllm 中称为一个 Sequence）创建一个空的块表 (block_table)。在 prefill 阶段，根据其提示（prompt）的长度，按需分配相应数量的 Block，并将这些 Block 的 ID 填入其 block_table。在 decode 阶段，每当序列长度增长，需要一个新的 Block 时，再从全局的空闲块池中取一个，并更新其 block_table。
 
+![](asset/Pasted%20image%2020260123154056.png)
+
 除了分页的内存管理机制以外，nano-vllm还引入了很多os中的技巧，比如抢占式的进程调度工具，在vllm中就表现为抢占式的prefill，这部分由Scheduler完成，这也是vllm实现持续批处理的关键
 
 ## 2. ModelRunner
@@ -92,4 +94,12 @@ FlashInfer和FlashAttention一样，都是Transformer模型优化的注意力Ker
 ![](asset/Pasted%20image%2020260104184333.png)
 
 CUDAGraph是用于录制整个计算图，然后在GPU上一次性计算完成的特性，在没有CUDAGraph的时候，每个Kernel都要各自调用，系统在GPU和CPU之间来回切换，在有了CUDAGraph之后，就可以一次性将所有的Kernel发送到GPU进行执行。而FlashInfer对于CUDAGraph有更友好的设计和优化
+
+## 5. Continuous Batching
+
+相对于早期系统的static batching，静态批处理系统，动态的批处理可以在token维度维护一个batch，这样子可以让decoder阶段有一个较高的利用率
+
+![](asset/Pasted%20image%2020260123155549.png)
+
+
 

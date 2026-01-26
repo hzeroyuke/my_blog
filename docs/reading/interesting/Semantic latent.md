@@ -7,9 +7,21 @@
 
 - https://arxiv.org/pdf/2512.19693
 
-这篇论文分析了语义编码器和像素编码器的频谱差异，一个关注高频细节一个关注低频细节
+这篇论文分析了语义编码器（semantic encoder）和像素编码器（pixel encoder）的频谱差异，一个关注高频细节一个关注低频细节
+
+- semantic encoder capture low-frequency components
+- pixel encoder capture hight-frequency components
 
 
+![](asset/Pasted%20image%2020260116153421.png)
+
+现代的感知模型主要侧重于语义编码，而生成模型侧重于像素细节编码，并且通过一些实验来验证这个内容，比如对于text-image对齐任务，消除掉一些细节也没有影响，但是一旦过滤掉低频的色块，对齐任务的准确度马上就下降了
+
+![](asset/Pasted%20image%2020260116154913.png)
+
+并且本篇论文提出了一种相应的Unified AutoEncoder的训练方案，同时优化Semantic Loss（依靠一个教师模型）和Pixel Reconstruction Loss（直接重建），其是靠将DINO的初始化整个模型，然后将DINO的输出给按频率拆分，低频率部分采用一个重建的Loss
+
+![](asset/Pasted%20image%2020260116155441.png)
 
 ## 2. Semantic Latent Space
 
@@ -46,7 +58,11 @@
 
 
 
-### 2.2. VTP
+### 2.2. scale rae
+
+https://rae-dit.github.io/scale-rae/
+
+scale rae 
 
 
-### 2.
+### 2.3. VTP

@@ -259,6 +259,26 @@ Zero123 + DP 效果非常理想，但是其无法对于Activation进行分片，
 
 ### 4.1. Transformer 中的 TP
 
+最自然的方案就是同时进行行分割和列分割，处理Transformer中的FFN的时候我们就这么做
+
+![](asset/Pasted%20image%2020260123163507.png)
+
+对于另一部分，就是多头注意力机制这一部分
+
+![](asset/Pasted%20image%2020260123163707.png)
+
+我们可以按照注意力头进行划分，列并行和这个方案是完全的匹配的，这也是因为Attention计算中，每个head之间是独立的，类似的，对于FFN计算中
+
+因此TP的并行往往不能超过Attention head数量，在实际环境中我们往往会使用PD分离，Prefill这一块往往会用到大量的TP来榨干算力，而Decoder这一块往往以使用Pipeline Parallelism和少量TP
+
+### 4.2. Sequence Parallelism
+
+TP是存在Trade Off的，因为其引入了通信开销，并且没有像ZeRO那样将其与计算冲得
+
+![](asset/Pasted%20image%2020260123164752.png)
+
+而Sequnce Parallelism和TP是适配存在的，其用于应对TP中的例如DropOut和Layer Norm的部分
+
 
 
 

@@ -20,3 +20,11 @@ The source code is located in `python/minisgl`. Here is a breakdown of the modul
 - `minisgl.llm`: Provides class `LLM` as a python interface to interact with the Mini-SGLang system easily.
 - `minisgl.kernel`: Implements custom CUDA kernels, supported by `tvm-ffi` for python binding and jit interface.
 - `minisgl.benchmark`: Benchmark utilities.
+
+## 2. RadixAttention
+
+相对于vllm中的PagedAttention机制，sglang中的显存管理方案为RadixAttention，是基于前缀技术的显存管理方案。对于LLM而言的大量请求都共享相同的Prefix，例如system prompt和多轮的对话
+
+sglang将kv cache将kv cache组织成一颗radix tree。当新的请求到达的时候，系统在radix tree匹配最长前缀，匹配成功之后复用一用KV cache
+
+![](asset/Pasted%20image%2020260123154425.png)
