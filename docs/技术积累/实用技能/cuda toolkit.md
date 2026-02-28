@@ -10,3 +10,13 @@ conda 能够管理的是用户级别的cuda包，不包括系统级别的，系�
 conda和pip和互相使用，在conda启动环境之后，建议先用conda把核心环境torch等相关内容装好，再考虑用pip安装纯python的包
 
 比如最典型的flash-attn的场景，这个包在默认安装条件下经常出问题
+
+## 1. conda cuda
+
+- `conda install cudatoolkit == <version> -c nvidia`
+- `conda install pytorch ...`
+- `conda install cuda-nvcc`
+
+以前的管理方案基本如上，现在用conda管理不再主流，并且pytorch本身也不再提供给conda的包，现在的版本就是用uv来管理torch的环境
+
+现在的torch包中往往自带CUDA运行时相关库，因此现在安装torch容易了许多，但是与此同时，安装其他需要nvcc等编译工具的python包的时候就会出现问题，比如flash attention

@@ -56,6 +56,28 @@ DAPO的方案对于GRPO的范式做了一系列的优化，增加了很多Tricks
 ![](asset/Pasted%20image%2020251224142238.png)
 
 
+## 2. Training-Rollout Consistency
+
+### 2.1. Multi-Turn Agent Training
+
+
+
+### 2.2. Precision Consistency
+
+Nvidia在2月份出了一篇关于训推精度一致性的论文 [Jet RL](https://arxiv.org/pdf/2601.14243v1) ，对于RL而言，目前来看效率上的block就在rollout上面，因此最直接的想法我们会将直接推理加速的方案应用在RL的rollout上面，比如low-bit量化和稀疏计算。这篇论文就是研究了FP8 Rollout的技术，但是先前的低精度的rollout会和后续BF16的训练形成不一致，形成Off-Policy。
+
+这篇论文在Verl上构建一个Rollout和Train均为FP8的RL过程
+
+这个过程有如下的难点
+
+- RL过程中，参数在频繁地更新，传统的FP8量化方案，需要每次参数更新之后再次计算缩放系数（重新校准），造成额外开销
+- 如果不进行校准，直接将参数截断为FP8，会导致训练的不稳定，尤其是面对长文本和困难任务中
+
+
+![](asset/Pasted%20image%2020260205144826.png)
+
+反向传播的梯度保持BF16，其余内容全部转换成FP8。总结来看就是所有的算子都保持FP8，但是输出梯度的时候转换成BF16
+
 
 ## Other Topics
 

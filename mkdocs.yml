@@ -147,6 +147,8 @@ nav:
       - reading/interesting/MiniRL.md
       - reading/interesting/Semantic latent.md
       - reading/interesting/nano-vllm.md
+      - reading/interesting/Attention Sink.md
+      - reading/interesting/Continual Learning.md
 
 markdown_extensions:
   - pymdownx.tasklist:

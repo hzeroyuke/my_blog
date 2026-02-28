@@ -1,4 +1,9 @@
 
+## verl 目前的支持特性
+
+- FSDP + Megatron for training
+- vllm, sglang, transformers for rollout
+
 RL的流程实际是一个数据流过程，相对于SFT来说更加复杂
 
 - Multiple models: actor, critic, reference, reward

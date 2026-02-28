@@ -73,7 +73,7 @@ $$Q[x]=scale*Clamp( \left \lfloor \frac{x}{scale} \right \rceil,min,max)$$
 这个行为将所有的数字归一化道min～max这个范围内，但是LLM中存在一系列的离群值，这些离群值导致直接用max数值进行量化会损失很大的精度，但是这些离群值又对LLM的性能有很大的贡献
 
 
-## 2. 稀疏注意力
+## 2. Sparse Attention
 
 ![](asset/Pasted%20image%2020251201222231.png)
 
@@ -253,6 +253,10 @@ def transfer_attn_to_mask(
 https://arxiv.org/abs/2511.19835
 
 矫正的稀疏注意力机制
+
+### DSA
+
+DeepSeek 提出的Sparse Attention机制
 
 
 ### why sparse attention

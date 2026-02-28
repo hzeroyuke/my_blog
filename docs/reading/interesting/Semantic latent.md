@@ -55,14 +55,14 @@
 
 整个训练的流程是，先训练decoder，完成高质量的重建，并且使用到noist-augmented decoding，随后再训练Dit
 
-
-
-
 ### 2.2. scale rae
 
 https://rae-dit.github.io/scale-rae/
 
 scale rae 
 
+![](asset/Pasted%20image%2020260204164811.png)
+
+在 scaling 的过程中，之前的一些技巧不再重要，比如更宽的模型，但是部分技巧仍然是必要的，比如噪声调度的问题
 
 ### 2.3. VTP

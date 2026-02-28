@@ -17,6 +17,9 @@ MTP 全称是 Multi-token prediction ，因为当前LLM的test-time scaling的�
 
 SD 很重要的一个问题就是在大Batch Size的时候，效果不佳，这存在多种因素，本身SD的方案就是在计算打不满的情况下，让其通过多算一些东西来省一些forward。但是在大Batchsize下，计算逐渐也会被打满，因此SD的效果会逐渐变差。并且SD的做法也是在拉大一个batch size里的碎片化，因为有的request会猜对多个词语，有的request猜对的不多，从而有更大的对齐开销
 
+现阶段SD的加速仅存在于小Batch Size下，可能真正的应用节点在于具身和边缘硬件场景
+
+
 
 
 

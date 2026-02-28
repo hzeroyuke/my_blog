@@ -8,93 +8,19 @@
         "type": "tabs",
         "children": [
           {
-            "id": "bcc7f9f46460e088",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/zip/weekly target.md",
-                "mode": "source",
-                "source": false
-              },
-              "pinned": true,
-              "icon": "lucide-file",
-              "title": "weekly target"
-            }
-          },
-          {
-            "id": "d5e8966e5d31948a",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/zip/zeyu talk.md",
-                "mode": "source",
-                "source": false
-              },
-              "pinned": true,
-              "icon": "lucide-file",
-              "title": "zeyu talk"
-            }
-          },
-          {
-            "id": "180d5b49b1c13371",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/reading/dailyreading/2026-1.md",
-                "mode": "source",
-                "source": false
-              },
-              "pinned": true,
-              "icon": "lucide-file",
-              "title": "2026-1"
-            }
-          },
-          {
             "id": "f19ac5168a931767",
             "type": "leaf",
+            "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/zip/world eval.md",
+                "file": "docs/reading/dailyreading/2026-2.md",
                 "mode": "source",
                 "source": false
               },
+              "pinned": true,
               "icon": "lucide-file",
-              "title": "world eval"
-            }
-          },
-          {
-            "id": "94d09d6120399da7",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/国内外著名课程/AI/Diffusion_and_flow/Block Diffusion.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Block Diffusion"
-            }
-          },
-          {
-            "id": "a57fe4ad02c2ddcf",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/reading/interesting/Semantic latent.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Semantic latent"
+              "title": "2026-2"
             }
           },
           {
@@ -112,7 +38,21 @@
             }
           },
           {
-            "id": "bf4cdeccc1c57b1c",
+            "id": "5ea93f3aff10b75b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/reading/dailyreading/2026-1.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-1"
+            }
+          },
+          {
+            "id": "0e74b579f855eb0a",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -126,35 +66,21 @@
             }
           },
           {
-            "id": "5ea93f3aff10b75b",
+            "id": "c679dd854dd12af8",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/reading/interesting/Semantic latent.md",
+                "file": "docs/技术积累/实用技能/Huggingface.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Semantic latent"
-            }
-          },
-          {
-            "id": "d9c45a2af0baccd1",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/国内外著名课程/AI/RL/Diffusion RL Theory.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Diffusion RL Theory"
+              "title": "Huggingface"
             }
           }
         ],
-        "currentTab": 9
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -186,7 +112,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "频率",
+                "query": "video",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -207,11 +133,12 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 333.5
+    "width": 256.5
   },
   "right": {
     "id": "ad13d5b07512eaf1",
@@ -302,53 +229,53 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "d9c45a2af0baccd1",
+  "active": "5ea93f3aff10b75b",
   "lastOpenFiles": [
-    "docs/国内外著名课程/AI/RL/asset/Pasted image 20260126212831.png",
-    "docs/国内外著名课程/AI/RL/asset/Pasted image 20260126200145.png",
-    "docs/reading/dailyreading/2026-1.md",
-    "docs/国内外著名课程/AI/RL/Diffusion RL Theory.md",
-    "docs/reading/dailyreading/asset/Pasted image 20260126194024.png",
-    "docs/reading/dailyreading/asset/Pasted image 20260126193555.png",
-    "docs/reading/interesting/Semantic latent.md",
     "docs/zip/Physical Judge Plan.md",
-    "docs/国内外著名课程/AI/ML_System/Large scale book.md",
-    "docs/国内外著名课程/AI/ML_System/asset/Pasted image 20260123164752.png",
-    "docs/国内外著名课程/AI/ML_System/asset/Pasted image 20260123163707.png",
-    "docs/国内外著名课程/AI/ML_System/asset/Pasted image 20260123163507.png",
-    "docs/国内外著名课程/AI/ML_System/Triton.md",
-    "docs/国内外著名课程/AI/ML_System/asset/Pasted image 20260123160501.png",
-    "docs/reading/interesting/nano-vllm.md",
-    "docs/reading/interesting/asset/Pasted image 20260123155549.png",
-    "docs/国内外著名课程/AI/ML_System/FlashAttention.md",
-    "docs/国内外著名课程/AI/ML_System/asset/Pasted image 20260123154958.png",
-    "docs/reading/interesting/Mini-Sglang.md",
-    "docs/reading/interesting/asset/Pasted image 20260123154425.png",
+    "docs/reading/dailyreading/2026-1.md",
+    "docs/reading/dailyreading/2026-2.md",
+    "docs/reading/dailyreading/asset/Pasted image 20260228155805.png",
     "docs/国内外著名课程/AI/Diffusion_and_flow/Block Diffusion.md",
-    "docs/reading/dailyreading/2025-12.md",
-    "docs/技术积累/实用技能/python/Python Package Management.md",
+    "docs/国内外著名课程/AI/Diffusion_and_flow/Dit.md",
+    "docs/国内外著名课程/AI/Diffusion_and_flow/未命名.md",
+    "docs/技术积累/实用技能/Huggingface.md",
+    "docs/reading/interesting/Inferix.md",
+    "docs/reading/dailyreading/asset/Pasted image 20260227215533.png",
+    "docs/reading/interesting/Attention Sink.md",
+    "docs/reading/interesting/Efficient Attention.md",
+    "docs/reading/interesting/Robotics.md",
+    "docs/reading/interesting/Continual Learning.md",
+    "docs/reading/interesting/Optimizer.md",
+    "docs/zip/Physical Judge Survey.md",
+    "docs/国内外著名课程/AI/ML_System/MiniTorch.md",
+    "docs/zip/asset/Pasted image 20260223183518.png",
+    "docs/zip/asset/Pasted image 20260223183459.png",
+    "docs/zip/asset/Pasted image 20260223182750.png",
+    "output 2/Physical Judge Plan.md",
+    "output 2/attachment/4ced825240657b64b29cd26a8661c9f4.png",
+    "output 2/attachment/49c03b62a94110258037630cd14595a7.png",
+    "output 2/attachment/49fc69e8e12d9d722255a7d89e598fdf.png",
+    "output 2/attachment",
+    "output 2",
+    "output/Physical Judge Plan.md",
+    "docs/zip/weekly target.md",
     "docs/zip/zeyu talk.md",
     "docs/zip/world eval.md",
-    "docs/zip/Physical Judge Survey.md",
-    "docs/国内外著名课程/AI/Tools/Claude Code.md",
-    "docs/技术积累/实用技能/cuda toolkit.md",
-    "docs/reading/interesting/Attention Sink.md",
-    "docs/国内外著名课程/AI/Diffusion_and_flow/Diffusion Distillation.md",
-    "docs/国内外著名课程/AI/Diffusion_and_flow/Diffusion and flow matching.md",
-    "docs/国内外著名课程/AI/Diffusion_and_flow/Consistency model.md",
+    "docs/zip/efficient todo.md",
+    "docs/zip/面试经验.md",
+    "docs/zip/talk insights.md",
     "docs/reading/interesting/MTP.md",
-    "docs/reading/interesting/MiniRL.md",
-    "docs/国内外著名课程/AI/prompt_optimize/Automatic Prompt Optimize.md",
-    "docs/reading/interesting/Unified view of SFT & RL.md",
-    "physcial_judge_plan.zip",
+    "docs/技术积累/实用技能/profiler/nvtop.md",
+    "docs/技术积累/实用技能/profiler/profiling tools.md",
+    "docs/zip/asset/Pasted image 20260214140244.png",
+    "docs/reading/dailyreading/asset/Pasted image 20260212142437.png",
+    "physical.zip",
     "output.zip",
     "output/attachment",
     "output",
-    "physical judge.zip",
-    "physcial_judge.zip",
-    "docs/zip/asset",
-    "docs/技术积累/实用技能/profiler",
-    "docs/技术积累/实用技能/asset",
-    "docs/国内外著名课程/AI/RL/asset"
+    "physical/attachment",
+    "physical",
+    "physcial_judge_plan.zip",
+    "physical judge.zip"
   ]
 }

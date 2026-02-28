@@ -10,9 +10,43 @@
 - Efficient
 	- Stream Diffusion v2
 	- DeepForcing
+- Context Forcing https://chenshuo20.github.io/Context_Forcing/
+- Live
+- Rolling Forcing https://arxiv.org/pdf/2509.25161
+- casual forcing https://thu-ml.github.io/CausalForcing.github.io/
 
 ## 1. Self-Forcing
 
+前置工作有包括
+
+- Teacher Forcing 最原始的ar diffusion，训练看gt frames，推理看自己生成的frames
+- Diffusion Forcing 在Teacher Forcing的基础上，在训练中，在gt frames上增加一些噪声，进行训练，推理的时候也是看自己生成的frames，DF认为在训练时加入随机噪声的方案，可以提高模型应对错误累积的鲁棒性
+
+[self-forcing](https://self-forcing.github.io/) 是 Block Diffusion 范式下比较新的工作，主要是解决block diffusion之前在训练过程中的上下文为gt，而推理过程中的上下文为自己生成的内容，因此导致误差累积的问题
+
+![](asset/Pasted%20image%2020260204195540.png)
+
+非常简单的想法就是在训练的过程中，上下文就是自己生成的内容
+
+相对应的，在Self-Forcing中，Loss的监督也从对于Next Frame的监督，改为了整段视频的监督。在这种自回归生成并且整体视频监督的范式下，训练的资源开销会变得非常大，因此Self Forcing中也提出了很多的Efficient的方案
+
+- 阶段性的训练，用Self Forcing来微调之前的Forcing模型，而不是从头开始预训练
+- Rolling KV-cache
+- Gradient Truncation 梯度截断
+
+Self Forcing 代码解读
+
+**推理流程**
+
+对于Self-Attention的Transformer来说，只有Attention操作存在token间的交互，其他所有的操作都是token独立的
+
+首先我们要知道现代video generation的dit的架构，wan的dit架构中兼具Self-Attention和Cross Attention，其中的Self Attention中应用3D的rope，因为有时间，长，宽三个维度，LLM是1维的Rope
+
+
+
+
+
+**训练流程**
 
 ## HiStream
 
