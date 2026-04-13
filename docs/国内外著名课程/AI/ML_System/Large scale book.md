@@ -3,6 +3,14 @@
 
 https://huggingface.co/spaces/nanotron/ultrascale-playbook?section=high-level_overview 这是链接
 
+LLM的训练基本从早期的Zero123开始，完成fsdp，随后转向3D并行，TP，PP，DP，之上再演变出CP和EP等更新的范式
+
+但是随着显卡的内存和通信能力水涨船高，以及低精度训练等方案的普及，TP和PP甚至都存在被解决的趋势
+
+另外和这本书类似的，有一半google内部的，基于Jax的scale book
+
+- https://jax-ml.github.io/scaling-book/inference/
+
 ## 1. 单GPU训练
 
 一次正常的模型训练，包括以下流程

@@ -63,7 +63,7 @@ $$\begin{aligned}
 
 ## 2. AWM
 
-这篇论文正是发现了上述Flow GRPO的不一致问题
+这篇论文正是发现了上述Flow GRPO的不一致问题，本质上来说，模型应该学习的是好的速度而不是好的噪声，学习速度比学习噪声更高效
 
 - RL优化的是Reverse一步转换的高斯分布的对数似然
 - 预训练优化的是score/flow match loss
@@ -82,9 +82,47 @@ $$Loss_{AWM}=A^i||v_\theta(x_t^i)-v_{gt}||$$
 
 Diffusion NFT 在附录中解释了 Flow GRPO 实际的优化方向，就是advantage-weighted noise，相比于AWM，NFT的做法是off-policy的
 
- 
-## 4. Video RL
+这篇工作中重新思考了将RL应用到Flow中的范式，单纯讲GRPO这种范式应用到Flow Model中的学习在理论上并非最优，能够达到几十倍的收敛加速
 
-- https://arxiv.org/pdf/2511.21541
-	- 用一个video generation model的一些dit层，加上一些训练的转换层，做video generation latent reward model
-	- 是prm，并且在latent层面给出reward，不能
+![](asset/Pasted%20image%2020260327153820.png)
+
+对于GRPO和PPO这种基于Policy Gradient的算法来说，有一个共性的要求就是其模型的likelihoods必须是可以计算的，这个过程在自回归模型中成立，但是在diffusion models中并不直接，因为现在的Diffusion过程本质是一种连续过程，你要计算似然就必须计算积分，但是这个现阶段是计算不出来的，只能考虑近似
+
+如果想要计算的话，只有两种方案
+
+- 求解概率 ODE（计算成本很高）
+- 通过 SDE 的变分下界（本身就是近似值，不精确）
+
+先有的工作使用离散化的逆向过程，离散化之后每一步可以用高斯分布去建模，增加了高斯分布这个约束之后就可以进行精确的似然计算了，例如FlowGRPO
+
+![](asset/Pasted%20image%2020260327154448.png)
+
+Diffusion NFT 定义了如下过程，一个模型对于一个prompt集合，每个prompt会采样出k个结果，然后用reward model/function给这k个结果打分为r，我们会将reward归一化到0-1之间，这样子可以靠reward之间的对比隐式地构建advantage
+
+然后就是比较精妙的一部分，Diffusion NFT要对生成的结果进行好样本和坏样本二元分组，那么如何进行分组呢，我们设定一个结果会有r的概率进行好样本组，有1-r的概率进行坏样本组，这时候的两个样本组可以构建为这样子的分布
+
+![](asset/Pasted%20image%2020260327182605.png)
+
+上述分布隐含着一定的优劣关系，也即 $\pi^+>\pi^{old}>\pi^-$ 如果我们直接使用 $\pi^+$ 来微调，我们就实际上完成了之前的Diffusion领域的RFT（拒绝采样微调），但是作为一个RL范式，自然是也要用上负样本
+
+![](asset/Pasted%20image%2020260327183333.png)
+
+在实际的操作中，我们进行采样，采样完成之后打分，打分完成之后进行加噪，从加噪图像进行预测，加噪图像到之前的真实图像，即为真实速度；预测出来的即为old policy的速度
+
+实际上的损失函数设计为，可以理论推导得到，最优的改进方向是正负样本的速度差异
+
+$$\mathcal{L}(\theta) = \mathbb{E}_{\boldsymbol{c},\, \pi^{\text{old}}(\boldsymbol{x}_0|\boldsymbol{c}),\, t} \left[ r\|\boldsymbol{v}_\theta^+(\boldsymbol{x}_t, \boldsymbol{c}, t) - \boldsymbol{v}\|_2^2 + (1-r)\|\boldsymbol{v}_\theta^-(\boldsymbol{x}_t, \boldsymbol{c}, t) - \boldsymbol{v}\|_2^2 \right]$$
+
+$$v_{\theta}^{+} = (1 - \beta)v_{old} + \beta v_{\theta}, \\ \ \\ \ \\ \\ 
+v_{\theta}^{-} = (1 + \beta)v_{old} - \beta v_{\theta},$$
+
+
+
+![](asset/Pasted%20image%2020260327184458.png)
+
+其Loss地梯度推导如上
+
+
+Diffusion NFT 可以用任意黑盒的Solver进行训练，且CFG无关
+
+ 

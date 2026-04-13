@@ -1,14 +1,17 @@
+
+## Benchmark
+
 - https://arxiv.org/pdf/2506.12594 Survey
 
-## Search-R1 & Deepresearcher
+### Search-R1 & Deepresearcher
 
 NQ† TriviaQA⋆ PopQA⋆ HotpotQA† 2wiki⋆ Musique⋆ Bamboogle⋆
 
-## Kimi & OpenAI & Grok & Gemini
+### Kimi & OpenAI & Grok & Gemini
 
 SEAL-0
 
-## Qwen
+### Qwen
 
 WebWalkQA
 
@@ -16,7 +19,7 @@ FRAMES
 
 SimpleQA
 
-## MiroMind
+### MiroMind
 
 GAIA, HLE, BrowserComp, xBench-deepresearch
 

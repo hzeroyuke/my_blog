@@ -7,14 +7,26 @@
 
 对于LLM的RL，统一的视角应该是优化一个reward的期望值，并且附加一些截断，KL等技巧
 
-RL现阶段有两个重要的命题
+整个2025年期间，RL有两个重要的命题
 
-- 训练和推理的一致性：尤其是对于Moe模型，因为现在更新模型的时候总是拆分minibatch，所以都有一定的off-policy。并且当推理框架和训练框架分离，使用不同的算子库的时候，存在精度等问题导致的不一致性
-- 探索性和优化的平衡：如果简单地对奖励进行优化，会导致其探索性快速下降，模型陷入局部最优，不再提升性能，表现为模型的熵下降，以及模型的Pass@1的性能提升的同时，Pass@k的性能不再提升
+- **训练和推理的一致性**：尤其是对于Moe模型，因为现在更新模型的时候总是拆分minibatch，所以都有一定的off-policy。并且当推理框架和训练框架分离，使用不同的算子库的时候，存在精度等问题导致的不一致性
+- **探索性和优化的平衡**：如果简单地对奖励进行优化，会导致其探索性快速下降，模型陷入局部最优，不再提升性能，表现为模型的熵下降，以及模型的Pass@1的性能提升的同时，Pass@k的性能不再提升
 
 很多的论文都围绕这个部分来展开
 
+而随着LLM RL从数学逻辑领域转向了复杂的长程Agent任务领域，比如Coding，办公任务等等，2026年初开始，RL开始转向了异步和Online的RL训练，其核心在于
+
+- **asynchronous**：等待推理完成再训练实在是太慢了，如何缓解必要的off-policy
+- **online**：如何从用户和agent的交互中获得有效的监督信号，如何构建有效的reward
+
+就目前LLM的RL的来看，对于算法的改进是最不重要的，任务环境和训练环境的infra+data是更重要的
+
 ## 1. Basic RL algorithm
+
+**From Policy Gradient to PPO**
+
+这是早期RL算法的演变的过程，从最开始的Policy based Method + Value based Method 到后面的PPO的过程
+
 
 **PPO**
 
@@ -47,7 +59,7 @@ DAPO的方案对于GRPO的范式做了一系列的优化，增加了很多Tricks
 
 **GSPO**
 
-将token level的advantage和importance ratio改为sequence level，importance ratio改为
+GRPO虽然本身也是Sequence Level的IS，但是它的IS对于每个token做clip来进行连乘，实际上还是对于token level进行操作，而GSPO转向完整的Sequence Level，不用token-level的clip，而是用整个Sequence的内容做几何平均归一化（就是在token的log上除以一个序列长度），来防止IS爆炸问题
 
 ![](asset/Pasted%20image%2020251224142207.png)
 
@@ -56,11 +68,40 @@ DAPO的方案对于GRPO的范式做了一系列的优化，增加了很多Tricks
 ![](asset/Pasted%20image%2020251224142238.png)
 
 
+**VESPO**
+
+来自小米团队的论文，开始转向off-policy的RL训练，能够做到在64x staleness ratios上做到稳定的训练
+
+面对现有Policy Gradient的公式，想要提升算法，我们就要对Importance Weight做改动，之前最重要的做Importance Weight做改动的算法是GSPO，最核心的观点是将Token-Level的Importance Sampling修改到Sequence-Level，这篇论文指出其存在一定的问题，Sequence Level的IS将token level的进行叠加，导致单个token很大的IS会影响到整个序列，并且在长序列中表现得更为严重
+
+面对这个问题，GRPO等该用Token Clip进行裁剪（实际上就是token level更新，放弃了序列级的统计），GSPO采用归一化的方案（存在长度依赖的偏差）
+
+VESPO带我们重新审视对于Weight Reshaping这个操作，原生的IS是将这条老数据对应的分布和当前模型的分布进行对比，当我们做了Weight Reshaping之后，就是将老数据的分布和某个其他的分布进行对比，我们从优化一个IS的方案转向优化一个分布，这个分布应该具有一些特点
+
+- 靠近老数据的分布
+- 靠近新模型的分布
+- 控制方差
+
+比较直观地，我们可以通过一个权重系数来处理它
+
+![](asset/Pasted%20image%2020260310163955.png)
+
+另一方面，我们来看起如何做方差的控制，这是Sequence-Level的优化比较重要的方向。这就要套入之前的理论中，之前有很多理论来分析分布的方差
+
+在重要性采样中，估计量的方差正比于二阶矩，二阶矩阵越大，相当于方差越高，有效的样本量就越少
+
+![](asset/Pasted%20image%2020260310164700.png)
+
+最终VESPO的结果是这样子的，其中W是原始的重要性采样
+
+![](asset/Pasted%20image%2020260310165026.png)
 ## 2. Training-Rollout Consistency
+
+在这个任务上，Slime应该是一个值得学习的项目
 
 ### 2.1. Multi-Turn Agent Training
 
-
+token id 的解码编码问题
 
 ### 2.2. Precision Consistency
 
@@ -78,6 +119,16 @@ Nvidia在2月份出了一篇关于训推精度一致性的论文 [Jet RL](https:
 
 反向传播的梯度保持BF16，其余内容全部转换成FP8。总结来看就是所有的算子都保持FP8，但是输出梯度的时候转换成BF16
 
+
+## 3. Entropy
+
+在LLM RL中，关于Entropy的思考是一个受人关注的话题，在早期对于math这个领域的RL，LLM总是展现出熵坍缩的现象，也即熵快速下降导致探索性能的下降。但是在后期的Agent RL的任务中，反而出现了一系列的熵增长的现象，也即LLM的探索性能反而在提升。
+
+![](asset/Pasted%20image%2020260316192842.png)
+
+上图来自于UI-Tars 2的论文，包括一些deep research的agent rl中也有类似的现象
+
+个人的一些想法，模型的entropy的变化主要来自于是否有外界的信息输入，在math等任务中，rl只有问题和答案，模型在自己的能力中逐渐探索收敛；而在agent的任务中，模型有大量的工具调用，不论是GUI Agent还是Deep Research Agent，有大量的信息注入到训练过程中，一定程度上就扩展了模型的探索性
 
 ## Other Topics
 

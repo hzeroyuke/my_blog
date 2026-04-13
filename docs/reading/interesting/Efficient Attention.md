@@ -254,6 +254,13 @@ https://arxiv.org/abs/2511.19835
 
 矫正的稀疏注意力机制
 
+
+### 2.3. Index Cache
+
+依靠层间的cache复用，实现kv cache复用和稀疏的注意力计算
+
+
+
 ### DSA
 
 DeepSeek 提出的Sparse Attention机制
@@ -272,7 +279,6 @@ DeepSeek 提出的Sparse Attention机制
 现阶段的理解是这样，也可以看一些对于FFN做Sparse的论文来了解一下真实的场景，关于FFN那边的Efficience的工作有很多是围绕着activation进行的
 
 - Spark Transformer
-
 
 ## 3. Linear Attention
 
@@ -315,3 +321,6 @@ SLA的推进基于两个发现
 ![](asset/Pasted%20image%2020260104212554.png)
 
 
+### 3.2 Delta Net
+
+标准的Linear Attention等效于Delta Net，

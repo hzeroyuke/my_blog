@@ -1,4 +1,50 @@
-# Self-attention And Transformer
+
+Transformer是自LLM时代以来，几乎所有深度模型的基础，其核心组件有很多包括
+
+- attention
+	- flash attention, sparse attention, linear attention
+	- gated attention
+- norm
+	- Gated norm
+- positional encoding
+	- rope, nope
+- ffn
+	- SwiGLU, moe
+
+上述组件不包括语言模型特有的tokenizer等
+
+几乎每个transformer的组件都经过了后续的深入研究和迭代，不论是efficient方向的，还是提高上限的，抛开各种复杂的实现，实际上Transformer的架构本身就是一堆重复的Transformer block，block里面就是attention+FFN
+
+而FFN我们实际已经很熟悉了，FFN最大的问题就是其对于向量（token）之间的关系无法建模，向量输入到FFN里的输出完全不受其一同输入的向量的影响，这对于序列任务或者图像之类的任务建模是相当困难的，因此要对FFN进行迭代的本质就是如何构建关联性
+
+
+## 1. Attention
+
+transformer的核心就是attention，其建模了token之间的关系，相比于卷积操作，attention操作的泛化性能更好上限更高，相当于是卷积操作的超集，一些论文中指出，在一些卷积优势的任务中，扩大数据量和参数量，attention操作会表现出类似卷积的性质。
+
+attention操作的核心可以归结为以下公式
+
+
+
+### 1.1. KV cache
+
+### 1.2. Multi-Head Attention
+
+### 1.3. Sparse & Linear Attention
+
+## 2. Rope
+
+
+## 3. FFN
+
+### 3.1. Moe
+
+
+
+
+
+
+# Old Version
 
 在我们之前学习深度学习的时候总是把各种元素抽象成向量，但是有些元素是可以比较容易抽象成向量的，比如图片信息；但是对于一些其他元素并非如此直观，比如说词汇，语音等等
 

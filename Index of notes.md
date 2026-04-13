@@ -1,0 +1,43 @@
+
+- Generative Model
+	- Application
+		- VLA [vla basic](docs/国内外著名课程/AI/VLA/vla%20basic.md)
+		- 3D [3D basic](docs/国内外著名课程/AI/3D/3D%20basic.md)
+		- Video Gen [Block Diffusion](docs/国内外著名课程/AI/Diffusion_and_flow/Block%20Diffusion.md)
+		- Unified Model [生成理解统一模型](docs/reading/interesting/生成理解统一模型.md)
+	- Training
+		- [Diffusion and flow matching](docs/国内外著名课程/AI/Diffusion_and_flow/Diffusion%20and%20flow%20matching.md)
+		- [Consistency model](docs/国内外著名课程/AI/Diffusion_and_flow/Consistency%20model.md)
+		- [MeanFlow](docs/国内外著名课程/AI/Diffusion_and_flow/MeanFlow.md)
+		- [Rectified Flow](docs/国内外著名课程/AI/Diffusion_and_flow/Rectified%20Flow.md)
+		- Distiilation
+			- [Diffusion Distillation](docs/国内外著名课程/AI/Diffusion_and_flow/Diffusion%20Distillation.md)
+		- RL
+			- [Diffusion RL Theory](docs/国内外著名课程/AI/RL/Diffusion%20RL%20Theory.md)
+	- Inference
+		- KV cache
+		- Efficient Attention
+	- Encoder
+		- [Semantic latent](docs/reading/interesting/Semantic%20latent.md)
+	- Architecture [Dit](docs/国内外著名课程/AI/Diffusion_and_flow/Dit.md)
+- LLM
+	- Apllication
+		- Agents
+	- Training
+		- RL
+			- [LLM RL Theory](docs/国内外著名课程/AI/RL/LLM%20RL%20Theory.md)
+			- [RL Basic](docs/国内外著名课程/AI/RL/RL%20Basic.md)
+		- Infra
+			- [Large scale book](docs/国内外著名课程/AI/ML_System/Large%20scale%20book.md)
+			- [MiniTorch](docs/国内外著名课程/AI/ML_System/MiniTorch.md)
+		- Optimizer [Optimizer](docs/reading/interesting/Optimizer.md)
+	- Inference
+		- KV cache
+		- Efficient Attention
+	- Architecture
+		- [Self-attention And Transformer](docs/国内外著名课程/AI/Self-attention%20And%20Transformer/Self-attention%20And%20Transformer.md)
+		- [Efficient Attention](docs/reading/interesting/Efficient%20Attention.md)
+- Project
+	- [Inferix](docs/reading/interesting/Inferix.md)
+	- [Mini-Sglang](docs/reading/interesting/Mini-Sglang.md)
+	- [nano-vllm](docs/reading/interesting/nano-vllm.md)

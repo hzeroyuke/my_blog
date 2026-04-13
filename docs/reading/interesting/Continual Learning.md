@@ -66,4 +66,28 @@ $$o_t^{\text{softmax}} = \sum_{s \leq t} {softmax}(q_t k_s^T) v_s$$
 
 DeltaNet被证明为是单层线性层+零初始化的TTT特例
 
+## Lora Generator
+
+基于生成Lora的方案来做Continual Learning，这个工作是来自Hunyuan的，将这个方案应用于Image-edit任务
+
+- https://tencent-hy-wu.github.io/
+
+在推理时，实时生成参数，来给模型新增能力。基于transformer架构，在推理时实时生成一组Lora参数，然后加入冻结的基础模型
+
+![](asset/Pasted%20image%2020260307205755.png)
+
+Lora的基础知识
+
+- 低秩分解约束的一个矩阵
+- 增加在QKV矩阵之后，但是其本质是加法，所以加在哪个矩阵输出之后都可以
+
+$$h = W_0 x + \Delta W x = W_0 x + BAx$$
+
+上述的BA就是Lora中的向量
+
+Lora本质是对原本的权重做了一个加法，加上的Lora矩阵是一个Low Rank矩阵，可以分解为向量，然后可以用这个小参数的向量进行训练
+
+
+![](asset/Pasted%20image%2020260307205819.png)
+
 

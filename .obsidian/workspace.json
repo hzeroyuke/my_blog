@@ -8,79 +8,109 @@
         "type": "tabs",
         "children": [
           {
-            "id": "f19ac5168a931767",
+            "id": "5ea93f3aff10b75b",
             "type": "leaf",
             "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/reading/dailyreading/2026-2.md",
+                "file": "docs/reading/dailyreading/Reading todo.md",
                 "mode": "source",
                 "source": false
               },
               "pinned": true,
               "icon": "lucide-file",
-              "title": "2026-2"
+              "title": "Reading todo"
             }
           },
           {
-            "id": "df6d828d67c1e42e",
+            "id": "93bd92b2d0a14022",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Index of notes.md",
+                "mode": "source",
+                "source": false
+              },
+              "pinned": true,
+              "icon": "lucide-file",
+              "title": "Index of notes"
+            }
+          },
+          {
+            "id": "0cf26a69a95455b6",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/国内外著名课程/AI/ML_System/Large scale book.md",
+                "file": "docs/reading/interesting/Interactive World Model.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Large scale book"
+              "title": "Interactive World Model"
             }
           },
           {
-            "id": "5ea93f3aff10b75b",
+            "id": "6a25b8d530fe44da",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/reading/dailyreading/2026-1.md",
+                "file": "docs/技术积累/实用技能/python/Python Package Management.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-1"
+              "title": "Python Package Management"
             }
           },
           {
-            "id": "0e74b579f855eb0a",
+            "id": "02c0dbe791218249",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/zip/Physical Judge Plan.md",
+                "file": "docs/国内外著名课程/AI/3D/3D basic.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Physical Judge Plan"
+              "title": "3D basic"
             }
           },
           {
-            "id": "c679dd854dd12af8",
+            "id": "32fb525fa1f62fad",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/技术积累/实用技能/Huggingface.md",
+                "file": "docs/zip/yefei talk Nerual Token.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Huggingface"
+              "title": "yefei talk Nerual Token"
+            }
+          },
+          {
+            "id": "a0a3d698a17e0bfa",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/reading/interesting/Efficient Attention.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Efficient Attention"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -112,7 +142,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "video",
+                "query": "dmd",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -133,12 +163,11 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 256.5
+    "width": 312.5
   },
   "right": {
     "id": "ad13d5b07512eaf1",
@@ -220,62 +249,63 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:新建数据库": false,
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
       "canvas:新建白板": false,
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
-      "command-palette:打开命令面板": false,
-      "bases:创建新数据库": false
+      "command-palette:打开命令面板": false
     }
   },
-  "active": "5ea93f3aff10b75b",
+  "active": "6a25b8d530fe44da",
   "lastOpenFiles": [
-    "docs/zip/Physical Judge Plan.md",
-    "docs/reading/dailyreading/2026-1.md",
-    "docs/reading/dailyreading/2026-2.md",
-    "docs/reading/dailyreading/asset/Pasted image 20260228155805.png",
-    "docs/国内外著名课程/AI/Diffusion_and_flow/Block Diffusion.md",
-    "docs/国内外著名课程/AI/Diffusion_and_flow/Dit.md",
-    "docs/国内外著名课程/AI/Diffusion_and_flow/未命名.md",
-    "docs/技术积累/实用技能/Huggingface.md",
-    "docs/reading/interesting/Inferix.md",
-    "docs/reading/dailyreading/asset/Pasted image 20260227215533.png",
-    "docs/reading/interesting/Attention Sink.md",
+    "docs/index.md",
+    "docs/zip/Physical Pipeline.md",
+    "docs/国内外著名课程/AI/3D/3D basic.md",
+    "Index of notes.md",
+    "docs/技术积累/实用技能/cuda toolkit.md",
+    "docs/国内外著名课程/AI/Tools/Coding CLI.md",
+    "docs/技术积累/实用技能/python/Python Package Management.md",
+    "docs/技术积累/实用技能/Linux 常用命令.md",
     "docs/reading/interesting/Efficient Attention.md",
-    "docs/reading/interesting/Robotics.md",
-    "docs/reading/interesting/Continual Learning.md",
-    "docs/reading/interesting/Optimizer.md",
-    "docs/zip/Physical Judge Survey.md",
-    "docs/国内外著名课程/AI/ML_System/MiniTorch.md",
-    "docs/zip/asset/Pasted image 20260223183518.png",
-    "docs/zip/asset/Pasted image 20260223183459.png",
-    "docs/zip/asset/Pasted image 20260223182750.png",
-    "output 2/Physical Judge Plan.md",
-    "output 2/attachment/4ced825240657b64b29cd26a8661c9f4.png",
-    "output 2/attachment/49c03b62a94110258037630cd14595a7.png",
-    "output 2/attachment/49fc69e8e12d9d722255a7d89e598fdf.png",
-    "output 2/attachment",
-    "output 2",
-    "output/Physical Judge Plan.md",
-    "docs/zip/weekly target.md",
-    "docs/zip/zeyu talk.md",
-    "docs/zip/world eval.md",
-    "docs/zip/efficient todo.md",
-    "docs/zip/面试经验.md",
+    "docs/国内外著名课程/AI/Diffusion_and_flow/Block Diffusion.md",
+    "docs/zip/yefei talk Nerual Token.md",
+    "docs/zip/Physical Judge Plan.md",
+    "docs/zip/Runpod.md",
+    "docs/reading/interesting/Interactive World Model.md",
+    "docs/zip/长期目标（实践）.md",
+    "docs/zip/hello.md",
+    "docs/reading/interesting/Inferix.md",
     "docs/zip/talk insights.md",
-    "docs/reading/interesting/MTP.md",
-    "docs/技术积累/实用技能/profiler/nvtop.md",
-    "docs/技术积累/实用技能/profiler/profiling tools.md",
-    "docs/zip/asset/Pasted image 20260214140244.png",
-    "docs/reading/dailyreading/asset/Pasted image 20260212142437.png",
-    "physical.zip",
-    "output.zip",
-    "output/attachment",
-    "output",
-    "physical/attachment",
-    "physical",
-    "physcial_judge_plan.zip",
-    "physical judge.zip"
+    "docs/reading/dailyreading/Reading todo.md",
+    "docs/zip/读书报告.md",
+    "docs/ZJU-course/职业规划讲座/职规讲座.md",
+    "docs/技术积累/未命名.md",
+    "docs/国内外著名课程/AI/RL/Diffusion RL Theory.md",
+    "docs/技术积累/实用技能/Huggingface.md",
+    "docs/国内外著名课程/AI/Diffusion_and_flow/Diffusion Distillation.md",
+    "docs/技术积累/实用技能/Tmux.md",
+    "未命名.base",
+    "docs/国内外著名课程/AI/Diffusion_and_flow/asset/Pasted image 20260330200621.png",
+    "docs/zip/asset/Pasted image 20260330191526.png",
+    "docs/zip/asset/Pasted image 20260330170059.png",
+    "docs/国内外著名课程/AI/RL/asset/Pasted image 20260327184458.png",
+    "docs/国内外著名课程/AI/RL/asset/Pasted image 20260327183333.png",
+    "docs/国内外著名课程/AI/RL/asset/Pasted image 20260327182605.png",
+    "docs/国内外著名课程/AI/RL/asset/Pasted image 20260327154448.png",
+    "docs/国内外著名课程/AI/RL/asset/Pasted image 20260327153820.png",
+    "docs/zip/asset/2cfc89c7875abf056eac13e3d7bfac4f.jpg",
+    "docs/zip/asset/495a6ed846c0975ded7776e3acb4b6f4.png",
+    "未命名 3.base",
+    "docs/国内外著名课程/AI/Data",
+    "docs/国内外著名课程/AI/VLA",
+    "未命名 2.base",
+    "docs/国内外著名课程/AI/3D",
+    "未命名.canvas",
+    "未命名 1.base",
+    "docs/国内外著名课程/AI/Agent/asset",
+    "docs/ZJU-course/职业规划讲座",
+    "docs/国内外著名课程/AI/Agent"
   ]
 }

@@ -81,6 +81,7 @@ nav:
     - 国内外著名课程/AI/RL/RL Basic.md
     - 国内外著名课程/AI/RL/LLM RL Theory.md
     - 国内外著名课程/AI/RL/Diffusion RL Theory.md
+    - 国内外著名课程/AI/3D/3D basic.md
   - ZJU-course: 
     - ZJU-course/Discrete Mathematics.md
     - ZJU-course/计概/Introduction to Computing Systems_ From Bits & Gates to C & Beyond.md
@@ -127,6 +128,9 @@ nav:
       - 技术积累/实用技能/docker/docker.md
       - 技术积累/实用技能/Tmux.md
       - 技术积累/实用技能/python/Python Package Management.md
+      - 技术积累/实用技能/cuda toolkit.md
+      - 技术积累/实用技能/Linux 常用命令.md
+      - 国内外著名课程/AI/Tools/Coding CLI.md
 
   - Reading:
     - daily reading:
@@ -138,7 +142,6 @@ nav:
       - reading/dailyreading/2025-12.md
       - reading/dailyreading/2026-1.md
     - interests: 
-      - reading/interesting/胡渊鸣访谈.md
       - reading/interesting/RL 中的熵机制.md
       - reading/interesting/Unified view of SFT & RL.md
       - reading/interesting/生成理解统一模型.md

@@ -9,14 +9,11 @@ conda 是一个非常常用的Python包管理工具，常用于科学计算场�
 - `conda activate <env_name>` & `conda deactivate <env_name>`
 - `conda remove -n <env_name> --all`
 
-```
-/mnt/nas_nfs/home/yuke/model/Wan2.1-T2V-1.3B-Diffusers
+
+在国内的话，需要考虑将conda对应的源转换成清华源
 
 
-sglang generate --model-path /mnt/nas_nfs/home/yuke/model/Wan2.1-T2V-1.3B-Diffusers \
-    --prompt "A curious raccoon" \
-    --save-output
-```
+conda 可以同时管理 cuda 和 python 的包，但是python的包在conda上面不全，尤其是torch的新版本，因此建议是先用conda install下载完成对应的cuda环境，随后的用pip install下载
 
 
 ## 2. uv
@@ -35,7 +32,7 @@ uv 是一个非常新的python包管理工具，工具链很现代化，并且�
 
 - pip install 用pip原生的解析器
 - uv pip install 用uv的解析器，速度更快
-- uv add 使用uv解析器材的同时，还可以维护uv的pyproject.toml
+- uv add 使用uv解析器材的同时，还可以维护uv的pyproject.tomlO
 
 uv 常用的镜像源
 

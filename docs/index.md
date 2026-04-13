@@ -4,8 +4,11 @@
 
 ---
 >*我希望许下的愿望，一路生花*
-
+>
 ---
+
+
+我关注生成模型，强化学习，以及高效的模型推理和训练
 
 ## 近期的工作
 
@@ -15,7 +18,7 @@
 ## 这是一些有用的连接
 
 !!! note "一些有用的连接"
-    * [CS自学指南，每个人都该体验一下好的大学课程应该是怎么样的](https://csdiy.wiki/)
+    * [CS自学指南](https://csdiy.wiki/)
     * [浙江大学本科新生指引](https://zjuers.com/welcome/)
     * [常用的查汇编工具](https://godbolt.org/)
     * [常用的LaTeX公式查询](https://editor.codecogs.com/)
