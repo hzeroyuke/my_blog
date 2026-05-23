@@ -54,7 +54,7 @@ DAPO的方案对于GRPO的范式做了一系列的优化，增加了很多Tricks
 
 - Clip Higher 原本的clip的上界过低，导致RL只会优化高概率高advantage的token，以至于其会迅速陷入局部最优，通过调高Clip的界限，可以有效帮助一些低概率高Advantage的token进行优化，有效提高模型的上限
 - Dynamic Sampling 在训练中增加筛选，去掉全对和全错的样本
-- Token-level Policy Gradient Loss 让一个mini-batch内部 repsonse token 的advantage权重相同
+- Token-level Policy Gradient Loss 让一个mini-batch内部 response token 的advantage权重相同
 - Overlong Reward Shaping 增加response length的惩罚项数
 
 **GSPO**
